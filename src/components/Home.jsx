@@ -5,10 +5,48 @@ import samer from '../assets/img/excomm/samer.webp'
 import noha from '../assets/img/excomm/noha.webp'
 import esraa from '../assets/img/excomm/esraa.webp'
 
+import NTRA from '../assets/img/NTRA.webp'
+import vodafone from '../assets/img/vodafone.webp'
+import Valeo from '../assets/img/Valeo.webp'
+import ITI from '../assets/img/ITI.webp'
+import ITIDA from '../assets/img/ITIDA.webp'
+import TIEC from '../assets/img/TIEC.webp'
+import NTI from '../assets/img/NTI.webp'
+import Wuzzuf from '../assets/img/Wuzzuf.webp'
+import cemex from '../assets/img/cemex.webp'
+import Aghakhan from '../assets/img/Aghakhan.webp'
+import nvl from '../assets/img/nvl.webp'
+import tico from '../assets/img/tico.webp'
+import consulting from '../assets/img/consulting.webp'
+import ihub from '../assets/img/ihub.webp'
+import APEARC from '../assets/img/APEARC.webp'
+
+import PartnerLogo from '../components/PartnerLogo'
+import Footer from './Footer'
+import Contact from './Contact'
 import '../App.css'
 
 
 function Home() {
+
+  const partners = [
+    NTRA,
+    vodafone,
+    Valeo,
+    ITI,
+    ITIDA,
+    TIEC,
+    NTI,
+    Wuzzuf,
+    cemex,
+    Aghakhan,
+    nvl,
+    tico,
+    consulting,
+    ihub,
+    APEARC,
+  ]
+
   return (
     <>
     <div>
@@ -59,7 +97,8 @@ function Home() {
         </div>
       </div>
 
-      <section className="pb-20 bg-blueGray-200 -mt-24">
+      <section className="pb-20 bg-blueGray-200 -mt-24"
+      >
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap">
             <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
@@ -468,9 +507,11 @@ function Home() {
                 Alone we can do so little; together we can do so much
               </p>
           </div>
-          {/* <div className="flex flex-wrap justify-center">
-            <PartnerLogo v-for="partner in partners" :partner="partner" v-bind:key="partner" />
-          </div> */}
+          <div className="flex flex-wrap justify-center">
+            { partners.map((partner) => (
+              <PartnerLogo partnerImg={partner} key={partner}/>
+            )) }
+          </div>
         </div>
       </section>
 
@@ -496,10 +537,10 @@ function Home() {
       </div>
     </section>
 
-    {/* <Contact/> */}
+    <Contact/>
 
     </main>
-    {/* <Footer /> */}
+    <Footer />
   </div>
     </>
   );
