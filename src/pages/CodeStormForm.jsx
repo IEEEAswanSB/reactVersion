@@ -74,7 +74,7 @@ function CodeStormForm() {
                   choose your favourite Handler
                 </label>
                 <select
-                 onChange={(e)=>{setName(e.target.value)}}
+                 onChange={(e)=>{setFavHandler(e.target.value)}}
                   name="handler"
                   id="handler"
                   className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
