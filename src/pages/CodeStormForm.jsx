@@ -1,5 +1,6 @@
 import CodeStormImg from "../assets/img/codestorm.jpg";
 import { useState } from "react";
+import { sendUsers } from '../../services/register.service.js'
 function CodeStormForm() {
   const [done,setDone] = useState(false)
   const [name, setName] = useState();
@@ -20,14 +21,7 @@ function CodeStormForm() {
       phone:phone,
     };
     setDone(true)
-    fetch('/sendUsers', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newApplicantData),
-    })
-      .then(response => response.json())
+    sendUsers(newApplicantData);
   }
   return (
     <>
