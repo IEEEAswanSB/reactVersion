@@ -4,7 +4,6 @@ import yusuf from '../assets/img/excomm/yusuf.webp'
 import samer from '../assets/img/excomm/samer.webp'
 import noha from '../assets/img/excomm/noha.webp'
 import esraa from '../assets/img/excomm/esraa.webp'
-
 import NTRA from '../assets/img/NTRA.webp'
 import vodafone from '../assets/img/vodafone.webp'
 import Valeo from '../assets/img/Valeo.webp'
@@ -20,7 +19,6 @@ import tico from '../assets/img/tico.webp'
 import consulting from '../assets/img/consulting.webp'
 import ihub from '../assets/img/ihub.webp'
 import APEARC from '../assets/img/APEARC.webp'
-
 import PartnerLogo from '../components/PartnerLogo'
 import Footer from './Footer'
 import Contact from './Contact'
@@ -49,6 +47,7 @@ function Home() {
 
   return (
     <>
+    {/* <Applicants/> */}
     <div>
     <main>
       <div

@@ -1,5 +1,5 @@
 import Home from "./pages/Home"
-import CodeStorm from "./pages/CodeStorm"
+import { CodeStorm } from "./pages/CodeStorm"
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import CodeStormForm from "./pages/CodeStormForm"
 

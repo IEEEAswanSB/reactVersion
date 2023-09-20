@@ -1,6 +1,37 @@
 import CodeStormImg from "../assets/img/codestorm.jpg";
-
+import { useState } from "react";
 function CodeStormForm() {
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [favHandler, setFavHandler] = useState('Codeforces');
+  const [phone, setPhone] = useState();
+  const [handler, setHandler] = useState();
+
+  let sendNew=()=>{
+    if(!name || !email || !favHandler|| !phone ){
+      console.log('please check all fields')
+    }
+    const newApplicantData = {
+      name: name,
+      email: email,
+      favHandler:favHandler,
+      handler:handler,
+      phone:phone,
+    };
+
+    fetch('https://ieee.aswu.edu.eg/sendUsers', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newApplicantData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('New applicant created:', data);
+      })
+      .catch(error => console.error('Error creating applicant:', error));
+  }
   return (
     <>
       <div className="h-screen w-screen codestorm flex justify-center items-start">
@@ -22,6 +53,7 @@ function CodeStormForm() {
                   Full Name
                 </label>
                 <input
+                onChange={(e)=>{setName(e.target.value)}}
                   type="text"
                   className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Full Name"
@@ -36,6 +68,7 @@ function CodeStormForm() {
                   Email
                 </label>
                 <input
+                 onChange={(e)=>{setEmail(e.target.value)}}
                   type="email"
                   className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Email"
@@ -50,6 +83,7 @@ function CodeStormForm() {
                   choose your favourite Handler
                 </label>
                 <select
+                 onChange={(e)=>{setName(e.target.value)}}
                   name="handler"
                   id="handler"
                   className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -81,6 +115,7 @@ function CodeStormForm() {
                   your Handler username
                 </label>
                 <input
+                 onChange={(e)=>{setHandler(e.target.value)}}
                   type="text"
                   className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="exp: @codeforces, @codewars"
@@ -93,6 +128,7 @@ function CodeStormForm() {
                   Phone
                 </label>
                 <input
+                 onChange={(e)=>{setPhone(e.target.value)}}
                   type="text"
                   className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Phone number"
@@ -100,7 +136,7 @@ function CodeStormForm() {
                 />
               </div>
 
-              <div className=" w-full mb-3">
+              {/* <div className=" w-full mb-3">
                 <label
                   className="block uppercase text-slate-200 text-xs font-bold mb-2"
                   htmlFor="message"
@@ -114,10 +150,11 @@ function CodeStormForm() {
                   placeholder="Type a message..."
                   v-model="payload.message"
                 />
-              </div>
+              </div> */}
 
               <div className="text-center mt-6">
                 <button
+                  onClick={sendNew}
                   v-show="step === 1 && !loading"
                   className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 >

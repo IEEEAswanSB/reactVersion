@@ -1,0 +1,265 @@
+
+.codestorm-page {
+  background-image:url('./assets/codeforces.jpg') ;
+  background-position: center;
+  background-size:cover ;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fill {
+  form{
+    background-size: 0% 100% !important;
+  }
+  to{
+    background-size: 100% 100% !important;
+  }
+}
+
+.strokeme1 {
+  font: 500 20px ;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px;
+}
+.strokeme1 {
+  /* background: radial-gradient( rgb(129, 3, 3),#000000) left no-repeat, #d1d2de00 ; */
+  background-size: 0% 100% !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  transition: 1s ease-in-out !important;
+  animation: fill 1s ease-in-out forwards !important;
+}
+
+.strokeme1-active {
+  background-size: 100% 100% !important;
+}
+.strokeme2 {
+  font: 800 20px Arial;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px;
+}
+.codestorm-page header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 40px;
+  align-items: center;
+  position: fixed;
+}
+.codestorm-page .prod{
+  background-color: transparent;
+  position: absolute;
+  right: 3%;
+  bottom: 2%;
+  font-size: 15px;
+}
+.codestorm-page header img{
+  margin-top: -20px;
+  /* filter: invert(1); */
+  width: 80px !important;
+  height: 80px !important;
+}
+.codestorm-page header p {
+  font-weight: bold;
+  font-size: 0.8rem;
+  transition: all 1.2s ease-out;
+}
+
+.codestorm-page header p.hidden {
+  opacity: 0;
+}
+
+.codestorm-page section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* .section--container {
+  margin-top: 5vh;
+  margin-left: 5vw;
+} */
+
+.codestorm-page .section--container.hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.codestorm-page .section--container h1 {
+  font-weight: 900;
+  font-size: 90px;
+  letter-spacing: -6px;
+  font-style: italic;
+  width: 34%;
+  line-height: 5rem;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.codestorm-page .support--content {
+  text-decoration: none;
+
+  z-index: 10;
+  font-size: 12px;
+  position: relative;
+  top: -25%;
+  left: 300px;
+}
+
+.codestorm-page .support--content p {
+  width: 350px;
+  margin-bottom: 48px;
+  line-height: 1rem;
+}
+
+.codestorm-page .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -100;
+}
+
+.codestorm-page button {
+  text-decoration: none;
+  background-color: #dd5c18;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: bolder;
+  pointer-events: all;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  box-shadow: inset 0 0 0 0.09px black;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 30px;
+}
+
+.codestorm-page button:hover {
+  box-shadow: inset 250px 0 0 0 black;
+  transform: scale(1.1);
+}
+
+/* CUSTOMIZER */
+
+.customizer {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.customizer span {
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.customizer span svg {
+  width: 24px;
+  padding-right: 5px;
+}
+
+.share {
+  bottom: 40px;
+  position: absolute;
+  right: 40px;
+}
+
+.zoom {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  color: #00000056;
+  font-size: 0.6rem;
+  border: 1px solid #00000000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border, color 1s ease;
+}
+
+.zoom:hover {
+  color: black;
+}
+
+/* PICKER */
+
+.picker {
+  position: absolute !important;
+  bottom: 4em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px !important;
+  height: 120px !important;
+}
+
+.color-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.codestorm-page .circle:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+
+
+  .section--container h1 {
+    letter-spacing: 1px;
+    line-height: 3rem;
+    font-size: 48px;
+    /* margin-left: 20%; */
+}
+
+
+
+  .color-options {
+    margin-bottom: 20px;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%);
+  }
+
+  .support--content {
+    top: -10%;
+    left: 0;
+  }
+}
