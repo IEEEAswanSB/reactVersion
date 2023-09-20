@@ -26,7 +26,7 @@ function CodeStormForm() {
   return (
     <>
       <div className="h-screen w-screen codestorm flex justify-center items-start">
-       {!done? <form action="" className="w-11/12 h-full  md:w-2/4 md:h-2/4 my-10 overflow-hidden">
+        <form action="" className="w-11/12 h-full  md:w-2/4 md:h-2/4 my-10 overflow-hidden">
           <div className=" flex flex-col min-w-0 break-words w-fullshadow-lg rounded-lg bg-transparent border-2 border-slate-500">
             <div className="flex-auto p-5 lg:p-10">
               <h4 className="text-2xl font-semibold text-slate-200">
@@ -154,7 +154,7 @@ function CodeStormForm() {
               </div>
             </div>
           </div>
-        </form>:<h1>Done!</h1>}
+        </form>:<h1>Done!</h1>
       </div>
     </>
   );
