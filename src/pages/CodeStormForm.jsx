@@ -20,7 +20,7 @@ function CodeStormForm() {
       phone:phone,
     };
     setDone(true)
-    fetch('https://ieee.aswu.edu.eg/sendUsers', {
+    fetch('/sendUsers', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
