@@ -20,6 +20,7 @@ export default {
           4: '#fcde00',
           5: '#03C03C',
         },
+        codeStormClr: '#004B82',
         track: {
           1: '#1144ec', //solar
           2: '#3bcbf1', //graphic

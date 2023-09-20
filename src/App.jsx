@@ -1,6 +1,7 @@
 import Home from "./pages/Home"
 import CodeStorm from "./pages/CodeStorm"
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import CodeStormForm from "./pages/CodeStormForm"
 
 function App() {
   const router = createBrowserRouter([
@@ -10,7 +11,11 @@ function App() {
     },
     {
       path: '/codestorm',
-      element: <CodeStorm />
+      element: <CodeStorm />,
+    },
+    {
+      path: '/form',
+      element: <CodeStormForm />
     }
   ])
   return (

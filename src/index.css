@@ -4260,3 +4260,19 @@ select {
 
 @media (min-width: 1536px) {
 }
+
+.codestorm{
+  background-image: url('./assets/img/codestorm.jpg');
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  overflow-x: hidden;
+}
+
+@media (max-width: 500px){
+  .codestorm{
+    background-image: url('./assets/img/codestorm.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
