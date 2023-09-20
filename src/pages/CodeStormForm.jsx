@@ -39,10 +39,10 @@ function CodeStormForm() {
           <div className=" flex flex-col min-w-0 break-words w-fullshadow-lg rounded-lg bg-transparent border-2 border-slate-500">
             <div className="flex-auto p-5 lg:p-10">
               <h4 className="text-2xl font-semibold text-slate-200">
-                How can we help you?
+                CodeStorm
               </h4>
               <p className="leading-relaxed mt-1 mb-4 text-slate-200">
-                Complete this form and we will get back very soon
+                {/* Complete this form and we will get back very soon */}
               </p>
 
               <div className=" w-full mb-3 mt-8">

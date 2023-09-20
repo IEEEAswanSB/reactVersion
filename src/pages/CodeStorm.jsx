@@ -19,33 +19,25 @@ export function CodeStorm() {
   })
 
   let style = `
-  .strokeme1 {
-    font: 500 20px ;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 2px;
-  }
-  .strokeme1 {
-    /* background: radial-gradient( rgb(129, 3, 3),#000000) left no-repeat, #d1d2de00 ; */
-    background-size: 0% 100% !important;
-    background-clip: text !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: blue !important;
-    transition: 1s ease-in-out !important;
-    animation: fill 1s ease-in-out forwards !important;
-  }
-  
-  .strokeme1-active {
-    background-size: 100% 100% !important;
-  }
-  .strokeme2 {
-    font: 800 20px Arial;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px;
-  }
-  .strokeme1 {
-       background: radial-gradient('gray',#000000) left no-repeat, #d1d2de00 ; 
-       filter: brightness(0.4)
+    .strokeme1 {
+      font: 500 20px ;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 2px;
     }
+    .strokeme1 {
+      /* background: radial-gradient( rgb(129, 3, 3),#000000) left no-repeat, #d1d2de00 ; */
+      background-size: 0% 100% !important;
+      background-clip: text !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: #004B82 !important;
+      transition: 1s ease-in-out !important;
+      animation: fill 1s ease-in-out forwards !important;
+    }
+    
+    .strokeme1-active {
+      background-size: 100% 100% !important;
+    }
+
   `
   return (
     <div className='codestorm-page' style={{ position: 'absolute', top: 0, left: 0, width: '100vw', height: '100vh' ,zIndex:1000,'overflow':'hidden'}}>
@@ -55,7 +47,7 @@ export function CodeStorm() {
               <motion.div
                 key="title"
                 initial={{ x: 100,y:10, opacity: 0 }}
-                animate={{ x: 0,y:-100, opacity: 1 }}
+                animate={{ x: 0,y:-80, opacity: 1 }}
                 transition={{ type: 'spring', damping: 5, stiffness: 40, restDelta: 0.001, duration: 0.3 }}>
                 <h1 className={`strokeme1 ${fill?'strokeme1-active':''}`}>codestorm programming competition!</h1>
               </motion.div>
@@ -75,7 +67,7 @@ export function CodeStorm() {
                     delay: 0.2,
                     delayChildren: 0.2
                   }}>
-                  <p className=' mb-5' style={{color:'white',lineHeight:'30px',letterSpacing:'2px',fontSize:'20px'}}>
+                  <p className='mb-5' style={{color:'white',lineHeight:'30px',letterSpacing:'2px',fontSize:'20px'}}>
                   CodeStorm is and individual contest that fosters to simulate one of the biggest competitive programming hackathons "IEEEXtreme".
                   In the journey of CodeStorm you can pass from CodeStorm scoreboard to IEEEXtreme scoreboard.There you will know what IEEEXtreme , test a demo and and win the IEEE membership, your ticket to participate in IEEEXtreme!
                   </p>

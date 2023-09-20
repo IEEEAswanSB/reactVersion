@@ -1,9 +1,8 @@
 import logo from "../assets/img/logo.png";
-import bein from "../assets/img/bein/logo.webp";
-import yusuf from "../assets/img/excomm/yusuf.webp";
-import samer from "../assets/img/excomm/samer.webp";
+import codestormLogo from "../assets/img/codestormLogo.png";
+import Amr from "../assets/img/excomm/Amr.webp";
 import noha from "../assets/img/excomm/noha.webp";
-import esraa from "../assets/img/excomm/esraa.webp";
+import Abdelrhman from "../assets/img/excomm/Abdelrhman.webp";
 
 import NTRA from "../assets/img/NTRA.webp";
 import vodafone from "../assets/img/vodafone.webp";
@@ -146,7 +145,7 @@ function Home() {
                   <h3 className="text-3xl mb-2 font-semibold leading-normal">
                     Who are we?
                   </h3>
-                  <p className="text-lg font-normal text-justify leading-relaxed mt-4 mb-4 text-blueGray-600">
+                  <p className="text-lg font-normal leading-relaxed mt-4 mb-4 text-blueGray-600">
                     IEEE Aswan Student Branch was founded in the academic year
                     (2010-2011), it is located at Aswan Faculty of Engineering
                     and serves all departments within the faculty. We believe
@@ -197,7 +196,7 @@ function Home() {
                   <div className="p-6 relative flex flex-col min-w-0 break-words w-full mb-6 rounded-lg">
                     <img
                       alt="..."
-                      src={bein}
+                      src={codestormLogo}
                       className="w-full align-middle rounded-t-lg main-logo"
                       loading="lazy"
                     />
@@ -211,7 +210,7 @@ function Home() {
                   <h3 className="text-3xl mb-2 font-semibold leading-normal">
                     CodeStorm
                   </h3>
-                  <p className="text-lg font-normal text-justify leading-relaxed mt-4 mb-4 text-blueGray-300">
+                  <p className="text-lg font-normal leading-relaxed mt-4 mb-4 text-blueGray-300">
                     CodeStorm is and individual contest that fosters to simulate
                     one of the biggest competitive programming hackathons
                     "IEEEXtreme". In the journey of CodeStorm you can pass from
@@ -260,95 +259,7 @@ function Home() {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-wrap">
-                <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-                  <div className="px-6">
-                    <img
-                      alt="..."
-                      src={yusuf}
-                      className="shadow-lg rounded-full mx-auto max-w-120-px"
-                      loading="lazy"
-                    />
-                    <div className="pt-6 text-center">
-                      <h5 className="text-xl font-bold">Yusuf Halby</h5>
-                      <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                        Chairman
-                      </p>
-                      <div className="mt-6">
-                        <button
-                          className="bg-social-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                          type="button"
-                        >
-                          <a href="mailto:halby@ieee.org" target="_blank">
-                            <i className="fas fa-envelope"></i>
-                          </a>
-                        </button>
-                        <button
-                          className="bg-social-200 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                          type="button"
-                        >
-                          <a
-                            href="https://www.linkedin.com/in/yousof289"
-                            target="_blank"
-                          >
-                            <i className="fab fa-linkedin-in"></i>
-                          </a>
-                        </button>
-                        <button
-                          className="bg-social-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                          type="button"
-                        >
-                          <a
-                            href="https://github.com/yusufhalby"
-                            target="_blank"
-                          >
-                            <i className="fab fa-github-alt"></i>
-                          </a>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-                  <div className="px-6">
-                    <img
-                      alt="..."
-                      src={samer}
-                      className="shadow-lg rounded-full mx-auto max-w-120-px"
-                      loading="lazy"
-                    />
-                    <div className="pt-6 text-center">
-                      <h5 className="text-xl font-bold">Samer Said Saad</h5>
-                      <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                        Vice-Chairman
-                      </p>
-                      <div className="mt-6">
-                        <button
-                          className="bg-social-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                          type="button"
-                        >
-                          <a
-                            href="mailto:samersoliman100@gmail.com"
-                            target="_blank"
-                          >
-                            <i className="fas fa-envelope"></i>
-                          </a>
-                        </button>
-                        <button
-                          className="bg-social-200 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                          type="button"
-                        >
-                          <a
-                            href="https://www.linkedin.com/in/samer-said-saad-684386188"
-                            target="_blank"
-                          >
-                            <i className="fab fa-linkedin-in"></i>
-                          </a>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="flex flex-wrap justify-center items-center gap-5">
                 <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                   <div className="px-6">
                     <img
@@ -360,7 +271,7 @@ function Home() {
                     <div className="pt-6 text-center">
                       <h5 className="text-xl font-bold">Noha Elrashedy</h5>
                       <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                        Secretary
+                        Chairman
                       </p>
                       <div className="mt-6">
                         <button
@@ -404,6 +315,99 @@ function Home() {
                   <div className="px-6">
                     <img
                       alt="..."
+                      src={Amr}
+                      className="shadow-lg rounded-full mx-auto max-w-120-px"
+                      loading="lazy"
+                    />
+                    <div className="pt-6 text-center">
+                      <h5 className="text-xl font-bold">Amr Khaled</h5>
+                      <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
+                        Vice-Chairman
+                      </p>
+                      <div className="mt-6">
+                        <button
+                          className="bg-social-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <a
+                            href="mailto:amrnour1010@gmail.com"
+                            target="_blank"
+                          >
+                            <i className="fas fa-envelope"></i>
+                          </a>
+                        </button>
+                        <button
+                          className="bg-social-200 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <a
+                            href="https://www.linkedin.com/in/amr-nour-b56925235/"
+                            target="_blank"
+                          >
+                            <i className="fab fa-linkedin-in"></i>
+                          </a>
+                        </button>
+                        <button
+                          className="bg-social-200 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <a
+                            href="https://www.behance.net/3mrno1"
+                            target="_blank"
+                          >
+                            <i className="fab fa-behance"></i>
+                          </a>
+                        </button>
+                        
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+                  <div className="px-6">
+                    <img
+                      alt="..."
+                      src={Abdelrhman}
+                      className="shadow-lg rounded-full mx-auto max-w-120-px"
+                      loading="lazy"
+                    />
+                    <div className="pt-6 text-center">
+                      <h5 className="text-xl font-bold">Abdelrahman Ibrahem</h5>
+                      <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
+                        Secretary
+                      </p>
+                      <div className="mt-6">
+                        <button
+                          className="bg-social-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <a
+                            href="mailto:abdelrahmanlatif04@gmail.com"
+                            target="_blank"
+                          >
+                            <i className="fas fa-envelope"></i>
+                          </a>
+                        </button>
+                        <button
+                          className="bg-social-200 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <a
+                            href="https://www.linkedin.com/in/abdelrahmanlatif/"
+                            target="_blank"
+                          >
+                            <i className="fab fa-linkedin-in"></i>
+                          </a>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+                  <div className="px-6">
+                    <img
+                      alt="..."
                       src={esraa}
                       className="shadow-lg rounded-full mx-auto max-w-120-px"
                       loading="lazy"
@@ -439,7 +443,7 @@ function Home() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </section>
