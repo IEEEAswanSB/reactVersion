@@ -1,6 +1,7 @@
 import CodeStormImg from "../assets/img/codestorm.jpg";
 import { useState } from "react";
 import { sendUsers } from '../../services/register.service.js'
+import { useNavigate } from "react-router";
 function CodeStormForm() {
   const [done,setDone] = useState(false)
   const [name, setName] = useState();
@@ -24,13 +25,16 @@ function CodeStormForm() {
       id:id,
       collage:collage
     };
-    setDone(true)
-    sendUsers(newApplicantData);
+    // setDone(true)
+    sendUsers(newApplicantData)
   }
   return (
     <>
-      <div className="h-screen w-screen codestorm flex justify-center items-start">
-      <form action="" className="w-11/12 h-full  md:w-2/4 md:h-2/4 my-10 overflow-hidden">
+    <div className="codestorm-page  absolute top-0 left-0 w-screen h-screen overflow-scroll ">
+
+    
+      <div className="flex justify-center items-center">
+      <form action="" className="w-11/12 h-full  md:w-2/4 md:h-2/4 my-10 ">
           <div className=" flex flex-col min-w-0 break-words w-fullshadow-lg rounded-lg bg-transparent border-2 border-slate-500">
             <div className="flex-auto p-5 lg:p-10">
               <h4 className="text-2xl font-semibold text-slate-200">
@@ -187,9 +191,21 @@ function CodeStormForm() {
                   Submit
                 </button>
               </div>
+          {done && 
+            <div className="text-center mt-6 py-4 px-6 bg-slate-300 rounded-md">
+              <p className="text-green-500 ">Done</p>
+            </div>
+            }
+          {/* {!done && 
+            <div className="text-center mt-6 py-4 px-6 bg-slate-400 rounded-md">
+              <p className="text-red-500 ">Somethimg went wrong</p>
+            </div>
+            } */}
             </div>
           </div>
+
         </form>
+      </div>
       </div>
     </>
   );
