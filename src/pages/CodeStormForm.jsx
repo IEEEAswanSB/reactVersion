@@ -9,7 +9,7 @@ function CodeStormForm() {
   const [phone, setPhone] = useState();
   const [handler, setHandler] = useState();
   const [id, setID] = useState();
-  const [collage, setCollage] = useState();
+  const [university, setUniversity] = useState();
 
   let sendNew=()=>{
     if(!name || !email || !favHandler|| !phone ){
@@ -22,7 +22,7 @@ function CodeStormForm() {
       handler:handler,
       phone:phone,
       id:id,
-      collage:collage
+      university:university
     };
     setDone(true)
     sendUsers(newApplicantData);
@@ -100,15 +100,15 @@ function CodeStormForm() {
               <div className=" w-full mb-3 mt-8">
                 <label
                   className="block uppercase text-slate-200 text-xs font-bold mb-2"
-                  htmlFor="collage"
+                  htmlFor="university"
                 >
-                  Collage
+                  university
                 </label>
                 <input
-                onChange={(e)=>{setCollage(e.target.value)}}
+                onChange={(e)=>{setUniversity(e.target.value)}}
                   type="text"
                   className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  placeholder="Collage"
+                  placeholder="University"
                   v-model="payload.name"
                 />
               </div>
