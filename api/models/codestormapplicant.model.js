@@ -7,6 +7,8 @@ const CodeSormapplicantSchema = new mongoose.Schema({
   favHandler:String,
   handler:String,
   phone:String,
+  collage:String,
+  id:String,
  });
 
 const CodeSormapplicant = mongoose.model('CodeStormApplicant', CodeSormapplicantSchema);

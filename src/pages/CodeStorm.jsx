@@ -40,7 +40,7 @@ export function CodeStorm() {
 
   `
   return (
-    <div className='codestorm-page' style={{ position: 'absolute', top: 0, left: 0, width: '100vw', height: '100vh' ,zIndex:1000,'overflow':'hidden'}}>
+    <div className='codestorm-page' style={{ position: 'absolute', top: 0, left: 0, width: '100vw', height: '100vh' ,zIndex:1000,'overflow':'scroll',overflowX:'hidden'}}>
       <AnimatePresence>
           <motion.section key="main" {...config}>
             <div className="section--container flex justify-center items-center flex-col py-40 px-5 ">
@@ -82,7 +82,7 @@ export function CodeStorm() {
               </div>
             </div>
           </motion.section>
-      
+        
       </AnimatePresence>
     </div>
   )

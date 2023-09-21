@@ -1,5 +1,5 @@
 import logo from "../assets/img/logo.png";
-import codestormLogo from "../assets/img/codestormLogo.png";
+import codestormLogo from "../assets/img/codeStormLogo2.png";
 import Amr from "../assets/img/excomm/Amr.webp";
 import noha from "../assets/img/excomm/noha.webp";
 import Abdelrhman from "../assets/img/excomm/Abdelrhman.webp";
@@ -197,6 +197,7 @@ function Home() {
                     <img
                       alt="..."
                       src={codestormLogo}
+                      style={{filter:'brightness'}}
                       className="w-full align-middle rounded-t-lg main-logo"
                       loading="lazy"
                     />

@@ -8,6 +8,8 @@ function CodeStormForm() {
   const [favHandler, setFavHandler] = useState('Codeforces');
   const [phone, setPhone] = useState();
   const [handler, setHandler] = useState();
+  const [id, setID] = useState();
+  const [collage, setCollage] = useState();
 
   let sendNew=()=>{
     if(!name || !email || !favHandler|| !phone ){
@@ -19,6 +21,8 @@ function CodeStormForm() {
       favHandler:favHandler,
       handler:handler,
       phone:phone,
+      id:id,
+      collage:collage
     };
     setDone(true)
     sendUsers(newApplicantData);
@@ -51,6 +55,21 @@ function CodeStormForm() {
                   v-model="payload.name"
                 />
               </div>
+              <div className=" w-full mb-3 mt-8">
+                <label
+                  className="block uppercase text-slate-200 text-xs font-bold mb-2"
+                  htmlFor="id"
+                >
+                  National ID
+                </label>
+                <input
+                onChange={(e)=>{setID(e.target.value)}}
+                  type="text"
+                  className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  placeholder="National ID"
+                  v-model="payload.name"
+                />
+              </div>
               <div className=" w-full mb-3">
                 <label
                   className="block uppercase text-slate-200 text-xs font-bold mb-2"
@@ -64,6 +83,33 @@ function CodeStormForm() {
                   className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Email"
                   v-model="payload.email"
+                />
+              </div>
+              <div className=" w-full mb-3">
+                <label className="block uppercase text-slate-200 text-xs font-bold mb-2">
+                  Phone
+                </label>
+                <input
+                 onChange={(e)=>{setPhone(e.target.value)}}
+                  type="text"
+                  className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  placeholder="Phone number"
+                  v-model="payload.phone"
+                />
+              </div>
+              <div className=" w-full mb-3 mt-8">
+                <label
+                  className="block uppercase text-slate-200 text-xs font-bold mb-2"
+                  htmlFor="collage"
+                >
+                  Collage
+                </label>
+                <input
+                onChange={(e)=>{setCollage(e.target.value)}}
+                  type="text"
+                  className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  placeholder="Collage"
+                  v-model="payload.name"
                 />
               </div>
               <div className=" w-full mb-3 mt-8">
@@ -108,24 +154,13 @@ function CodeStormForm() {
                 <input
                  onChange={(e)=>{setHandler(e.target.value)}}
                   type="text"
-                  className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  className="border-0 px-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="exp: @codeforces, @codewars"
                   v-model="payload.name"
                 />
               </div>
 
-              <div className=" w-full mb-3">
-                <label className="block uppercase text-slate-200 text-xs font-bold mb-2">
-                  Phone
-                </label>
-                <input
-                 onChange={(e)=>{setPhone(e.target.value)}}
-                  type="text"
-                  className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  placeholder="Phone number"
-                  v-model="payload.phone"
-                />
-              </div>
+
 
               {/* <div className=" w-full mb-3">
                 <label
