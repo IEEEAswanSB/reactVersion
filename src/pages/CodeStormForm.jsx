@@ -5,13 +5,19 @@ import { useNavigate } from "react-router";
 
 let global = {};
 function Errmessage() {
-  const [messsage, setMessage] = useState(false);
+  const [messsage, setMessage] = useState([null,null]);
+  
   global.setMessage = setMessage;
   return (
     <>
-      {messsage && (
+      {messsage[0] === 'done' &&   (
         <div className="text-center mt-6 py-4 px-6 bg-slate-300 rounded-md">
-          <p className="text-green-600 text-2xl font-bold ">Done</p>
+          <p className="text-green-600 text-2xl font-bold ">{messsage[1]}</p>
+        </div>
+      )}
+      {messsage[0] === 'error' &&   (
+        <div className="text-center mt-6 py-4 px-6 bg-slate-300 rounded-md">
+          <p className="text-red-600 text-2xl font-bold ">{messsage[1]}</p>
         </div>
       )}
     </>
@@ -46,12 +52,16 @@ function CodeStormForm() {
       college: college,
     };
     // setDone(true)
-    sendUsers(newApplicantData).then(() => {
+    sendUsers(newApplicantData).then((res) => {
       // setDone(true)
-      global.setMessage(true);
+      global.setMessage(['done','Registered Successfully!']);
+      // global.setMessage(true);
       setTimeout(() => {
         navigae("/codestorm");
       }, 1500);
+    }).catch((err) => {
+      global.setMessage (['error',err['response']['data'][0]['message']]);
+      // global.setMessage(false);
     });
   };
   return (

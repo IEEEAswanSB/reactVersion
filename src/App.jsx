@@ -1,9 +1,13 @@
 import Home from "./pages/Home"
 import { CodeStorm } from "./pages/CodeStorm"
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import CodeStormForm from "./pages/CodeStormForm"
+import {Route, Link, Routes} from 'react-router-dom';
 
 function App() {
+
+
+  
   const router = createBrowserRouter([
     {
       path: '/',
@@ -19,7 +23,13 @@ function App() {
     }
   ])
   return (
-      <RouterProvider router={router} />  
+    <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/codestorm" element={<CodeStorm />} />
+          <Route path="/form" element={<CodeStormForm />} />
+        </Routes>
+       </BrowserRouter>
   )
 }
 

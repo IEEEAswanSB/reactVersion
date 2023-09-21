@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 const Countdown = () => {
-  const [countdownDate, setCountdownDate] = useState(new Date('9/24/2023').getTime());
+  const [countdownDate, setCountdownDate] = useState(new Date("October 03, 2023 09:00:00").getTime());
   const [state, setState] = useState({
     days: 0,
     hours: 0,
@@ -56,6 +56,9 @@ const Countdown = () => {
   }, []);
 
   const setNewTime = () => {
+    
+
+
     if (countdownDate) {
       const currentTime = new Date().getTime();
 
@@ -80,9 +83,19 @@ const Countdown = () => {
       } else if (numbersToAddZeroTo.includes(seconds)) {
         seconds = `0${seconds}`;
       }
+      if(new Date().getTime() > new Date("October 03, 2023 09:00:00").getTime()){
 
-      setState({ days: days, hours: hours, minutes, seconds });
+      setState({ days: '00', hours: '00', minutes: '00', seconds:'00' });
+
+      }else{
+
+        setState({ days: days, hours: hours, minutes, seconds });
+
+      }
     }
+
+    
+
   };
 
   return (
