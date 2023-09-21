@@ -37,6 +37,6 @@ exports.checkImg = async(img)=>{
 
 //return true if the website is invalid
 exports.checkPSwebsites=(website)=>{
-    const websites = ['CodeSignal','Codewars','Exercism','GeeksforGeeks','HackerRank','LeetCode','Project Euler','TopCoder']
+    const websites = ['CodeSignal','Codeforces','Codewars','Exercism','GeeksforGeeks','HackerRank','LeetCode','Project Euler','TopCoder']
     return !websites.includes(website)
 }

@@ -2,14 +2,38 @@
 const mongoose = require('mongoose');
 
 const CodeSormapplicantSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  favHandler:String,
-  handler:String,
-  phone:String,
-  collage:String,
-  id:String,
- });
+  name: {
+    type: String,
+    required: true
+},
+  email: {
+    type: String,
+    required: true,
+     unique: true,
+},
+  favHandler:{
+    type: String,
+    required: true
+},
+  handler:{
+    type: String,
+    required: true,
+},
+  phone:{
+    type: String,
+    required: true,
+     unique:true,
+},
+  university:{
+    type: String,
+    required: true
+},
+  id:{
+    type: String,
+    required: true,
+     unique: true,
+},
+ },{ timestamps: true });
 
 const CodeSormapplicant = mongoose.model('CodeStormApplicant', CodeSormapplicantSchema);
 

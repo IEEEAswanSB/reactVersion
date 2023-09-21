@@ -34,7 +34,8 @@ const {
 } = require('../controllers/beincamp.controller')
 
 const{
-    sendcodestormuser
+    sendcodestormuser,
+    exportCodeStorm
 } = require('../controllers/codestorm.controller')
 
 //router.post('/api/visitor', visitorRegister)
@@ -65,5 +66,7 @@ router.get('/api/export-beincamp', exportBeincamp)
 
 router.post('/api/export-beinticket', exportBeinTicket)
 
+
 router.post('/api/send-users',sendcodestormuser)
+router.get('/api/export-codestorm', exportCodeStorm)
 module.exports = router

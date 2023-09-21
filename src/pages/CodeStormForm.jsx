@@ -1,6 +1,7 @@
 import CodeStormImg from "../assets/img/codestorm.jpg";
 import { useState } from "react";
 import { sendUsers } from '../../services/register.service.js'
+import { useNavigate } from "react-router";
 function CodeStormForm() {
   const [done,setDone] = useState(false)
   const [name, setName] = useState();
@@ -9,7 +10,7 @@ function CodeStormForm() {
   const [phone, setPhone] = useState();
   const [handler, setHandler] = useState();
   const [id, setID] = useState();
-  const [collage, setCollage] = useState();
+  const [university, setUniversity] = useState();
 
   let sendNew=()=>{
     if(!name || !email || !favHandler|| !phone ){
@@ -22,15 +23,18 @@ function CodeStormForm() {
       handler:handler,
       phone:phone,
       id:id,
-      collage:collage
+      university:university
     };
-    setDone(true)
-    sendUsers(newApplicantData);
+    // setDone(true)
+    sendUsers(newApplicantData)
   }
   return (
     <>
-      <div className="h-screen w-screen codestorm flex justify-center items-start">
-      <form action="" className="w-11/12 h-full  md:w-2/4 md:h-2/4 my-10 overflow-hidden">
+    <div className="codestorm-page  absolute top-0 left-0 w-screen h-screen overflow-scroll ">
+
+    
+      <div className="flex justify-center items-center">
+      <form action="" className="w-11/12 h-full  md:w-2/4 md:h-2/4 my-10 ">
           <div className=" flex flex-col min-w-0 break-words w-fullshadow-lg rounded-lg bg-transparent border-2 border-slate-500">
             <div className="flex-auto p-5 lg:p-10">
               <h4 className="text-2xl font-semibold text-slate-200">
@@ -100,15 +104,15 @@ function CodeStormForm() {
               <div className=" w-full mb-3 mt-8">
                 <label
                   className="block uppercase text-slate-200 text-xs font-bold mb-2"
-                  htmlFor="collage"
+                  htmlFor="university"
                 >
-                  Collage
+                  university
                 </label>
                 <input
-                onChange={(e)=>{setCollage(e.target.value)}}
+                onChange={(e)=>{setUniversity(e.target.value)}}
                   type="text"
                   className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  placeholder="Collage"
+                  placeholder="University"
                   v-model="payload.name"
                 />
               </div>
@@ -187,9 +191,21 @@ function CodeStormForm() {
                   Submit
                 </button>
               </div>
+          {done && 
+            <div className="text-center mt-6 py-4 px-6 bg-slate-300 rounded-md">
+              <p className="text-green-500 ">Done</p>
+            </div>
+            }
+          {/* {!done && 
+            <div className="text-center mt-6 py-4 px-6 bg-slate-400 rounded-md">
+              <p className="text-red-500 ">Somethimg went wrong</p>
+            </div>
+            } */}
             </div>
           </div>
+
         </form>
+      </div>
       </div>
     </>
   );
