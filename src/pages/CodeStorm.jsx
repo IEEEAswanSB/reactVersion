@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState,useEffect } from 'react'
 import '../styles.css'
 import { Link } from "react-router-dom";
+import { Countdown } from '../components/counterDown';
 export function CodeStorm() {
   const transition = { type: 'spring', duration: 0.8 }
   const config = {
@@ -47,12 +48,13 @@ export function CodeStorm() {
               <motion.div
                 key="title"
                 initial={{ x: 100,y:10, opacity: 0 }}
-                animate={{ x: 0,y:-80, opacity: 1 }}
+                animate={{ x: 0,y:10, opacity: 1 }}
                 transition={{ type: 'spring', damping: 5, stiffness: 40, restDelta: 0.001, duration: 0.3 }}>
                 <h1 className={`strokeme1 ${fill?'strokeme1-active':''}`}>codestorm programming competition!</h1>
               </motion.div>
               <style>{style}</style>
-              <div className="lg:w-[600px] lg:pb-10">
+              <Countdown/>
+              <div className="my-10 lg:w-[600px] lg:pb-10">
                 <motion.div
                 style={{marginTop:'-60px '}}
                   key="p"
@@ -82,7 +84,7 @@ export function CodeStorm() {
               </div>
             </div>
           </motion.section>
-        
+       
       </AnimatePresence>
     </div>
   )
