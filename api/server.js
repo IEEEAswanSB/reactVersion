@@ -3,11 +3,10 @@ const express = require("express");
 const app = express();
 const { Parser } = require("json2csv");
 const cors = require('cors')
-let Applicants = require('./models/Applicants')
 const path = require("path");
 const fs = require("fs");
-// const port = process.env.PORT || 8080; // for development
-const port = process.env.PORT || 3000; // for deployment
+const port = process.env.PORT || 8080; // for development
+// const port = process.env.PORT || 3000; // for deployment
 const rateLimit = require("express-rate-limit");
 const Project = require("./project.model");
 const fields = [
@@ -98,16 +97,6 @@ app.get("/api/exportcsvforaswan", async (req, res) => {
     }
   });
 });
-
-// // Define your API routes for fetching data from MongoDB
-// app.post('/api/sendUsers',(req,res )=>{
-//     let rec = req.body
-//     Applicants.insertMany(rec)
-// })
-// app.post('/api/getUsers',(req,res )=>{
-//     Applicants.find().then(e=>req.json(e))
-//     .catch(err=>res.json(err))
-// })
 
 app.listen(port, () => {
   console.log("Server is up on port " + port);
