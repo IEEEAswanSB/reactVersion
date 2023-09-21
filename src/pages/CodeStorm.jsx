@@ -132,7 +132,7 @@ export function CodeStorm() {
                   delay: 0.2,
                   delayChildren: 0.2
                 }}
-            className="flex flex-wrap -ml-10 flex-row justify-center lg:gap-28 gap-5 pt-2 pb-10">
+            className="flex flex-wrap -ml-10 flex-row justify-center lg:gap-28 gap-9 pt-2 pb-10">
                 <span className='text-white'>HOST</span>
                 <span className='text-white text-[15px] w-2'>TECHNICAL PARTNER</span>
           </motion.div>

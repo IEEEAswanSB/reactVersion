@@ -7,42 +7,42 @@ const { Parser } = require("json2csv");
 exports.sendcodestormuser = async (req, res) => {
     try{
     let rec = req.body
-    if(checkName(rec.payload['name'])){
-        res.status(422).json([{
-            message: 'Enter a valid name!'
-        }])
-        return;
-    }
+    // if(checkName(rec.payload['name'])){
+    //     res.status(422).json([{
+    //         message: 'Enter a valid name!'
+    //     }])
+    //     return;
+    // }
 
-    if(checkNationalId(rec.payload['id'])){
-        res.status(422).json([{
-            message: 'Enter a valid national id!'
-        }])
-        return;
-    }
+    // if(checkNationalId(rec.payload['id'])){
+    //     res.status(422).json([{
+    //         message: 'Enter a valid national id!'
+    //     }])
+    //     return;
+    // }
 
 
-    if(checkEmail(rec.payload['email'])){
-        res.status(422).json([{
-            message: 'Enter a valid email!'
-        }])
+    // if(checkEmail(rec.payload['email'])){
+    //     res.status(422).json([{
+    //         message: 'Enter a valid email!'
+    //     }])
 
-        return;
-    }
+    //     return;
+    // }
 
-    if(checkPhone(rec.payload['phone'])){
-        res.status(422).json([{
-            message: 'Enter a valid phone!'
-        }])     
-        return;
-    }
+    // if(checkPhone(rec.payload['phone'])){
+    //     res.status(422).json([{
+    //         message: 'Enter a valid phone!'
+    //     }])     
+    //     return;
+    // }
 
-    if(checkPSwebsites(rec.payload['favHandler'])){
-        res.status(422).json([{
-            message: 'Enter a valid website!'
-        }])
-        return;
-    }
+    // if(checkPSwebsites(rec.payload['favHandler'])){
+    //     res.status(422).json([{
+    //         message: 'Enter a valid website!'
+    //     }])
+    //     return;
+    // }
 
 
     const applicant = new CodeSormapplicant({
@@ -55,15 +55,15 @@ exports.sendcodestormuser = async (req, res) => {
     }catch(err){
         console.log(err);
 
-        if (err.name === 'MongoError' && err.code === 11000) {
+        // if (err.name === 'MongoError' && err.code === 11000) {
             
-            if(err.keyValue['id'])
-                return res.status(422).send({message: 'Id already exist!' });
-            else if(err.keyValue['email'])
-                return res.status(422).send({message: 'Email already exist!' });
-            else if(err.keyValue['phone'])
-                return res.status(422).send({message: 'Phone already exist!' });
-          }
+        //     if(err.keyValue['id'])
+        //         return res.status(422).send({message: 'Id already exist!' });
+        //     else if(err.keyValue['email'])
+        //         return res.status(422).send({message: 'Email already exist!' });
+        //     else if(err.keyValue['phone'])
+        //         return res.status(422).send({message: 'Phone already exist!' });
+        //   }
 
 
         res.status(422).json([{
@@ -83,6 +83,7 @@ exports.exportCodeStorm = async (req, res) => {
         "phone",
         "id",
         "university",
+        "college"
     ];
     const opts = { fields };
     const results = await CodeSormapplicant.find({});
