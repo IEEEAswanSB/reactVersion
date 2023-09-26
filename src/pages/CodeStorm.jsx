@@ -8,7 +8,10 @@ import PartnerLogo from '../components/PartnerLogo';
 import '../styles.css'
 import { Link } from "react-router-dom";
 import { Countdown } from '../components/counterDown';
+import { Popup } from '../components/popup';
+import TypeIt from 'typeit-react';
 export function CodeStorm() {
+  const [instance, setInstance] = useState(null);
   let logos = [itiWhite,luxorIeeeLogo]
   const transition = { type: 'spring', duration: 0.8 }
   const config = {
@@ -58,6 +61,12 @@ export function CodeStorm() {
                 transition={{ type: 'spring', damping: 5, stiffness: 40, restDelta: 0.001, duration: 0.3 }}>
                 {/* < className={`strokeme1 ${fill?'strokeme1-active':''}`}>codestorm programming competition!</> */}
                 <img width={350} height={350} src={codestormLogo} />
+                      <motion.div  
+                      initial={{ x: -100,y:-30, opacity: 0 ,zIndex:-1}}
+                      animate={{ x: 280,y:-200, opacity: 1,zIndex:-1 }}
+                      transition={{ type: 'spring', damping: 5, stiffness: 40, restDelta: 0.001, duration: .6}}>
+
+                    </motion.div>
               </motion.div> 
               <style>{style}</style>
              <motion.div
@@ -85,8 +94,9 @@ export function CodeStorm() {
                   }}>
                   <p className='mb-5' style={{color:'white',lineHeight:'30px',letterSpacing:'2px',fontSize:'20px'}}>
                   CodeStorm is and individual contest that fosters to simulate one of the biggest competitive programming hackathons "IEEEXtreme".
-                  In the journey of CodeStorm you can pass from CodeStorm scoreboard to IEEEXtreme scoreboard.There you will know what IEEEXtreme , test a demo and and win the IEEE membership, your ticket to participate in IEEEXtreme!
+                  In the journey of CodeStorm you can pass from CodeStorm scoreboard to IEEEXtreme scoreboard.There you will know what IEEEXtreme , test a demo and and win the IEEE membership, your ticket to participate in IEEEXtreme! 
                   </p>
+                 
                   <div  style={{textDecoration:'none',display:'flex',flexDirection:"row",gap:'0px'}}>
                     <Link to={'/form'}>
                     <button style={{ color:'white',filter: `brightness(0.85)`,background:'gray',fontWeight:'699',padding:'20px',fontSize:'20px !important' }}>

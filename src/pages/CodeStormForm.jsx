@@ -66,16 +66,16 @@ function CodeStormForm() {
   };
   return (
     <>
-      <div className="codestorm-page  absolute top-0 left-0 w-screen h-screen overflow-scroll ">
-        <div className="flex justify-center items-center">
-          <div className="w-11/12 h-full  md:w-2/4 md:h-2/4 my-10 ">
+      <div className="codestorm-page  absolute top-0 left-0 w-screen h-screen overflow-hidden ">
+        <div className="flex justify-center items-center h-screen overflow-hidden">
+          <h1 className="text-slate-200 text-[100px] rounded-lg  border-2 border-slate-200 p-4">FORM CLOSED!</h1>
+          {/* <div className="w-11/12 h-full  md:w-2/4 md:h-2/4 my-10 ">
             <div className=" flex flex-col min-w-0 break-words w-fullshadow-lg rounded-lg bg-transparent border-2 border-slate-500">
               <div className="flex-auto p-5 lg:p-10">
                 <h4 className="text-2xl font-semibold text-slate-200">
                   CodeStorm
                 </h4>
                 <p className="leading-relaxed mt-1 mb-4 text-slate-200">
-                  {/* Complete this form and we will get back very soon */}
                 </p>
 
                 <div className=" w-full mb-3 mt-8">
@@ -204,12 +204,6 @@ function CodeStormForm() {
                     <option value="Project Euler">Project Euler</option>
                     <option value="TopCoder">TopCoder</option>
                   </select>
-                  {/* <input
-                  type="text"
-                  className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  placeholder="exp: @codeforces, @codewars"
-                  v-model="payload.name"
-                /> */}
                 </div>
                 <div className=" w-full mb-3 mt-8">
                   <label
@@ -228,48 +222,18 @@ function CodeStormForm() {
                     v-model="payload.name"
                   />
                 </div>
-
-                {/* <div className=" w-full mb-3">
-                <label
-                  className="block uppercase text-slate-200 text-xs font-bold mb-2"
-                  htmlFor="message"
-                >
-                  Message
-                </label>
-                <textarea
-                  rows="4"
-                  cols="80"
-                  className="border-0 px-3 py-3 placeholder-codeStormClr text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                  placeholder="Type a message..."
-                  v-model="payload.message"
-                />
-              </div> */}
-
                 <div className="text-center mt-6">
                   <button
                     onClick={sendNew}
-                    // type="submit"
-                    // v-show="step === 1 && !loading"
                     className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                   >
                     Submit
                   </button>
                 </div>
-                {/* {done && 
-            <div className="text-center mt-6 py-4 px-6 bg-slate-300 rounded-md">
-              <p className="text-green-500 ">Done</p>
-            </div>
-            } */}
-                <Errmessage />
 
-                {/* {!done && 
-            <div className="text-center mt-6 py-4 px-6 bg-slate-400 rounded-md">
-              <p className="text-red-500 ">Somethimg went wrong</p>
-            </div>
-            } */}
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

@@ -83,7 +83,7 @@ const Countdown = () => {
       } else if (numbersToAddZeroTo.includes(seconds)) {
         seconds = `0${seconds}`;
       }
-      if(new Date().getTime() > new Date("October 03, 2023 09:00:00").getTime()){
+      if(new Date().getTime() < new Date("October 03, 2023 09:00:00").getTime()){
 
       setState({ days: '00', hours: '00', minutes: '00', seconds:'00' });
 
