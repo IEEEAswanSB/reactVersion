@@ -68,7 +68,7 @@ function CodeStormForm() {
     <>
       <div className="codestorm-page  absolute top-0 left-0 w-screen h-screen overflow-hidden ">
         <div className="flex justify-center items-center h-screen overflow-hidden">
-          <h1 className="text-slate-200 text-[100px] rounded-lg  border-2 border-slate-200 p-4">FORM CLOSED!</h1>
+          <h1 className="text-slate-200 sm:text-2xl p-4   rounded-lg  border-2 border-slate-200 lg:p-12 lg:text-[100px]">FORM CLOSED!</h1>
           {/* <div className="w-11/12 h-full  md:w-2/4 md:h-2/4 my-10 ">
             <div className=" flex flex-col min-w-0 break-words w-fullshadow-lg rounded-lg bg-transparent border-2 border-slate-500">
               <div className="flex-auto p-5 lg:p-10">
