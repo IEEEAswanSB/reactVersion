@@ -272,7 +272,7 @@ function Home() {
                     <div className="pt-6 text-center">
                       <h5 className="text-xl font-bold">Noha Elrashedy</h5>
                       <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                        Chairman
+                        Chairwoman
                       </p>
                       <div className="mt-6">
                         <button

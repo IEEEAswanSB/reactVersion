@@ -8,7 +8,10 @@ import PartnerLogo from '../components/PartnerLogo';
 import '../styles.css'
 import { Link } from "react-router-dom";
 import { Countdown } from '../components/counterDown';
+import { Popup } from '../components/popup';
+import TypeIt from 'typeit-react';
 export function CodeStorm() {
+  const [instance, setInstance] = useState(null);
   let logos = [itiWhite,luxorIeeeLogo]
   const transition = { type: 'spring', duration: 0.8 }
   const config = {
@@ -49,7 +52,7 @@ export function CodeStorm() {
     <div className='codestorm-page' style={{ position: 'absolute', top: 0, left: 0, width: '100vw', height: '100vh' ,zIndex:1000,'overflow':'scroll',overflowX:'hidden'}}>
       <AnimatePresence>
           <motion.section key="main" {...config}>
-            <div className="section--container  flex justify-center items-center flex-col py-40 px-5 ">
+            <div className="section--container  flex justify-center items-center flex-col lg:pt-[1rem]  pt-[26rem] px-5 ">
               <motion.div
               className='lg:mt-64'
                 key="title"
@@ -58,22 +61,28 @@ export function CodeStorm() {
                 transition={{ type: 'spring', damping: 5, stiffness: 40, restDelta: 0.001, duration: 0.3 }}>
                 {/* < className={`strokeme1 ${fill?'strokeme1-active':''}`}>codestorm programming competition!</> */}
                 <img width={350} height={350} src={codestormLogo} />
+                      <motion.div  
+                      initial={{ x: -100,y:-30, opacity: 0 ,zIndex:-1}}
+                      animate={{ x: 280,y:-200, opacity: 1,zIndex:-1 }}
+                      transition={{ type: 'spring', damping: 5, stiffness: 40, restDelta: 0.001, duration: .6}}>
+
+                    </motion.div>
               </motion.div> 
               <style>{style}</style>
              <motion.div
                    initial={{ x: -100,y:10, opacity: 0 }}
-                   animate={{ x: 0,y:180, opacity: 1 }}
+                   animate={{ x: 0,y:100, opacity: 1 }}
                    transition={{ type: 'spring', damping: 5, stiffness: 40, restDelta: 0.001, duration: 0.3 }}
              >
                <Countdown/>
              </motion.div>
-              <div className="my-10 lg:w-[600px] lg:pb-10 ">
+              <div className="my-10 lg:w-[600px] lg:pb-10 pb-10 ">
                 <motion.div
                 className='border-2 border-slate-400 p-5 lg:p-10 rounded-lg'
                 style={{marginTop:'-60px '}}
                   key="p"
                   initial={{ y: 130, x:80, opacity: 0 }}
-                  animate={{ y: 250,x:0, opacity: 1 }}
+                  animate={{ y: 200,x:0, opacity: 1 }}
                   transition={{
                     type: 'spring',
                     damping: 7,
@@ -85,8 +94,9 @@ export function CodeStorm() {
                   }}>
                   <p className='mb-5' style={{color:'white',lineHeight:'30px',letterSpacing:'2px',fontSize:'20px'}}>
                   CodeStorm is and individual contest that fosters to simulate one of the biggest competitive programming hackathons "IEEEXtreme".
-                  In the journey of CodeStorm you can pass from CodeStorm scoreboard to IEEEXtreme scoreboard.There you will know what IEEEXtreme , test a demo and and win the IEEE membership, your ticket to participate in IEEEXtreme!
+                  In the journey of CodeStorm you can pass from CodeStorm scoreboard to IEEEXtreme scoreboard.There you will know what IEEEXtreme , test a demo and and win the IEEE membership, your ticket to participate in IEEEXtreme! 
                   </p>
+                 
                   <div  style={{textDecoration:'none',display:'flex',flexDirection:"row",gap:'0px'}}>
                     <Link to={'/form'}>
                     <button style={{ color:'white',filter: `brightness(0.85)`,background:'gray',fontWeight:'699',padding:'20px',fontSize:'20px !important' }}>
@@ -98,14 +108,13 @@ export function CodeStorm() {
               </div>
               <motion.h2
                initial={{ y: 130, x:80, opacity: 0 }}
-               animate={{ y: 220,x:0, opacity: 1 }}
+               animate={{ y: 180,x:0, opacity: 1 }}
               className="text-4xl font-semibold text-white">
                     Our Partners
               </motion.h2>
               <motion.div 
-              
                 initial={{ y: 130, x:80, opacity: 0 }}
-                  animate={{ y: 250,x:0, opacity: 1 }}
+                  animate={{ y: 220,x:0, opacity: 1 }}
                   transition={{
                     type: 'spring',
                     damping: 7,
@@ -115,27 +124,16 @@ export function CodeStorm() {
                     delay: 0.2,
                     delayChildren: 0.2
                   }}
-              className="flex flex-wrap justify-center gap-10 ">
-                  <img style={{width:'10%'}} src={itiWhite} />
-                  <img style={{width:'10%'}} src={luxorIeeeLogo} />
+              className="flex flex-wrap items-center justify-center gap-10 pb-10 sm:flex-row">
+                 <div style={{width:'200px',height:'200px'}} className='itiLogo gap-9 hover:bg-[#ffffff1a] transition-all duration-1000 border-2 border-slate-400 rounded-lg flex items-center flex-col justify-center '>
+                   <img style={{width:'42%',marginTop:'25px'}} src={itiWhite} />
+                   <span style={{marginTop:'-20px'}} className='text-white animate-bounce text-lg pb-[10px]'>HOST</span>
+                   </div>
+                 <div style={{width:'200px',height:'200px'}} className='border-2  hover:bg-[#ffffff1a] transition-all duration-1000 border-slate-400 flex items-center flex-col  justify-center rounded-lg text-center'> 
+                 <img style={{width:'80%'}} src={luxorIeeeLogo} />
+                 <span className='text-white animate-bounce text-lg '>TECH PARTNER</span>
+                 </div>
             </motion.div>
-            <motion.div 
-              
-              initial={{ y: 130, x:80, opacity: 0 }}
-                animate={{ y: 250,x:0, opacity: 1 }}
-                transition={{
-                  type: 'spring',
-                  damping: 7,
-                  stiffness: 30,
-                  restDelta: 0.001,
-                  duration: 0.6,
-                  delay: 0.2,
-                  delayChildren: 0.2
-                }}
-            className="flex flex-wrap -ml-10 flex-row justify-center lg:gap-28 gap-9 pt-2 pb-10">
-                <span className='text-white'>HOST</span>
-                <span className='text-white text-[15px] w-2'>TECHNICAL PARTNER</span>
-          </motion.div>
             </div>
           </motion.section>
       </AnimatePresence>
