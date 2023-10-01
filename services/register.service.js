@@ -43,3 +43,7 @@ export const ExportBeinCampTicket = payload => {
 export const sendUsers = payload => {
     return api.post('send-users', {payload}).then(res => res.data)
 }
+
+export const ExportCodeStormTicket = payload => {
+    return api.post('export-codestormticket', {payload}).then(res => res.data)
+}

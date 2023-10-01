@@ -114,4 +114,129 @@ exports.exportCodeStorm = async (req, res) => {
 }
 
   
+exports.exportCodeStormTicket = async (req, res) => {
+    const results = await CodeSormapplicant.find({id:req.body.payload.id});
+    if(results.length ==0){
+        res.status(422).json([{
+        message: 'Enter a valid id!'
+        }])
+        return;
+    }
 
+        //*********ThemeData*********/
+        const theme = "CodeStormTicket";
+        const ThemeData = await Themes.find({theme:theme});
+        const Xend = parseInt(ThemeData[0]['Xend']);
+        const Xstart = parseInt(ThemeData[0]['Xstart']);
+        const Y = parseInt(ThemeData[0]['Y']);
+        const ColorR = parseInt(ThemeData[0]['ColorR']);
+        const ColorG = parseInt(ThemeData[0]['ColorG']);
+        const ColorB = parseInt(ThemeData[0]['ColorB']);
+        const DateX = parseInt(ThemeData[0]['DateX']);
+        const DateY = parseInt(ThemeData[0]['DateY']);
+        const DateR = parseInt(ThemeData[0]['DateR']);
+        const DateG = parseInt(ThemeData[0]['DateG']);
+        const DateB = parseInt(ThemeData[0]['DateB']);
+        const DateSize = parseInt(ThemeData[0]['DateSize']);
+        const UseDate = ThemeData[0]['UseDate'];
+        const ThemeFont = ThemeData[0]['Font'];
+        //***************************/
+
+        const PDFpath = path.join(
+            __dirname,
+            "..",
+            "..",
+            "static",
+            "CertificateThemes",
+            theme+".pdf"
+        );
+        const FontPath = path.join(
+            __dirname,
+            "..",
+            "..",
+            "static",
+            "Fonts",
+            ThemeFont+".ttf"
+        );
+
+        const exBytes = fs.readFileSync(PDFpath, null).buffer;
+        const exFont = fs.readFileSync(FontPath,null).buffer;
+        const pdfDoc = await PDFlib.PDFDocument.load(exBytes)
+        
+        pdfDoc.registerFontkit(fontkit);
+        const Font = await pdfDoc.embedFont(exFont);
+    
+        const pages = pdfDoc.getPages();
+        const firstP = pages[0];
+        const TicketHolder = results[0]['name'];
+    
+        //Calculate Font Size and center the text
+        const FontSize = getFontSizeForWidth(TicketHolder, Xend-Xstart,Font);
+        const width = Font.widthOfTextAtSize(TicketHolder, FontSize);;
+        const StartLocation = ((Xend+Xstart) - width)/2;
+    
+         firstP.drawText(TicketHolder,{
+            x:StartLocation,
+            y:Y,
+            size:FontSize,
+            font:Font,
+            color: PDFlib.rgb(ColorR, ColorG, ColorB)
+        })
+
+        // Ticket ID
+
+        // firstP.drawText(results[0]['TicketID'],{
+        //     x:0,
+        //     y:0,
+        //     size:FontSize,
+        //     font:Font,
+        //     color: PDFlib.rgb(ColorR, ColorG, ColorB)
+        // })
+    
+        // if(UseDate ==1){
+        //     firstP.drawText(results[0]['TicketID'],{
+        //         x:DateX,
+        //         y:DateY,
+        //         size:DateSize,
+        //         font:Font,
+        //         color: PDFlib.rgb(DateR, DateG, DateB)
+        //     })
+        // }
+        const uri = await pdfDoc.saveAsBase64(); 
+        res.status(200).json([{
+            TicketID: results[0]['TicketID'],
+            PDF: uri
+            }])
+
+
+}
+
+
+function getFontSizeForWidth(string, maxWidth,font) {
+    // Set the minimum and maximum font sizes to consider
+    let minFontSize = 1;
+    let maxFontSize = 45;
+    let fontSize;
+  
+    //binary search
+    while (minFontSize !== maxFontSize) {
+      fontSize = Math.floor((minFontSize + maxFontSize) / 2);
+  
+      // To avoid some infinite loop cases
+      if (maxFontSize - minFontSize <= 1) {
+        break;
+      }
+  
+      // Get the width of the string with the current font size
+      const width = font.widthOfTextAtSize(string, fontSize);
+
+      if (width > maxWidth) {
+        maxFontSize = fontSize;
+      } else {
+
+        minFontSize = fontSize;
+      }
+    }
+  
+    return fontSize;
+  }

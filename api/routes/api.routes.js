@@ -35,7 +35,8 @@ const {
 
 const{
     sendcodestormuser,
-    exportCodeStorm
+    exportCodeStorm,
+    exportCodeStormTicket
 } = require('../controllers/codestorm.controller')
 
 //router.post('/api/visitor', visitorRegister)
@@ -69,4 +70,7 @@ router.post('/api/export-beinticket', exportBeinTicket)
 
 router.post('/api/send-users',sendcodestormuser)
 router.get('/api/export-codestorm', exportCodeStorm)
+
+router.post('/api/export-codestormticket', exportCodeStormTicket)
+
 module.exports = router
