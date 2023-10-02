@@ -3,8 +3,8 @@ import { CodeStorm } from "./pages/CodeStorm"
 import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import CodeStormForm from "./pages/CodeStormForm"
 import {Route, Link, Routes} from 'react-router-dom';
+import Ending from "./components/Ending";
 import { useNavigate } from "react-router";
-
 function App() {
 
 
@@ -21,8 +21,8 @@ function App() {
 
       <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/codestorm" element={<CodeStorm />} />
-          <Route path="/form" element={<CodeStormForm />} />
+          <Route path="/codestorm" element={<CodeStormForm />} />
+          <Route path="/done" element={<Ending />} />
         </Routes>
 
   )

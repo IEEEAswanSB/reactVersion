@@ -121,7 +121,8 @@ exports.exportCodeStorm = async (req, res) => {
 
   
 exports.exportCodeStormTicket = async (req, res) => {
-    const results = await CodeSormapplicant.find({id:req.body.payload.id});
+    console.log(req.body)
+    const results = await CodeSormapplicant.find({id:req.body.payload});
     if(results.length ==0){
         res.status(422).json([{
         message: 'Enter a valid id!'

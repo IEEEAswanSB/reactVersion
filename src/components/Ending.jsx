@@ -1,65 +1,42 @@
 import CodeStormImg from "../assets/img/codestorm.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { sendUsers } from "../../services/register.service.js";
 import { useNavigate } from "react-router";
-import { ExportCodeStormTicket } from "../../services/register.service.js";
-let global = {};
-function Errmessage() {
-  const [messsage, setMessage] = useState([null,null]);
+import { useLocation } from "react-router-dom";
+// let global = {};
+// function Errmessage() {
+//   const [messsage, setMessage] = useState([null,null]);
+  
+//   global.setMessage = setMessage;
+//   return (
+//     <>
+//       {messsage[0] === 'done' &&   (
+//         <div className="text-center mt-6 py-4 px-6 bg-slate-300 rounded-md">
+//           <p className="text-green-600 text-2xl font-bold ">{messsage[1]}</p>
+//         </div>
+//       )}
+//       {messsage[0] === 'error' &&   (
+//         <div className="text-center mt-6 py-4 px-6 bg-slate-300 rounded-md">
+//           <p className="text-red-600 text-2xl font-bold ">{messsage[1]}</p>
+//         </div>
+//       )}
+//     </>
+//   );
+// }
 
-  global.setMessage = setMessage;
+function Ending(props) {
+    let data = useLocation()
+    const navigae = useNavigate();
+    console.log(data.state)
+   useEffect(()=>{
+    if(data.state === null)
+    navigae('/')
+   })
   return (
     <>
-      {messsage[0] === 'done' &&   (
-        <div style={{position:'absolute','left':'0',top:'20%'}} className=" text-center mt-6 py-4 px-6 bg-slate-300 rounded-md">
-          <p className="text-green-600 text-2xl font-bold ">{messsage[1]}</p>
-        </div>
-      )}
-      {messsage[0] === 'error' &&   (
-        <div style={{position:'absolute','left':'0',top:'20%'}} className="text-center mt-6 py-4 px-6 bg-slate-300 rounded-md">
-          <p className="text-red-600 text-2xl font-bold ">{messsage[1]}</p>
-        </div>
-      )}
-    </>
-  );
-}
-
-function CodeStormForm() {
-  const [id,setID] = useState(undefined)
-  let nav = useNavigate()
-  let download = ()=>{
-    console
-    ExportCodeStormTicket(id).then((res)=>{
-      global.setMessage(['done',res])
-      downloadBase64File(res[0]['PDF'],'CodeStormTicket.pdf')
-    }).catch((err)=>{
-      global.setMessage(['error',err.response['data'][0]['message']])
-    })
-  }
-  function downloadBase64File(contentBase64, fileName) {
-    const linkSource = `data:application/pdf;base64,${contentBase64}`;
-    const downloadLink = document.createElement('a');
-    document.body.appendChild(downloadLink);
-    downloadLink.href = linkSource;
-    downloadLink.target = '_self';
-    downloadLink.download = fileName;
-    downloadLink.click(); 
-    nav('/done',{state:{downloaded:true}})
-}
-  return (
-    <>
-    
       <div className="codestorm-page  absolute top-0 left-0 w-screen h-screen overflow-hidden ">
-        <div className="flex justify-center flex-col gap-6 items-center h-screen overflow-hidden">
-        <Errmessage/>
-          <h1 className="text-slate-200 sm:text-2xl p-4 rounded-lg  border-2 border-slate-200  ">Enter your ID</h1>
-          {/* <div className="text-slate-200 sm:text-2xl p-4 rounded-lg border-2 border-slate-200  "> */}
-          <input onChange={(e)=>setID(e.target.value)} className="text-slate-200 sm:text-2xl bg-transparent p-4 rounded-lg border-2 border-slate-200  " placeholder="Your ID here"/>
-          {
-            id&&<input onClick={()=>{download()}} className="text-slate-200 sm:text-2xl bg-transparent cursor-pointer p-4 rounded-lg border-2 border-slate-200  " type="submit" value={'download'}/>
-          }
-          
-          {/* </div> */}
+        <div className="flex justify-center items-center h-screen overflow-hidden">
+          <h1 className="text-slate-200 sm:text-2xl p-4   rounded-lg  border-2 border-slate-200 ">Downloaded!</h1>
           {/* <div className="w-11/12 h-full  md:w-2/4 md:h-2/4 my-10 ">
             <div className=" flex flex-col min-w-0 break-words w-fullshadow-lg rounded-lg bg-transparent border-2 border-slate-500">
               <div className="flex-auto p-5 lg:p-10">
@@ -231,4 +208,4 @@ function CodeStormForm() {
   );
 }
 
-export default CodeStormForm;
+export default Ending;
