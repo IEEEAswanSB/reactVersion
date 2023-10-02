@@ -47,3 +47,8 @@ export const sendUsers = payload => {
 export const ExportCodeStormTicket = payload => {
     return api.post('export-codestormticket', {payload}).then(res => res.data)
 }
+
+
+export const VerifyCodeStormService = payload => {
+    return api.post('verify-codestorm', {payload}).then(res => res.data)
+}

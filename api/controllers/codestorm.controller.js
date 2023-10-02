@@ -6,7 +6,7 @@ const { Parser } = require("json2csv");
 const Themes = require('../models/theme2.model')
 const PDFlib = require('pdf-lib')
 const fontkit = require('fontkit');
-
+const qr = require("qrcode");
 
 
 
@@ -78,6 +78,30 @@ exports.sendcodestormuser = async (req, res) => {
     }
 
 }
+
+
+exports.VerifyCodeStorm = async (req, res) => {
+    if(!req.body.payload){
+        res.status(422).json([{
+        message: 'Enter a valid id!'
+        }])
+        return;
+    }
+
+
+    const results = await CodeSormapplicant.find({id:req.body.payload});
+    if(results.length ==0){
+        res.status(422).json([{
+        message: 'This ticket is not verified!'
+        }])
+        return;
+    }
+    res.status(200).json([{
+        message: `${results[0]['name']}`
+    }]);
+}
+
+
 
 exports.exportCodeStorm = async (req, res) => {
     const fields = [
@@ -190,25 +214,19 @@ exports.exportCodeStormTicket = async (req, res) => {
             color: PDFlib.rgb(ColorR, ColorG, ColorB)
         })
 
-        // Ticket ID
+        const qrCodeText = `https://ieee.aswu.edu.eg/CodeStorm/verification/?id=${req.body.payload}`; // Replace with your QR code content
+        const qrCodeImage = await generateQRCode(qrCodeText);
 
-        // firstP.drawText(results[0]['TicketID'],{
-        //     x:0,
-        //     y:0,
-        //     size:FontSize,
-        //     font:Font,
-        //     color: PDFlib.rgb(ColorR, ColorG, ColorB)
-        // })
-    
-        // if(UseDate ==1){
-        //     firstP.drawText(results[0]['TicketID'],{
-        //         x:DateX,
-        //         y:DateY,
-        //         size:DateSize,
-        //         font:Font,
-        //         color: PDFlib.rgb(DateR, DateG, DateB)
-        //     })
-        // }
+        const qrCodeImageXObject = await pdfDoc.embedPng(qrCodeImage);
+        const qrCodeImageDims = qrCodeImageXObject.scale(0.5); // Scale the image size
+
+        firstP.drawImage(qrCodeImageXObject, {
+            x: 385,
+            y: 10,
+            width: qrCodeImageDims.width,
+            height: qrCodeImageDims.height,
+          });
+
         const uri = await pdfDoc.saveAsBase64(); 
         res.status(200).json([{
             TicketID: results[0]['TicketID'],
@@ -246,4 +264,20 @@ function getFontSizeForWidth(string, maxWidth,font) {
     }
   
     return fontSize;
+  }
+
+async function generateQRCode(text) {
+    try {
+      const qrCode = await qr.toBuffer(text, {
+        errorCorrectionLevel: "H", // High error correction level
+        type: "image/png", // PNG format
+        rendererOpts: {
+          quality: 1, // Image quality (1 = highest)
+        },
+      });
+      return qrCode;
+    } catch (error) {
+      console.error("Error generating QR code:", error);
+      throw error;
+    }
   }
