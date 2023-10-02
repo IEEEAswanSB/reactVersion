@@ -214,7 +214,7 @@ exports.exportCodeStormTicket = async (req, res) => {
             color: PDFlib.rgb(ColorR, ColorG, ColorB)
         })
 
-        const qrCodeText = `https://ieee.aswu.edu.eg/CodeStorm/verification/?id=${req.body.payload}`; // Replace with your QR code content
+        const qrCodeText = `https://ieee.aswu.edu.eg/CodeStorm/verify/?id=${req.body.payload}`; // Replace with your QR code content
         const qrCodeImage = await generateQRCode(qrCodeText);
 
         const qrCodeImageXObject = await pdfDoc.embedPng(qrCodeImage);
