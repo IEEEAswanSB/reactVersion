@@ -52,3 +52,7 @@ export const ExportCodeStormTicket = payload => {
 export const VerifyCodeStormService = payload => {
     return api.post('verify-codestorm', {payload}).then(res => res.data)
 }
+
+export const CodeStormEmail = payload => {
+    return api.post('codestorm-email', {payload}).then(res => res.data)
+}

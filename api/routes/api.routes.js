@@ -24,7 +24,8 @@ const {
 const {
     validateCertificate,
     ExtractPDF,
-    importCertificates
+    importCertificates,
+    sendMail
 } = require('../controllers/certificate.controller')
 
 const {
@@ -37,7 +38,7 @@ const{
     sendcodestormuser,
     exportCodeStorm,
     exportCodeStormTicket,
-    VerifyCodeStorm
+    VerifyCodeStorm,
 } = require('../controllers/codestorm.controller')
 
 //router.post('/api/visitor', visitorRegister)
@@ -75,5 +76,8 @@ router.get('/api/export-codestorm', exportCodeStorm)
 router.post('/api/export-codestormticket', exportCodeStormTicket)
 
 router.post('/api/verify-codestorm', VerifyCodeStorm)
+
+router.post('/api/codestorm-email', sendMail)
+
 
 module.exports = router

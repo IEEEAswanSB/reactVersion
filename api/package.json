@@ -21,6 +21,7 @@
     "image-validation": "^1.0.0",
     "json2csv": "^6.0.0-alpha.2",
     "mongoose": "^7.5.2",
+    "nodemailer": "^6.9.5",
     "pdf-lib": "^1.17.1",
     "qrcode": "^1.5.3",
     "sharp": "^0.32.6"

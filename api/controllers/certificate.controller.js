@@ -7,6 +7,52 @@ const { parse } = require("csv-parse");
 const PDFlib = require('pdf-lib')
 const path = require("path");
 const fontkit = require('fontkit');
+const nodemailer = require("nodemailer");
+
+exports.sendMail = async (req, res) => {
+    let mailTransporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'ieeeasw@gmail.com',
+            pass: 'zvxikckyvchvfnvz'
+        }
+    });
+
+    const Data = new stream.PassThrough();
+
+Data.write(req.body.payload['csv']);
+Data.end();
+Data.pipe(parse({ delimiter: ",", from_line: 2 }))
+        .on("data",  function (row) {
+    
+            let mailDetails = {
+                from: 'ieeeasw@gmail.com',
+                to: `${row[1]}`,
+                subject: 'CodeStorm 1.0 Certificate',
+                text: `Hello ${row[0]},\n\nCongratulations! You have successfully completed CodeStorm 1.0. and you have placed the ${row[2]}\n\nYour certificate ID is ${row[3]} \n\n You can get your certificate from https://ieee.aswu.edu.eg/certificate \n Best Regards,\n IEEE Aswan Branch`,
+            };
+
+            mailTransporter.sendMail(mailDetails, function(err, data) {
+                if(err) {
+                    console.log(`Error happened for email ${row[1]}`);
+                } else {
+                    console.log(`Email sent for ${row[1]}`);
+                }
+            });
+
+
+           
+        }).on("end", async function () {
+           
+
+        
+        })
+
+
+};
+
+
+
 
 exports.validateCertificate = async (req, res) => {
     const results = await Certificate.find({id:req.body.payload.id});
