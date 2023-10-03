@@ -6,6 +6,8 @@ import VerifyCodeStorm from "./pages/VerifyCodeStorm"
 import {Route, Link, Routes} from 'react-router-dom';
 import Ending from "./components/Ending";
 import { useNavigate } from "react-router";
+import Upload from "./components/upload"
+import CiCodeStormForm from "./pages/ciPage"
 function App() {
 
 
@@ -26,6 +28,9 @@ function App() {
           <Route path="/codestorm/verify" element={<VerifyCodeStorm />} />
 
           <Route path="/done" element={<Ending />} />
+          {/* <Route path="/upload" element={<Upload/>}/> */}
+          <Route path="/certificate" element={<CiCodeStormForm/>}/>
+          
 
         </Routes>
 
