@@ -217,9 +217,9 @@ exports.ExtractPDF = async (req, res) => {
         // Yend not needed
         const MinSize = parseInt(ThemeData[0]['Data'][i]['Position']['MinSize']);
         const MaxSize = parseInt(ThemeData[0]['Data'][i]['Position']['MaxSize']);
-        const ColorR = parseInt(ThemeData[0]['Data'][i]['Color']['R']);
-        const ColorG = parseInt(ThemeData[0]['Data'][i]['Color']['G']);
-        const ColorB = parseInt(ThemeData[0]['Data'][i]['Color']['B']);
+        const ColorR = parseFloat(ThemeData[0]['Data'][i]['Color']['R']);
+        const ColorG = parseFloat(ThemeData[0]['Data'][i]['Color']['G']);
+        const ColorB = parseFloat(ThemeData[0]['Data'][i]['Color']['B']);
         const ThemeFont = ThemeData[0]['Data'][i]['Font'];
 
         const Text2Write = i==0? req.body['payload']['payload']['name']: req.body['payload']['payload']['additionalTexts'][i-1];
