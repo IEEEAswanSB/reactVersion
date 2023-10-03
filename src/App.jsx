@@ -29,8 +29,8 @@ function App() {
           <Route path="/codestorm/verify" element={<VerifyCodeStorm />} />
 
           <Route path="/done" element={<Ending />} />
-          <Route path="/upload" element={<Upload/>}/>
-          <Route path="/email" element={<Email/>}/>
+          {/* <Route path="/upload" element={<Upload/>}/> */}
+          {/* <Route path="/email" element={<Email/>}/> */}
 
           <Route path="/certificate" element={<CiCodeStormForm/>}/>
           

@@ -5,8 +5,8 @@ const { Parser } = require("json2csv");
 const cors = require('cors')
 const path = require("path");
 const fs = require("fs");
-const port = process.env.PORT || 8080; // for development
-// const port = process.env.PORT || 3000; // for deployment
+// const port = process.env.PORT || 8080; // for development
+const port = process.env.PORT || 3000; // for deployment
 const rateLimit = require("express-rate-limit");
 const Project = require("./project.model");
 const fields = [
@@ -38,17 +38,17 @@ const errorHand = (error, req, res, next) => {
   res.status(400).send({ error: error.message });
 };
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
-  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-});
+// const limiter = rateLimit({
+//   windowMs: 15 * 60 * 1000, // 15 minutes
+//   max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+//   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+//   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+// });
 
 const visitorRoutes = require('./routes/api.routes')
 
 app.use(cors())
-app.use(limiter);
+// app.use(limiter);
 //---------- Don't Forget To Modify Nginx max upload size----------
 app.use(express.json({limit: '25mb'}));//                         |
 app.use(express.urlencoded({ extended: true, limit: '25mb' }));// |
