@@ -31,8 +31,14 @@ const {
 const {
     beincampRegister,
     exportBeincamp,
-    exportBeinTicket
+    exportBeinTicket,
 } = require('../controllers/beincamp.controller')
+
+const {
+    beincamp6Register,
+    beincamp6Validate,
+    beincamp6recordAttendance
+} = require('../controllers/beincamp6.controller')
 
 const{
     sendcodestormuser,
@@ -78,6 +84,13 @@ router.post('/api/export-codestormticket', exportCodeStormTicket)
 router.post('/api/verify-codestorm', VerifyCodeStorm)
 
 router.post('/api/codestorm-email', sendMail)
+
+router.post('/api/bein6-register', beincamp6Register)
+
+router.post('/api/bein6-validate', beincamp6Validate)
+
+router.post('/api/bein6-record-attendance', beincamp6recordAttendance)
+
 
 
 module.exports = router

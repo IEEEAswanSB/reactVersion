@@ -7,6 +7,14 @@ exports.checkName=(name)=>{
     return !NameRegex.test(name)
 }
 
+// A valid latin name is a name that contains only latin letters and spaces and has a length between 2 and 30 characters.
+// returns true if the name is invalid
+exports.checkLatinName=(name)=>{
+    const NameRegex = /^[a-zA-Z ]{2,30}$/;
+    return !NameRegex.test(name)
+}
+
+
 // returns true if the email is invalid
 exports.checkEmail=(email)=>{
     const EmailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

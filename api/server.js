@@ -5,10 +5,13 @@ const { Parser } = require("json2csv");
 const cors = require('cors')
 const path = require("path");
 const fs = require("fs");
-// const port = process.env.PORT || 8080; // for development
-const port = process.env.PORT || 3000; // for deployment
+const port = process.env.PORT || 8081; // for development
+// const port = process.env.PORT || 3000; // for deployment
 const rateLimit = require("express-rate-limit");
 const Project = require("./project.model");
+
+const fileUpload = require("express-fileupload");
+
 const fields = [
   "phone",
   "email",
@@ -54,7 +57,11 @@ app.use(express.json({limit: '25mb'}));//                         |
 app.use(express.urlencoded({ extended: true, limit: '25mb' }));// |
 //----------------------------------------------------------------
 app.use(errorHand);
-
+app.use(fileUpload({
+  limits: { fileSize: 25 * 1024 * 1024 },
+  abortOnLimit: true,
+  responseOnLimit: JSON.stringify({message:"File size limit has been reached. Max file size is 25MB"}),
+}));
 app.use(visitorRoutes)
 
 // routes.

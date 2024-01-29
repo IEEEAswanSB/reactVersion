@@ -3,6 +3,10 @@ import { CodeStorm } from "./pages/CodeStorm"
 import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import CodeStormForm from "./pages/CodeStormForm"
 import VerifyCodeStorm from "./pages/VerifyCodeStorm"
+import { Bein6 } from "./pages/Bein6"
+import { Bein6Attendance } from "./pages/Bein6Attendance"
+import { Bein6Validate } from "./pages/Bein6Validate"
+
 import {Route, Link, Routes} from 'react-router-dom';
 import Ending from "./components/Ending";
 import { useNavigate } from "react-router";
@@ -27,6 +31,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/codestorm" element={<CodeStormForm />} />
           <Route path="/codestorm/verify" element={<VerifyCodeStorm />} />
+          <Route path="/Bein6/" element={<Bein6 />} />
+          <Route path="/Bein6/attend" element={<Bein6Attendance />} />
+          <Route path="/Bein6/validate" element={<Bein6Validate />} />
+
+
 
           <Route path="/done" element={<Ending />} />
           {/* <Route path="/upload" element={<Upload/>}/> */}
