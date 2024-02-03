@@ -24,7 +24,6 @@ import PartnerLogo from "../components/PartnerLogo";
 import Footer from "../components/Footer";
 import Contact from "../components/Contact";
 import { Link } from "react-router-dom";
-import "../App.css";
 
 function Home() {
   const partners = [
