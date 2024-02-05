@@ -15,7 +15,7 @@ import Home from "./pages/Home";
 
 const CodeStormForm = React.lazy(() => import("./pages/CodeStormForm"));
 const VerifyCodeStorm = React.lazy(() => import("./pages/VerifyCodeStorm"));
-const Bein6 = React.lazy(() => import("./pages/Bein6"));
+// const Bein6 = React.lazy(() => import("./pages/Bein6"));
 import {Bein6Attendance} from "./pages/Bein6Attendance";
 // const Bein6Attendance = React.lazy(() => import("./pages/Bein6Attendance"));
 const Bein6Validate = React.lazy(() => import("./pages/Bein6Validate"));
@@ -41,7 +41,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/codestorm" element={<CodeStormForm />} />
         <Route path="/codestorm/verify" element={<VerifyCodeStorm />} />
-        <Route path="/Bein6/" element={<Bein6 />} />
 
         <Route path="/Bein6/attend" element={<Bein6Attendance />} />
         <Route path="/Bein6/validate" element={<Bein6Validate />} />
