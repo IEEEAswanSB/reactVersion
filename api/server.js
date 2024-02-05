@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const { Parser } = require("json2csv");
-const cors = require('cors')
+const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 const port = process.env.PORT || 8081; // for development
@@ -48,21 +48,25 @@ const errorHand = (error, req, res, next) => {
 //   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 // });
 
-const visitorRoutes = require('./routes/api.routes')
+const visitorRoutes = require("./routes/api.routes");
 
-app.use(cors())
+app.use(cors());
 // app.use(limiter);
 //---------- Don't Forget To Modify Nginx max upload size----------
-app.use(express.json({limit: '25mb'}));//                         |
-app.use(express.urlencoded({ extended: true, limit: '25mb' }));// |
+app.use(express.json({ limit: "25mb" })); //                         |
+app.use(express.urlencoded({ extended: true, limit: "25mb" })); // |
 //----------------------------------------------------------------
 app.use(errorHand);
-app.use(fileUpload({
-  limits: { fileSize: 25 * 1024 * 1024 },
-  abortOnLimit: true,
-  responseOnLimit: JSON.stringify({message:"File size limit has been reached. Max file size is 25MB"}),
-}));
-app.use(visitorRoutes)
+app.use(
+  fileUpload({
+    limits: { fileSize: 25 * 1024 * 1024 },
+    abortOnLimit: true,
+    responseOnLimit: JSON.stringify({
+      message: "File size limit has been reached. Max file size is 25MB",
+    }),
+  })
+);
+app.use(visitorRoutes);
 
 // routes.
 
