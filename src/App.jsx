@@ -4,16 +4,16 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-
 import { Route, Link, Routes } from "react-router-dom";
 import { useNavigate } from "react-router";
 import Upload from "./components/upload";
 import Email from "./components/email";
-
+// import Bein_event from "./components/bein-event";
 import React, { Suspense } from "react";
 import Home from "./pages/Home";
 
 const CodeStormForm = React.lazy(() => import("./pages/CodeStormForm"));
+const Bein_event = React.lazy(() => import("./components/bein-event"));
 const VerifyCodeStorm = React.lazy(() => import("./pages/VerifyCodeStorm"));
 // const Bein6 = React.lazy(() => import("./pages/Bein6"));
 import {Bein6Attendance} from "./pages/Bein6Attendance";
@@ -36,13 +36,14 @@ function App() {
   }
 
   return (
-    <Suspense fallback={<div>error</div>}>
+    <Suspense fallback={<div className="text-4xl">loading</div>}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/codestorm" element={<CodeStormForm />} />
         <Route path="/codestorm/verify" element={<VerifyCodeStorm />} />
 
         <Route path="/Bein6/attend" element={<Bein6Attendance />} />
+        <Route path="/Bein6" element={<Bein_event />} />
         <Route path="/Bein6/validate" element={<Bein6Validate />} />
 
         <Route path="/Bein6/register" element={<Bein6Register />} />
