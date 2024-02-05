@@ -195,7 +195,7 @@ function Home() {
                   <div className="p-6 relative flex flex-col min-w-0 break-words w-full mb-6 rounded-lg">
                     <img
                       alt="..."
-                      src={codestormLogo}
+                      src={'/bein6logo.png'}
                       style={{filter:'brightness'}}
                       className="w-full align-middle rounded-t-lg main-logo"
                       loading="lazy"
@@ -208,18 +208,16 @@ function Home() {
                     <i className="fas fa-info text-xl"></i>
                   </div>
                   <h3 className="text-3xl mb-2 font-semibold leading-normal">
-                    CodeStorm
+                  Be Informed Camp 6
                   </h3>
                   <p className="text-lg font-normal leading-relaxed mt-4 mb-4 text-blueGray-300">
-                    CodeStorm is and individual contest that fosters to simulate
-                    one of the biggest competitive programming hackathons
-                    "IEEEXtreme". In the journey of CodeStorm you can pass from
-                    CodeStorm scoreboard to IEEEXtreme scoreboard.There you will
-                    know what IEEEXtreme , test a demo and and win the IEEE
-                    membership, your ticket to participate in IEEEXtreme!
+                  Join the Be-In camp in Aswan for a 5-day tech-centric experience!
+                   Elevate your skills with 25 hours of top-notch courses, guided by experts. Delve into engineering majors,
+                    attend technical and non-technical sessions, and gain insights from thought-provoking talks. 
+                  Ignite your future, uncover your passion, and launch your success journey at Be-In!
                   </p>
                   <Link
-                    to="/codestorm"
+                    to="/Bein6"
                     className="font-bold text-blueGray-800 mt-8 w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center bg-white"
                   >
                     Register Now!

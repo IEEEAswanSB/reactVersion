@@ -34,6 +34,7 @@ export function Bein6Attendance() {
         style={{ width: '100%' }}
       />
       <p>{response}</p>
+      {/* <h1>ds</h1> */}
    </div>
   )
 }

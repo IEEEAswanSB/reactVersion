@@ -1,6 +1,9 @@
 .bg-img {
     background-image: url("./assets/img/team.webp");
 }
+html{
+  overflow-x: hidden;
+}
 .main-logo{
     animation: floating 4s ease infinite;
   }
