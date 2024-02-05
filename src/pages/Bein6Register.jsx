@@ -105,10 +105,6 @@ const tracks = [
     value: "3D max",
   },
   {
-    label: "Structural Revit",
-    value: "Structural Revit",
-  },
-  {
     label: "Classic Control",
     value: "Classic Control",
   },
