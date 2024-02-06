@@ -110,7 +110,7 @@ const tracks = [
   },
 ];
 
-function RHFAutoComplete({ name, control, options, isSubmitting }) {
+function RHFAutoComplete({ name, control, options, isSubmitting, helperText }) {
   return (
     <Controller
       name={name}
@@ -150,6 +150,7 @@ function RHFAutoComplete({ name, control, options, isSubmitting }) {
                   label={!error ? name : error.message}
                   inputRef={ref}
                   error={!!error}
+                  helperText={helperText}
                 />
               )}
             />
@@ -171,7 +172,7 @@ function Main() {
 
   const recaptchaRef = useRef(null);
   const paymentRef = useRef(null);
-
+  console.log("Abdo Tolba was here :)")
   const handleClick = () => {
     setOpen(true);
   };
@@ -192,11 +193,10 @@ function Main() {
     const minAge = 5;
     const maxAge = 60;
 
-    return (age >= minAge && age <= maxAge) || `${minAge} : ${maxAge} `;
+    return (age >= minAge && age <= maxAge) || `${minAge} : ${maxAge} year old`;
   };
 
   const onSubmit = async (data) => {
-
     const captchaTempValue = await recaptchaRef.current.executeAsync();
 
     data["image"] = paymentRef.current?.files[0];
@@ -238,8 +238,8 @@ function Main() {
       onSubmit={handleSubmit(onSubmit)}
       sx={{
         margin: {
-          md: "10ch 10ch 5ch 50ch",
-          sm: "0 0 0 0",
+          sm: "10vw 10vw 5vw 30vw",
+          xs: "3ch",
         },
 
         display: "flex",
@@ -248,13 +248,17 @@ function Main() {
         "& .MuiGrid-container": {},
 
         //  ! Make the helper text red and bold. also on the top of the input
-        "& .MuiFormHelperText-root": {
-          position: "absolute",
-          color: "red",
-          textAlign: "center",
-          fontWeight: "bolder",
+        "& p.MuiFormHelperText-root": {
+          // position: "absolute",
+          // color: "#f44336",
+          color: "rgba(255, 255, 255, 0.7) ",
+          // textAlign: "center",
+          // fontWeight: "bolder",
+          direction: "rtl",
+          textAlign: "right",
+          // ! Add a symbol before the helper text
           "&::before": {
-            content: '"*"',
+            content: '"ⓘ "',
           },
         },
 
@@ -270,15 +274,28 @@ function Main() {
           backdropFilter: "blur(100px)",
           border: "1px solid white",
         },
+
+        "& .myGridLabel": {
+          display: {
+            sm: "flex",
+            xs: "none",
+          },
+        },
       }}
     >
       {/* Header content for description */}
       <Paper
         className="myPaper"
         sx={{
-          p: "3ch",
+          p: {
+            sm: "3ch",
+            xs: "1ch",
+          },
+          py: {
+            xs: "2ch",
+          },
           "&.myPaper ": {
-            borderColor: "red !important",
+            borderColor: "#a72d25 !important",
             borderWidth: "2px !important",
           },
         }}
@@ -300,8 +317,11 @@ function Main() {
             <Box
               container="ul"
               sx={{
-                "& li::marker": {
-                  content: '"➜ "',
+                "& li": {
+                  mb: "1.3ch",
+                  "&::marker": {
+                    content: '"➜ "',
+                  },
                 },
               }}
             >
@@ -362,10 +382,12 @@ function Main() {
               alignItems: "center",
             }}
           >
-            <Grid item xs={5}>
-              <Typography variant="p"> ID </Typography>
+            <Grid className="myGridLabel" item xs={0} sm={5}>
+              <Typography className="myLabel" variant="p">
+                ID
+              </Typography>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item xs={12} sm={7}>
               <TextField
                 disabled={isSubmitting}
                 color={!errors.id ? "success" : "success"}
@@ -377,10 +399,13 @@ function Main() {
                   required: "ID is required",
                   pattern: {
                     value: /^[0-9]{14}$/,
-                    message: "Invalid ID",
+                    message: "Invalid egyptian ID",
                   },
                 })}
                 error={!!errors.id}
+                helperText={
+                  "الرقم القومي المكون من 14 خانة أمام البطاقة الشخصية"
+                }
               />
             </Grid>
           </Grid>
@@ -392,10 +417,13 @@ function Main() {
               alignItems: "center",
             }}
           >
-            <Grid item xs={5}>
-              <Typography variant="p"> Name </Typography>
+            <Grid className={"myGridLabel"} item sm={5} xs={0}>
+              <Typography className={"myLabel"} variant="p">
+                {" "}
+                Name{" "}
+              </Typography>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item sm={7} xs={12}>
               <TextField
                 disabled={isSubmitting}
                 color={!errors.name ? "success" : "success"}
@@ -412,6 +440,9 @@ function Main() {
                   },
                 })}
                 error={!!errors.name}
+                helperText={
+                  "الاسم الرباعي كما هو مكتوب في أمام البطاقة الشخصية"
+                }
               />
             </Grid>
           </Grid>
@@ -424,10 +455,13 @@ function Main() {
               alignItems: "center",
             }}
           >
-            <Grid item xs={5}>
-              <Typography variant="p"> Certificate Name </Typography>
+            <Grid className={"myGridLabel"} item sm={5} xs={0}>
+              <Typography className={"myLabel"} variant="p">
+                {" "}
+                Certificate Name{" "}
+              </Typography>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item sm={7} xs={12}>
               <TextField
                 disabled={isSubmitting}
                 color={!errors.certificateName ? "success" : "success"}
@@ -447,6 +481,9 @@ function Main() {
                   },
                 })}
                 error={!!errors.certificateName}
+                helperText={
+                  "الاسم الذي سيظهر على الشهادة المستلمة بعد الدورة التدريبية"
+                }
               />
             </Grid>
           </Grid>
@@ -459,10 +496,13 @@ function Main() {
               alignItems: "center",
             }}
           >
-            <Grid item xs={5}>
-              <Typography variant="p"> Email </Typography>
+            <Grid className={"myGridLabel"} item sm={5} xs={0}>
+              <Typography className={"myLabel"} variant="p">
+                {" "}
+                Email{" "}
+              </Typography>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item sm={7} xs={12}>
               <TextField
                 disabled={isSubmitting}
                 color={!errors.email ? "success" : "success"}
@@ -478,6 +518,9 @@ function Main() {
                   },
                 })}
                 error={!!errors.email}
+                helperText={
+                  "سيتم إرسال الشهادة على البريد الإلكتروني وباقي التواصل سيتم عليه"
+                }
               />
             </Grid>
           </Grid>
@@ -490,10 +533,13 @@ function Main() {
               alignItems: "center",
             }}
           >
-            <Grid item xs={5}>
-              <Typography variant="p"> Phone </Typography>
+            <Grid className={"myGridLabel"} item sm={5} xs={0}>
+              <Typography className={"myLabel"} variant="p">
+                {" "}
+                Phone{" "}
+              </Typography>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item sm={7} xs={12}>
               <TextField
                 disabled={isSubmitting}
                 color={!errors.phone ? "success" : "success"}
@@ -509,6 +555,9 @@ function Main() {
                   },
                 })}
                 error={!!errors.phone}
+                helperText={
+                  "رقم الهاتف المحمول المكون من 11 رقم، بدون المسافات او ال+"
+                }
               />
             </Grid>
           </Grid>
@@ -520,21 +569,38 @@ function Main() {
               alignItems: "center",
             }}
           >
-            <Grid item xs={5}>
-              <Typography variant="p"> Birth </Typography>
+            <Grid className={"myGridLabel"} item sm={5} xs={0}>
+              <Typography className={"myLabel"} variant="p">
+                {" "}
+                Birth{" "}
+              </Typography>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item sm={7} xs={12}>
               <TextField
                 disabled={isSubmitting}
-                color={!errors.birth ? "success" : "success"}
+                color={!errors.birth ? "success" : "error"}
                 {...register("birth", {
-                  required: "Birthday is required",
+                  required: "Birthdate is required",
                   validate: validateAge,
                 })}
                 type="date"
                 fullWidth
                 error={!!errors.birth}
-                helperText={errors.birth ? errors.birth.message : ""}
+                sx={{
+                  "& .MuiFormHelperText-root": {
+                    position: "absolute !important",
+                    color: errors.birth ? "#f44336 !important" : "white !important", 
+                    // color: "rgba(255, 255, 255, 0.7)",
+                    textAlign: "center !important",
+                    fontWeight: "bolder !important",
+
+                    // ! Add a ymbol before the helper text
+                    "&::before": {
+                      content: '""',
+                    },
+                  },
+                }}
+                helperText={errors.birth ? errors.birth.message : "Birthdate"}
               />
             </Grid>
           </Grid>
@@ -547,15 +613,19 @@ function Main() {
               alignItems: "center",
             }}
           >
-            <Grid item xs={5}>
-              <Typography variant="p"> University </Typography>
+            <Grid className={"myGridLabel"} item sm={5} xs={0}>
+              <Typography className={"myLabel"} variant="p">
+                {" "}
+                University{" "}
+              </Typography>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item sm={7} xs={12}>
               <RHFAutoComplete
                 isSubmitting={isSubmitting}
                 name="university"
                 control={control}
                 options={university}
+                helperText={"الجامعة التي تدرس بها"}
               />
             </Grid>
           </Grid>
@@ -571,10 +641,13 @@ function Main() {
                   animation: "fadeIn .5s ease-in-out",
                 }}
               >
-                <Grid item xs={5}>
-                  <Typography variant="p"> Other University </Typography>
+                <Grid className={"myGridLabel"} item sm={5} xs={0}>
+                  <Typography className={"myLabel"} variant="p">
+                    {" "}
+                    Other University{" "}
+                  </Typography>
                 </Grid>
-                <Grid item xs={7}>
+                <Grid item sm={7} xs={12}>
                   <TextField
                     disabled={isSubmitting}
                     color={!errors.OtherUniversity ? "success" : "success"}
@@ -589,6 +662,9 @@ function Main() {
                       required: "OtherUniversity is required",
                     })}
                     error={!!errors.OtherUniversity}
+                    helperText={
+                      "الجامعة التي تدرس بها حاليا، غير المذكورين في القائمة بالأعلى"
+                    }
                   />
                 </Grid>
               </Grid>
@@ -604,15 +680,19 @@ function Main() {
               alignItems: "center",
             }}
           >
-            <Grid item xs={5}>
-              <Typography variant="p"> Faculty </Typography>
+            <Grid className={"myGridLabel"} item sm={5} xs={0}>
+              <Typography className={"myLabel"} variant="p">
+                {" "}
+                Faculty{" "}
+              </Typography>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item sm={7} xs={12}>
               <RHFAutoComplete
                 isSubmitting={isSubmitting}
                 name="faculty"
                 control={control}
                 options={faculty}
+                helperText={"الكلية التي تدرسها حاليا"}
               />
             </Grid>
           </Grid>
@@ -626,10 +706,13 @@ function Main() {
                 alignItems: "center",
               }}
             >
-              <Grid item xs={5}>
-                <Typography variant="p"> Other Faculties </Typography>
+              <Grid className={"myGridLabel"} item sm={5} xs={0}>
+                <Typography className={"myLabel"} variant="p">
+                  {" "}
+                  Other Faculties{" "}
+                </Typography>
               </Grid>
-              <Grid item xs={7}>
+              <Grid item sm={7} xs={12}>
                 <TextField
                   disabled={isSubmitting}
                   color={!errors.otherFaculties ? "success" : "success"}
@@ -644,6 +727,9 @@ function Main() {
                     required: "otherFaculties is required",
                   })}
                   error={!!errors.otherFaculties}
+                  helperText={
+                    " الكلية التي تدرس بها حاليا، غير المذكورين في القائمة بالأعلى"
+                  }
                 />
               </Grid>
             </Grid>
@@ -659,15 +745,19 @@ function Main() {
               alignItems: "center",
             }}
           >
-            <Grid item xs={5}>
-              <Typography variant="p"> Year </Typography>
+            <Grid className={"myGridLabel"} item sm={5} xs={0}>
+              <Typography className={"myLabel"} variant="p">
+                {" "}
+                Year{" "}
+              </Typography>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item sm={7} xs={12}>
               <RHFAutoComplete
                 isSubmitting={isSubmitting}
                 name="year"
                 control={control}
                 options={academicYear}
+                helperText={"السنة الدراسية الحالية"}
               />
             </Grid>
           </Grid>
@@ -680,10 +770,13 @@ function Main() {
               alignItems: "center",
             }}
           >
-            <Grid item xs={5}>
-              <Typography variant="p"> Department </Typography>
+            <Grid className={"myGridLabel"} item sm={5} xs={0}>
+              <Typography className={"myLabel"} variant="p">
+                {" "}
+                Department{" "}
+              </Typography>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item sm={7} xs={12}>
               <TextField
                 disabled={isSubmitting}
                 variant="outlined"
@@ -696,6 +789,7 @@ function Main() {
                   required: "department is required",
                 })}
                 error={!!errors.department}
+                helperText={"القسم الذي تدرس به حاليا"}
               />
             </Grid>
           </Grid>
@@ -708,15 +802,19 @@ function Main() {
               alignItems: "center",
             }}
           >
-            <Grid item xs={5}>
-              <Typography variant="p"> Track </Typography>
+            <Grid className={"myGridLabel"} item sm={5} xs={0}>
+              <Typography className={"myLabel"} variant="p">
+                {" "}
+                Track{" "}
+              </Typography>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item sm={7} xs={12}>
               <RHFAutoComplete
                 isSubmitting={isSubmitting}
                 name="track"
                 control={control}
                 options={tracks}
+                helperText={"التخصص الذي ترغب في الالتحاق به"}
               />
             </Grid>
           </Grid>
@@ -729,17 +827,39 @@ function Main() {
               alignItems: "center",
             }}
           >
-            <Grid item xs={5}>
+            <Grid className={"myGridLabel"} item xs={0} sm={5}>
               <Typography variant="p"> Payment Proof </Typography>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item sm={7} xs={12}>
+              <p
+                style={{
+                  direction: "rtl",
+                  textAlign: "right",
+                }}
+              >
+                صورة إيصال الدفع أو صورة للتحويل بمبلغ <b>70 جنيه مصري </b>
+                &nbsp; إلى المحفظة برقم <b>01070039593</b>.
+              </p>
+              <br />
               <TextField
                 fullWidth
                 sx={{
+                  // position: "absolute",
                   "& fieldset": {
                     border: "0",
                   },
                   "& .MuiButtonBase-root": {},
+
+                  "& .MuiInputBase-input.MuiOutlinedInput-input.Mui-disabled.MuiInputBase-inputAdornedStart":
+                    {
+                      position: "absolute",
+                      transform: "translateY(100%)",
+                    },
+
+                  "& label.MuiFormLabel-root": {
+                    position: "relative",
+                    color: "#f44336",
+                  },
                 }}
                 value={selectedFileName}
                 {...register("paymentProof", {
@@ -754,9 +874,6 @@ function Main() {
                       variant="contained"
                       component="label"
                       disabled={isSubmitting}
-                      style={{
-                        marginRight: "1.5rem",
-                      }}
                       fullWidth
                       color={
                         errors.paymentProof
@@ -781,7 +898,7 @@ function Main() {
                           bottom: 0,
                           left: 0,
                           whiteSpace: "nowrap",
-                          width: 1,
+                          width: 100,
                         }}
                         ref={paymentRef}
                         onChange={(e) => {
@@ -795,14 +912,11 @@ function Main() {
                   ),
                 }}
               />
-              <br />
-              <br />
-              Upload your <b>70 EGP</b> payment receipt or screenshot of
-              transfer to <b>01070039593</b> wallet
             </Grid>
           </Grid>
         </Grid>
-
+        <br />
+        <br />
         <br />
 
         <LoadingButton
@@ -847,3 +961,4 @@ export default function Bein6Register() {
     </ThemeProvider>
   );
 }
+

@@ -21,7 +21,7 @@
     "@mui/icons-material": "^5.15.7",
     "@mui/lab": "^5.0.0-alpha.163",
     "@mui/material": "^5.15.7",
-    "@react-three/drei": "^9.97.0",
+    "@react-three/drei": "^9.97.1",
     "@react-three/fiber": "^8.15.16",
     "@studio-freight/react-lenis": "^0.0.43",
     "axios": "^1.5.1",
@@ -40,6 +40,7 @@
     "react-router-dom": "^6.16.0",
     "split-type": "^0.3.4",
     "swiper": "^10.2.0",
+    "three": "^0.161.0",
     "typeit-react": "^2.6.4",
     "vercel": "^32.3.1"
   },
