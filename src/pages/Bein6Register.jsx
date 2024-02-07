@@ -172,7 +172,7 @@ function Main() {
 
   const recaptchaRef = useRef(null);
   const paymentRef = useRef(null);
-  console.log("Abdo Tolba was here :)")
+  console.log("Abdo Tolba was here :)");
   const handleClick = () => {
     setOpen(true);
   };
@@ -268,10 +268,10 @@ function Main() {
         },
 
         "& .MuiPaper-root.myPaper": {
-          bgcolor: "transparent",
+          background:
+            "linear-gradient(180deg, rgba(106,106,106,1) 0%, rgba(31,31,31,1) 75%, rgba(185,187,199,.5) 100%)",
           color: "white",
-          // blur
-          backdropFilter: "blur(100px)",
+
           border: "1px solid white",
         },
 
@@ -589,7 +589,9 @@ function Main() {
                 sx={{
                   "& .MuiFormHelperText-root": {
                     position: "absolute !important",
-                    color: errors.birth ? "#f44336 !important" : "white !important", 
+                    color: errors.birth
+                      ? "#f44336 !important"
+                      : "white !important",
                     // color: "rgba(255, 255, 255, 0.7)",
                     textAlign: "center !important",
                     fontWeight: "bolder !important",
@@ -961,4 +963,3 @@ export default function Bein6Register() {
     </ThemeProvider>
   );
 }
-
