@@ -7,9 +7,12 @@ import {
   Snackbar,
   TextField,
   Typography,
+  Radio,
+  FormControlLabel
 } from "@mui/material";
 import { useRef, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
+import { RadioGroup } from '@mui/material';
 import LoadingButton from "@mui/lab/LoadingButton";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
@@ -166,9 +169,8 @@ function Main() {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [selectedFileName, setSelectedFileName] = useState("");
-  const [captchaValue, setCaptchaValue] = useState(null);
   const [response, setResponse] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState('Cash');
 
   const recaptchaRef = useRef(null);
   const paymentRef = useRef(null);
@@ -199,7 +201,7 @@ function Main() {
   const onSubmit = async (data) => {
     const captchaTempValue = await recaptchaRef.current.executeAsync();
 
-    data["image"] = paymentRef.current?.files[0];
+    data["image"] = paymentRef.current?.files[0] || "Cash";
     data["Captcha"] = captchaTempValue;
 
     delete data["paymentProof"];
@@ -829,10 +831,21 @@ function Main() {
               alignItems: "center",
             }}
           >
-            <Grid className={"myGridLabel"} item xs={0} sm={5}>
-              <Typography variant="p"> Payment Proof </Typography>
+
+          
+            <Grid item xs={0} sm={5}>
+              <Typography variant="p"> Payment
+              
+              <RadioGroup name="use-radio-group" defaultValue="Cash" value={paymentMethod} onChange={(e)=>{setPaymentMethod(e.target.value);}}>
+                  <FormControlLabel value="Cash" label="Cash" control={<Radio />} />
+                  <FormControlLabel value="Wallet" label="Wallet" control={<Radio />} />
+            </RadioGroup>
+              
+               </Typography>
+
             </Grid>
-            <Grid item sm={7} xs={12}>
+
+            {paymentMethod==="Wallet"?<Grid item sm={7} xs={12}>
               <p
                 style={{
                   direction: "rtl",
@@ -863,7 +876,7 @@ function Main() {
                     color: "#f44336",
                   },
                 }}
-                value={selectedFileName}
+                value={paymentRef.current?.files[0]?.name || ""}
                 {...register("paymentProof", {
                   required: "payment Proof is required",
                 })}
@@ -903,9 +916,6 @@ function Main() {
                           width: 100,
                         }}
                         ref={paymentRef}
-                        onChange={(e) => {
-                          setSelectedFileName(e?.target?.files[0]?.name || "");
-                        }}
                         accept=".png, .jpg, .jpeg"
                         disabled={isSubmitting}
                         type="file"
@@ -914,7 +924,20 @@ function Main() {
                   ),
                 }}
               />
-            </Grid>
+            </Grid>:
+            <Grid item sm={7} xs={12}>
+              <p
+                style={{
+                  direction: "rtl",
+                  textAlign: "right",
+                }}
+              >
+                سيتم تحصيل مبلغ <b>70 جنيه مصري </b> نقدي عند الحضور في اول يوم
+              </p>
+              <br />
+              </Grid>
+            }
+            
           </Grid>
         </Grid>
         <br />
