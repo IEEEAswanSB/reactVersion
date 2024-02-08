@@ -46,7 +46,7 @@ exports.beincamp6Register = async (req, res) => {
     let { name, email, phone, certificateName, id, Captcha } = req.body;
     let paymentImage = req?.files?.image;
 
-    if (!name || !email || !phone || !id || !certificateName || !paymentImage) {
+    if (!name || !email || !phone || !id || !certificateName) {
       return res.status(400).json({ message: "Please fill all the fields" });
     }
 
@@ -91,11 +91,12 @@ exports.beincamp6Register = async (req, res) => {
         .json({ message: "Please enter a valid national ID" });
     }
 
-    let imgStatus = await checkImg(paymentImage.data);
+    if(paymentImage){
+      let imgStatus = await checkImg(paymentImage.data);
 
-    if (imgStatus)
-      return res.status(400).json({ message: "Please enter a valid image" });
-
+      if (imgStatus)
+        return res.status(400).json({ message: "Please enter a valid image" });
+    }
     const TicketID = randomString(5, 2) + "-" + "B6" + "-" + randomString(5, 2);
 
     let mongoRes = await Beincamp6.findOne({
@@ -113,6 +114,11 @@ exports.beincamp6Register = async (req, res) => {
         .json({ message: "This user is already registered" });
     }
 
+
+    let Img = null;
+
+    if(paymentImage){
+
     const convertedImage = await sharp(paymentImage.data)
       .toFormat("webp")
       .toBuffer();
@@ -128,11 +134,12 @@ exports.beincamp6Register = async (req, res) => {
       },
       fields: "id",
     });
-
+    Img = `https://drive.google.com/file/d/${driveRes.id}/preview`;
+  }
     const beincamp = new Beincamp6({
       ...req.body,
       TicketID: TicketID,
-      PaymentImg: `https://drive.google.com/file/d/${driveRes.id}/preview`,
+      PaymentImg: Img?Img : "Cash",
     });
 
     await beincamp.save();
