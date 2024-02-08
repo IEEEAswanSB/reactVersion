@@ -654,18 +654,18 @@ function Main() {
                 <Grid item sm={7} xs={12}>
                   <TextField
                     disabled={isSubmitting}
-                    color={!errors.OtherUniversity ? "success" : "success"}
+                    color={!errors.otherUniversity ? "success" : "success"}
                     variant="outlined"
                     fullWidth
                     label={
-                      errors.OtherUniversity
+                      errors.otherUniversity
                         ? errors.OtherUniversity.message
                         : "Other University"
                     }
-                    {...register("OtherUniversity", {
-                      required: "OtherUniversity is required",
+                    {...register("otherUniversity", {
+                      required: "otherUniversity is required",
                     })}
-                    error={!!errors.OtherUniversity}
+                    error={!!errors.otherUniversity}
                     helperText={
                       "الجامعة التي تدرس بها حاليا، غير المذكورين في القائمة بالأعلى"
                     }
