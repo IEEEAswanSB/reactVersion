@@ -8,11 +8,11 @@ import {
   TextField,
   Typography,
   Radio,
-  FormControlLabel
+  FormControlLabel,
 } from "@mui/material";
 import { useRef, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { RadioGroup } from '@mui/material';
+import { RadioGroup } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
@@ -170,7 +170,7 @@ function Main() {
   const [loading, setLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [response, setResponse] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState('Cash');
+  const [paymentMethod, setPaymentMethod] = useState("Cash");
 
   const recaptchaRef = useRef(null);
   const paymentRef = useRef(null);
@@ -270,10 +270,6 @@ function Main() {
         },
 
         "& .MuiPaper-root.myPaper": {
-          background:
-            "linear-gradient(180deg, rgba(106,106,106,1) 0%, rgba(31,31,31,1) 75%, rgba(185,187,199,.5) 100%)",
-          color: "white",
-
           border: "1px solid white",
         },
 
@@ -363,6 +359,10 @@ function Main() {
       <Paper
         className="myPaper"
         sx={{
+          background:
+            "linear-gradient(180deg, rgba(106,106,106,.7) 0%, rgba(31,31,31,1) 75%, rgba(105,105,105,.5) 100%)",
+          color: "white",
+
           p: "3ch",
         }}
         elevation={8}
@@ -831,113 +831,127 @@ function Main() {
               alignItems: "center",
             }}
           >
-
-          
             <Grid item xs={0} sm={5}>
-              <Typography variant="p"> Payment
-              
-              <RadioGroup name="use-radio-group" defaultValue="Cash" value={paymentMethod} onChange={(e)=>{setPaymentMethod(e.target.value);}}>
-                  <FormControlLabel value="Cash" label="Cash" control={<Radio />} />
-                  <FormControlLabel value="Wallet" label="Wallet" control={<Radio />} />
-            </RadioGroup>
-              
-               </Typography>
-
+              <Typography variant="p">
+                {" "}
+                Payment
+                <RadioGroup
+                  name="use-radio-group"
+                  defaultValue="Cash"
+                  value={paymentMethod}
+                  onChange={(e) => {
+                    setPaymentMethod(e.target.value);
+                  }}
+                >
+                  <FormControlLabel
+                    value="Cash"
+                    label="Cash"
+                    control={<Radio />}
+                  />
+                  <FormControlLabel
+                    value="Wallet"
+                    label="Wallet"
+                    control={<Radio />}
+                  />
+                </RadioGroup>
+              </Typography>
             </Grid>
 
-            {paymentMethod==="Wallet"?<Grid item sm={7} xs={12}>
-              <p
-                style={{
-                  direction: "rtl",
-                  textAlign: "right",
-                }}
-              >
-                صورة إيصال الدفع أو صورة للتحويل بمبلغ <b>70 جنيه مصري </b>
-                &nbsp; إلى المحفظة برقم <b>01070039593</b>.
-              </p>
-              <br />
-              <TextField
-                fullWidth
-                sx={{
-                  // position: "absolute",
-                  "& fieldset": {
-                    border: "0",
-                  },
-                  "& .MuiButtonBase-root": {},
-
-                  "& .MuiInputBase-input.MuiOutlinedInput-input.Mui-disabled.MuiInputBase-inputAdornedStart":
-                    {
-                      position: "absolute",
-                      transform: "translateY(100%)",
+            {paymentMethod === "Wallet" ? (
+              <Grid item sm={7} xs={12}>
+                <p
+                  style={{
+                    direction: "rtl",
+                    textAlign: "right",
+                  }}
+                >
+                  صورة إيصال الدفع أو صورة للتحويل بمبلغ <b>70 جنيه مصري </b>
+                  &nbsp; إلى المحفظة برقم <b>01070039593</b>.
+                </p>
+                <br />
+                <TextField
+                  fullWidth
+                  sx={{
+                    // position: "absolute",
+                    "& fieldset": {
+                      border: "0",
                     },
+                    "& .MuiButtonBase-root": {},
 
-                  "& label.MuiFormLabel-root": {
-                    position: "relative",
-                    color: "#f44336",
-                  },
-                }}
-                value={paymentRef.current?.files[0]?.name || ""}
-                {...register("paymentProof", {
-                  required: "payment Proof is required",
-                })}
-                disabled
-                label={errors.paymentProof ? errors.paymentProof.message : ""}
-                error={!!errors.paymentProof}
-                InputProps={{
-                  startAdornment: (
-                    <Button
-                      variant="contained"
-                      component="label"
-                      disabled={isSubmitting}
-                      fullWidth
-                      color={
-                        errors.paymentProof
-                          ? "error"
-                          : paymentRef.current?.files[0]
-                          ? "success"
-                          : "info"
-                      }
-                      startIcon={<CloudUploadIcon />}
-                    >
-                      Upload File
-                      <input
-                        {...register("paymentProof", {
-                          required: "payment Proof is required",
-                        })}
-                        style={{
-                          clip: "rect(0 0 0 0)",
-                          clipPath: "inset(50%)",
-                          height: 1,
-                          overflow: "hidden",
-                          position: "absolute",
-                          bottom: 0,
-                          left: 0,
-                          whiteSpace: "nowrap",
-                          width: 100,
-                        }}
-                        ref={paymentRef}
-                        accept=".png, .jpg, .jpeg"
+                    "& .MuiInputBase-input.MuiOutlinedInput-input.Mui-disabled.MuiInputBase-inputAdornedStart":
+                      {
+                        position: "absolute",
+                        transform: "translateY(100%)",
+                      },
+
+                    "& label.MuiFormLabel-root": {
+                      position: "relative",
+                      color: "#f44336",
+                    },
+                  }}
+                  value={paymentRef.current?.files[0]?.name || ""}
+                  {...register("paymentProof", {
+                    required: "payment Proof is required",
+                  })}
+                  disabled
+                  label={errors.paymentProof ? errors.paymentProof.message : ""}
+                  error={!!errors.paymentProof}
+                  InputProps={{
+                    startAdornment: (
+                      <Button
+                        variant="contained"
+                        component="label"
                         disabled={isSubmitting}
-                        type="file"
-                      />
-                    </Button>
-                  ),
-                }}
-              />
-            </Grid>:
-            <Grid item sm={7} xs={12}>
-              <p
-                style={{
-                  direction: "rtl",
-                  textAlign: "right",
-                }}
-              >
-                سيتم تحصيل مبلغ <b>70 جنيه مصري </b> نقدي عند الحضور في اول يوم
-              </p>
-              <br />
+                        fullWidth
+                        color={
+                          errors.paymentProof
+                            ? "error"
+                            : paymentRef.current?.files[0]
+                            ? "success"
+                            : "info"
+                        }
+                        startIcon={<CloudUploadIcon />}
+                      >
+                        Upload File
+                        <input
+                          {...register("paymentProof", {
+                            required: "payment Proof is required",
+                          })}
+                          style={{
+                            clip: "rect(0 0 0 0)",
+                            clipPath: "inset(50%)",
+                            height: 1,
+                            overflow: "hidden",
+                            position: "absolute",
+                            bottom: 0,
+                            left: 0,
+                            whiteSpace: "nowrap",
+                            width: 100,
+                          }}
+                          ref={paymentRef}
+                          accept=".png, .jpg, .jpeg"
+                          disabled={isSubmitting}
+                          type="file"
+                        />
+                      </Button>
+                    ),
+                  }}
+                />
               </Grid>
-            }
-            
+            ) : (
+              <Grid item sm={7} xs={12}>
+                <p
+                  style={{
+                    direction: "rtl",
+                    textAlign: "right",
+                  }}
+                >
+                  سيتم تحصيل مبلغ <b>70 جنيه مصري </b> نقدي عند الحضور في اول
+                  يوم
+                </p>
+                <br />
+              </Grid>
+            )}
           </Grid>
         </Grid>
         <br />
