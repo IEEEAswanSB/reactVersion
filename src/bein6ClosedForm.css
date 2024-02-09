@@ -20,6 +20,8 @@ body {
   /* background-size: ; small  */
   background-size: 10% !important;
   background-position: center;
+  background: #111;
+  line-height: 100vh;
 }
 
 @media (max-width: 768px) {
@@ -55,7 +57,7 @@ input[type="number"] {
 }
 
 @import url("./assets/WindowsRegular.ttf");
-body {
+.test {
   font-family: "WindowsRegular" sans-serif;
   font-weight: bolder;
   font-size: 100px;
@@ -63,6 +65,8 @@ body {
   width: 100vw;
   overflow: hidden !important;
   user-select: none;
+  color: rgb(255, 15, 15);
+
   /* -webkit-text-stroke-width: 5px;
   -webkit-text-stroke-color: black; */
 }
@@ -70,11 +74,7 @@ body {
   -webkit-animation: squiggly-anim 0.34s linear infinite;
   animation: squiggly-anim 0.34s linear infinite;
 }
-body {
-  line-height: 100vh;
-  background: #111;
-  color: rgb(255, 15, 15);
-}
+
 .test {
   display: inline-block;
   vertical-align: middle;

@@ -30,7 +30,7 @@ function App() {
     window?.location.pathname.toLowerCase() === "/bein6/validate" ||
     window?.location.pathname.toLowerCase() === "/bein6/attend"
   ) {
-    import("./bein6.css");
+    // import("./bein6.css");
     import("./bein6ClosedForm.css");
   } else {
     import("./App.css");
