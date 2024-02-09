@@ -988,14 +988,16 @@ function Main() {
 }
 
 function Closed() {
-  console.log(FormClosedImage);
   return (
     <Box
       sx={{
         bgcolor: "#00000090",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
-      <>
+      <Box>
         <div className="test">
           Form closed
           <p className="small">– SEE YOU TOMORROW – </p>
@@ -1060,7 +1062,7 @@ function Closed() {
             </filter>
           </defs>
         </svg>
-      </>
+      </Box>
     </Box>
   );
 }
