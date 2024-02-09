@@ -29,9 +29,10 @@ function App() {
     window?.location.pathname.toLowerCase() === "/bein6/register" ||
     window?.location.pathname.toLowerCase() === "/bein6/validate" ||
     window?.location.pathname.toLowerCase() === "/bein6/attend"
-  )
+  ) {
     import("./bein6.css");
-  else {
+    import("./bein6ClosedForm.css");
+  } else {
     import("./App.css");
     import("./index.css");
   }
@@ -123,4 +124,3 @@ function App() {
 }
 
 export default App;
-
