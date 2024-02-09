@@ -16,9 +16,16 @@ body {
     "Lucida Sans", Arial, sans-serif;
 
   background-image: url("./assets/img/bein6/formClosed.jpg") !important;
-  background-repeat: no-repeat;
-  background-size: contain;
+  background-repeat: repeat !important;
+  /* background-size: ; small  */
+  background-size: 10% !important;
   background-position: center;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-size: 25% !important;
+  }
 }
 
 /* Remove arrows form number input */
@@ -56,8 +63,8 @@ body {
   width: 100vw;
   overflow: hidden !important;
   user-select: none;
-  -webkit-text-stroke-width: 5px;
-  -webkit-text-stroke-color: black;
+  /* -webkit-text-stroke-width: 5px;
+  -webkit-text-stroke-color: black; */
 }
 .test {
   -webkit-animation: squiggly-anim 0.34s linear infinite;
