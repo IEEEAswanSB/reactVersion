@@ -73,7 +73,7 @@ body {
 body {
   line-height: 100vh;
   background: #111;
-  color: #fff;
+  color: rgb(255, 15, 15);
 }
 .test {
   display: inline-block;
