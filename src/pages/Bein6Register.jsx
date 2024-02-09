@@ -17,6 +17,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import ReCAPTCHA from "react-google-recaptcha";
+import FormClosedImage from "../assets/img/bein6/formClosed.jpg";
 
 // theme black
 import { CssBaseline } from "@mui/material";
@@ -986,6 +987,84 @@ function Main() {
   );
 }
 
+function Closed() {
+  console.log(FormClosedImage);
+  return (
+    <Box
+      sx={{
+        bgcolor: "#00000030",
+      }}
+    >
+      <>
+        <div className="test">
+          Form closed
+          <p className="small">– SEE YOU TOMORROW – </p>
+          <p>BE IN</p>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+          <defs>
+            <filter id="squiggly-0">
+              <feTurbulence
+                id="turbulence"
+                baseFrequency="0.02"
+                numOctaves={3}
+                result="noise"
+                seed={0}
+              />
+              <feDisplacementMap
+                id="displacement"
+                in="SourceGraphic"
+                in2="noise"
+                scale={6}
+              />
+            </filter>
+            <filter id="squiggly-1">
+              <feTurbulence
+                id="turbulence"
+                baseFrequency="0.02"
+                numOctaves={3}
+                result="noise"
+                seed={1}
+              />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale={8} />
+            </filter>
+            <filter id="squiggly-2">
+              <feTurbulence
+                id="turbulence"
+                baseFrequency="0.02"
+                numOctaves={3}
+                result="noise"
+                seed={2}
+              />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale={6} />
+            </filter>
+            <filter id="squiggly-3">
+              <feTurbulence
+                id="turbulence"
+                baseFrequency="0.02"
+                numOctaves={3}
+                result="noise"
+                seed={3}
+              />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale={8} />
+            </filter>
+            <filter id="squiggly-4">
+              <feTurbulence
+                id="turbulence"
+                baseFrequency="0.02"
+                numOctaves={3}
+                result="noise"
+                seed={4}
+              />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale={6} />
+            </filter>
+          </defs>
+        </svg>
+      </>
+    </Box>
+  );
+}
+
 export default function Bein6Register() {
   const theme = createTheme({
     palette: {
@@ -996,7 +1075,8 @@ export default function Bein6Register() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Main />
+      {/* <Main /> */}
+      <Closed />
     </ThemeProvider>
   );
 }
