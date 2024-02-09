@@ -65,7 +65,7 @@ input[type="number"] {
   width: 100vw;
   overflow: hidden !important;
   user-select: none;
-  color: rgb(255, 15, 15);
+  color: rgb(200, 14, 14);
 
   /* -webkit-text-stroke-width: 5px;
   -webkit-text-stroke-color: black; */
