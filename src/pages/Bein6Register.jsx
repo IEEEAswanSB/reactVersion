@@ -17,7 +17,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import ReCAPTCHA from "react-google-recaptcha";
-import FormClosedImage from "../assets/img/bein6/formClosed.jpg";
+import FormClosedImage from "../assets/img/bein6/formClosed.webp";
 
 // theme black
 import { CssBaseline } from "@mui/material";
@@ -992,7 +992,7 @@ function Closed() {
   return (
     <Box
       sx={{
-        bgcolor: "#00000030",
+        bgcolor: "#00000090",
       }}
     >
       <>
