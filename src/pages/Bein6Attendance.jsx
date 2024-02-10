@@ -22,6 +22,10 @@ export function Bein6Attendance() {
   return (
    <div>
     <QrReader
+            constraints={{
+            audio: false,
+            video: { facingMode: "environment" }}}
+
         onResult={(result, error) => {
           if (!!result) {
             setData(result?.text);
