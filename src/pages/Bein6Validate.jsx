@@ -1,5 +1,5 @@
 import { Suspense, useRef, useState } from "react";
-import { ValidateBein6 } from "../../services/register.service";
+import { ValidateBein6,generateBein6Ticket,sendBein6Ticket } from "../../services/register.service";
 import { Box, Button, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import Info from "./Info";
@@ -34,7 +34,21 @@ useEffect(()=>{
 
 },[])
 
-  function onSubmit() {
+
+function downloadBase64File(contentBase64, fileName) {
+  const linkSource = `${contentBase64}`;
+  const downloadLink = document.createElement('a');
+  document.body.appendChild(downloadLink);
+
+  downloadLink.href = linkSource;
+  downloadLink.target = '_self';
+  downloadLink.download = fileName;
+  downloadLink.click(); 
+}
+
+  function onSubmit(data,e) {
+
+    
     if (loading) return;
     if (restCounter > 10) {
       setSeverity("warning");
@@ -44,21 +58,56 @@ useEffect(()=>{
       return prev + 1;
     });
     setLoading(true);
+    
+    let ticketID = document.getElementsByName("TicketID")[0].value;
+    let password = document.getElementsByName("Password")[0].value;
+    const buttonName = e.nativeEvent.submitter.name;
 
-    ValidateBein6({ TicketID: document.getElementsByName("TicketID")[0].value,Password:document.getElementsByName("Password")[0].value })
+    if(buttonName === "Download"){
+      generateBein6Ticket({ TicketID: ticketID,Password:password })
       .then((res) => {
         setLoading(false);
+        downloadBase64File(res.pdf,`${ticketID}.pdf`);
+        setResponse("Downloaded");
+        setSeverity("success");
+        setOpen(true);
+      })
+      .catch((err) => {
+        setResponse(err?.response?.data?.message || "An error occurred");
+        setSeverity("error");
+        setOpen(true);
 
+        setLoading(false);
+      });
+    }else if(buttonName === "Send"){
+      sendBein6Ticket({ TicketID: ticketID,Password:password })
+      .then((res) => {
+        setLoading(false);
         setResponse(res.message);
         setSeverity("success");
         setOpen(true);
-
-        localStorage.setItem("password",password)
-        // reset input value
-        resetField("TicketID");
       })
       .catch((err) => {
-        resetField("TicketID");
+        setResponse(err?.response?.data?.message || "An error occurred");
+        setSeverity("error");
+        setOpen(true);
+
+        setLoading(false);
+      });
+    }else{
+
+
+
+    ValidateBein6({ TicketID: ticketID,Password:password })
+      .then((res) => {
+        setLoading(false);
+        setResponse(res.message);
+        setSeverity("success");
+        setOpen(true);
+        localStorage.setItem("password",password)
+
+      })
+      .catch((err) => {
         setResponse(err?.response?.data?.message || "An error occurred");
         setSeverity("error");
         setOpen(true);
@@ -66,7 +115,7 @@ useEffect(()=>{
         setLoading(false);
       });
   }
-
+  }
 
 
 
@@ -115,8 +164,29 @@ useEffect(()=>{
         color="success"
         loading={loading}
         type="submit"
+        name="Validate"
       >
         Validate
+      </LoadingButton>
+
+      <LoadingButton
+        variant="contained"
+        color="success"
+        loading={loading}
+        type="submit"
+        name="Download"
+      >
+        Download Ticket
+      </LoadingButton>
+
+      <LoadingButton
+        variant="contained"
+        color="success"
+        loading={loading}
+        type="submit"
+        name="Send"
+      >
+        Send Ticket by Email
       </LoadingButton>
 
       <Info

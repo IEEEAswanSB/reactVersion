@@ -27,6 +27,10 @@ const themeSchema = new Schema({
         type: Array,
         default: []
     },
+    QR:{
+        type: Object,
+        default: {}
+    }
 
   
 },{ timestamps: true });

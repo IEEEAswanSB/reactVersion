@@ -67,3 +67,11 @@ export const ValidateBein6 = payload => {
 export const RecordAttendanceBein6 = payload => {
     return api.post('bein6-record-attendance', payload).then(res => res.data)
 }
+
+export const generateBein6Ticket = payload => {
+    return api.post('bein6-generate-ticket', payload).then(res => res.data)
+}
+
+export const sendBein6Ticket = payload => {
+    return api.post('bein6-send-ticket', payload).then(res => res.data)
+}
