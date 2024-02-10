@@ -27,11 +27,11 @@ const CiCodeStormForm = React.lazy(() => import("./pages/ciPage"));
 function App() {
   if (
     window?.location.pathname.toLowerCase() === "/bein6/register" ||
-    window?.location.pathname.toLowerCase() === "/bein6/validate" ||
     window?.location.pathname.toLowerCase() === "/bein6/attend"
   ) {
-    // import("./bein6.css");
     import("./bein6ClosedForm.css");
+  } else if (window?.location.pathname.toLowerCase() === "/bein6/validate") {
+    import("./bein6.css");
   } else {
     import("./App.css");
     import("./index.css");
