@@ -1077,8 +1077,8 @@ export default function Bein6Register() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {/* <Main /> */}
-      <Closed />
+      <Main />
+      {/* <Closed /> */}
     </ThemeProvider>
   );
 }
