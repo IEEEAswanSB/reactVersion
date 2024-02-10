@@ -1,12 +1,8 @@
 const Beincamp6 = require("../models/beincamp6.model");
 const Passcodes = require("../models/passcodes.model");
-
-const Themes = require("../models/theme.model");
-const path = require("path");
-const PDFlib = require("pdf-lib");
-const fontkit = require("fontkit");
-const sharp = require("sharp");
 const fs = require("fs");
+const sharp = require("sharp");
+
 const {
   checkName,
   checkLatinName,
@@ -15,7 +11,7 @@ const {
   checkNationalId,
   checkImg,
 } = require("../Helpers/Validators");
-const { randomString } = require("../Helpers/utils");
+const { randomString,makePDF ,titleCase ,sendMail } = require("../Helpers/utils");
 const { google } = require("googleapis");
 const { Readable } = require("stream");
 const axios = require("axios");
@@ -244,6 +240,133 @@ exports.beincamp6recordAttendance = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+
+exports.beincamp6SendTicket = async (req, res) => {
+
+  try{
+
+    let { TicketID,Password } = req.body;
+    if (!TicketID || !Password) {
+      return res
+        .status(400)
+        .json({ message: "Please enter a valid Ticket ID and Password" });
+    }
+
+    let mongoRes = await Beincamp6.findOne({ TicketID: TicketID });
+
+    let mongoRes2 = await Passcodes.findOne({ Passcode: Password });
+
+    if(!mongoRes2){
+      return res.status(400).json({ message: "Incorrect Password" });
+    }
+
+    if (!mongoRes) {
+      return res.status(400).json({ message: "This user is not registered" });
+    }
+
+    let pdfData = await makePDF("BeinCampTicket06",[titleCase(mongoRes.certificateName)],mongoRes.TicketID);
+    
+    pdfData = pdfData.replace(/^data:application\/pdf;base64,/, "");
+
+    const attachments = [{
+      filename: 'BeinCampTicket06.pdf',
+      content: pdfData,
+      encoding: 'base64'
+    }]
+  
+    let body= "";
+  
+    if(mongoRes.PaymentImg === "Cash"){
+  
+    body = `Dear ${titleCase(mongoRes.certificateName)},
+  
+    Thank you for registering for the ${mongoRes.track} track in Be Informed Camp 6, taking place from February 11th to 15th.
+    
+    Please note the following important information:
+    
+    Payment: As you selected the "Cash" option, please bring 70 EGP on the first day to validate your ticket.
+    Laptop: Please bring your own laptop, as IEEE Aswan & CREATIVA will not be providing any PCs.
+    Certificates: Digital certificates will be awarded to attendees who participate in at least 80% of the course.
+    Personal Property: We are not responsible for any loss or damage to personal belongings brought to the venue.
+    Ticket: Your ticket is attached to this email. Please bring it with you to the camp.
+    
+    We look forward to seeing you there!
+    
+    Best regards,
+    
+    IEEE Aswan`
+  
+    }else{
+      body =`Dear ${titleCase(mongoRes.certificateName)},
+  
+      Thank you for registering for the ${mongoRes.track} track in Be Informed Camp 6, taking place from February 11th to 15th. Your ticket is confirmed!
+      
+      Please note the following important information:
+      
+      Laptop: Please bring your own laptop, as IEEE Aswan & CREATIVA will not be providing any PCs.
+      Certificates: Digital certificates will be awarded to attendees who participate in at least 80% of the course.
+      Personal Property: We are not responsible for any loss or damage to personal belongings brought to the venue.
+      Ticket: Your ticket is attached to this email. Please bring it with you to the camp.
+      
+      We look forward to seeing you there!
+      
+      Best regards,
+      
+      IEEE Aswan`
+    }
+  
+    const subject = "Be Informed Camp 6 Ticket";
+  
+    await sendMail(mongoRes.email,subject,body,attachments,(err, data)=> {
+      if(err) {
+          // console.log(`Error happened for email ${to} with error: ${err}`);
+          return res.status(400).json({message: err});
+      } else {
+
+          return res.status(200).json({message: 'Email Sent Successfully'});
+      }
+
+    });
+
+  }catch(e){
+    console.log(e);
+  }
+
+};
+
+
+exports.beincamp6GenerateTicket = async (req, res) => {
+ 
+  const{TicketID,Password} = req.body;
+
+  if (!TicketID || !Password) {
+    return res
+      .status(400)
+      .json({ message: "Please enter a valid Ticket ID and Password" });
+  }
+  
+  let mongoRes2 = await Passcodes.findOne({ Passcode: Password });
+  const results = await Beincamp6.findOne({TicketID:TicketID});
+
+  if(!mongoRes2){
+    return res.status(400).json({ message: "Incorrect Password" });
+  }
+
+  if(!results){
+    return res.status(422).json({message: 'Enter a valid Ticket id!'}) 
+  }
+
+
+  let pdfData = await makePDF("BeinCampTicket06",[titleCase(results.certificateName)],results.TicketID);
+  
+
+  return res.status(200).json({message: 'Ticket Generated Successfully',pdf:pdfData});
+
+
+
+}
+
 
 const saveGoogleSheet = async () => {
   let Columns = [

@@ -1237,7 +1237,14 @@ punycode@^2.1.1:
   resolved "https://registry.npmjs.org/punycode/-/punycode-2.3.0.tgz"
   integrity sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==
 
-qrcode@^1.5.3:
+qrcode-with-logos@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/qrcode-with-logos/-/qrcode-with-logos-1.0.5.tgz"
+  integrity sha512-ZHynBWdidxv57T5Lw8KBGpM6c/bwrL9buITPOrtX0PaoV0AgKkqHifdO+rKV7jMSiR/EcQWpvHI9ZarZonDq6g==
+  dependencies:
+    qrcode "^1.4.4"
+
+qrcode@^1.4.4, qrcode@^1.5.3:
   version "1.5.3"
   resolved "https://registry.npmjs.org/qrcode/-/qrcode-1.5.3.tgz"
   integrity sha512-puyri6ApkEHYiVl4CFzo1tDkAZ+ATcnbJrJ6RiBM1Fhctdn/ix9MTE3hRph33omisEbC/2fcfemsseiKgBPKZg==
