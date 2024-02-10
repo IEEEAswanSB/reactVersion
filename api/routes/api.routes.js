@@ -83,7 +83,7 @@ router.post("/api/verify-codestorm", VerifyCodeStorm);
 
 router.post("/api/codestorm-email", sendMail);
 
-// router.post("/api/bein6-register", beincamp6Register);
+router.post("/api/bein6-register", beincamp6Register);
 
 router.post('/api/bein6-validate', beincamp6Validate)
 
