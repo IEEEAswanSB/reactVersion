@@ -1,44 +1,66 @@
-import { useState,useEffect } from 'react'
-import { QrReader } from 'react-qr-reader';
-import {RecordAttendanceBein6 } from '../../services/register.service';
+import { useState, useEffect } from "react";
+import { QrReader } from "react-qr-reader";
+import { RecordAttendanceBein6 } from "../../services/register.service";
+import Info from "./Info";
 
 export function Bein6Attendance() {
-    const [data, setData] = useState(null);
-    const [response, setResponse] = useState('');
+  const [open, setOpen] = useState(false);
+  const [severity, setSeverity] = useState("success");
 
-    useEffect(() => {
-        if (!!data) {           
-            RecordAttendanceBein6({TicketID:data})
-            .then((res) => {
-                setResponse(res.message);
-            })
-            .catch((err) => {
-                setResponse(err.response.data.message);
-            });
-        }    
-      }, [data]);
+  const [stamp, setStamp] = useState(0);
+  const [ticketID, setTicketID] = useState("");
+  const [response, setResponse] = useState("");
 
+  const handelAttendance = (result, ticketID) => {
+    console.log(ticketID);
+    if (result?.text === null) return;
+    // if (result?.text === ticketID) console.log("rep");
+
+    setTicketID("testing");
+    setStamp(result?.timestamp);
+
+    RecordAttendanceBein6({ TicketID: result?.text })
+      .then((res) => {
+        setOpen(false);
+
+        setResponse(res.message);
+        setSeverity("success");
+        setOpen(true);
+      })
+      .catch((err) => {
+        setOpen(false);
+
+        setResponse(err.response.data.message);
+        setSeverity("error");
+        setOpen(true);
+      });
+  };
 
   return (
-   <div>
-    <QrReader
-            constraints={{
-            audio: false,
-            video: { facingMode: "environment" }}}
-
+    <>
+      <QrReader
+        constraints={{
+          audio: false,
+          video: { facingMode: "environment" },
+        }}
+        key="environment"
         onResult={(result, error) => {
           if (!!result) {
-            setData(result?.text);
-          }
-
-          if (!!error) {
-            console.info(error);
+            console.log(result);
+            handelAttendance(result, ticketID);
           }
         }}
-        style={{ width: '100%' }}
+        style={{ width: "100%" }}
       />
       <p>{response}</p>
       {/* <h1>ds</h1> */}
-   </div>
-  )
+
+      <Info
+        response={response}
+        open={open}
+        setOpen={setOpen}
+        severity={severity}
+      />
+    </>
+  );
 }
