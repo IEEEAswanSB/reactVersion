@@ -40,8 +40,7 @@ export function Bein6Attendance() {
     <>
       <QrReader
         constraints={{
-          audio: false,
-          video: { facingMode: "environment" },
+          facingMode: "environment",
         }}
         key="environment"
         onResult={(result, error) => {
