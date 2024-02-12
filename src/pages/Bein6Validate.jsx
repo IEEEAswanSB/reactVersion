@@ -5,7 +5,7 @@ import {
   generateBein6Ticket,
   sendBein6Ticket,
 } from "../../services/register.service";
-import { Box, Button, IconButton, TextField } from "@mui/material";
+import { Box, Button, IconButton, TextField, Tooltip } from "@mui/material";
 import { useForm } from "react-hook-form";
 import Info from "./Info";
 import { CssBaseline } from "@mui/material";
@@ -234,34 +234,44 @@ const CustomIconButton = ({
   setResponse,
   setOpen,
   setStates,
+  label,
 }) => (
-  <IconButton
-    sx={{
-      zIndex: "50",
-      border: border ? "1px solid #ff0f0f" : "none",
-      color: color ? "#ff0f0f" : "white",
-    }}
-    onClick={() => {
-      console.log(password);
-      if (password === "") return;
-      if (color) return;
-      confirmBein6RegistrationAdmin({ Password: password })
-        .then((res) => {
-          if (res.message === "Correct Password") {
-            setStates(true);
-          } else {
-            throw new Error("Incorrect Password");
-          }
-        })
-        .catch((err) => {
-          setSeverity("error");
-          setResponse(err?.response?.data?.message || "An error occurred");
-          setOpen(true);
-        });
-    }}
-  >
-    <Icon />
-  </IconButton>
+  <>
+    <Tooltip title={label} placement="top">
+      <IconButton
+        sx={{
+          // blue background
+          backgroundColor: !color ? "#43040f" : "transparent",
+          zIndex: "50",
+          border: border ? "1px solid #ff0f0f" : "1px solid transparent",
+          color: color ? "#ff0f0f" : "white",
+          "&:hover": {
+            backgroundColor: color ? "transparent" : "#8f0820",
+          },
+        }}
+        onClick={() => {
+          console.log(password);
+          if (password === "") return;
+          if (color) return;
+          confirmBein6RegistrationAdmin({ Password: password })
+            .then((res) => {
+              if (res.message === "Correct Password") {
+                setStates(true);
+              } else {
+                throw new Error("Incorrect Password");
+              }
+            })
+            .catch((err) => {
+              setSeverity("error");
+              setResponse(err?.response?.data?.message || "An error occurred");
+              setOpen(true);
+            });
+        }}
+      >
+        <Icon />
+      </IconButton>
+    </Tooltip>
+  </>
 );
 
 export default function Bein6Validate() {
@@ -323,6 +333,7 @@ export default function Bein6Validate() {
             setAllowVideo(false);
             setRegister(value);
           }}
+          label="Register"
         />
 
         <CustomIconButton
@@ -339,6 +350,7 @@ export default function Bein6Validate() {
             setRegister(false);
             setAllowVideo(value);
           }}
+          label="Attendance"
         />
 
         <CustomIconButton
@@ -355,6 +367,7 @@ export default function Bein6Validate() {
             setRegister(false);
             setValidation(value);
           }}
+          label="Validate"
         />
       </Box>
 
