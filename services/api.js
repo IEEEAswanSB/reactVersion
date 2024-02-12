@@ -6,7 +6,11 @@ import axios from "axios";
 
 // const baseURL = "http://10.171.240.166:8081/api/"; //for development
 
-const baseURL = "https://ieee.aswu.edu.eg/api/"; //for deployment
+// const baseURL = "https://ieee.aswu.edu.eg/api/"; //for deployment
+
+// get from env
+const baseURL = import.meta.env.VITE_API_KEY;
+
 export const api = axios.create({
   baseURL,
 });
