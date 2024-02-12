@@ -339,6 +339,17 @@ exports.beincamp6SendTicket = async (req, res) => {
   }
 };
 
+exports.beincamp6ConfirmRegistrationAdmin = async (req, res) => {
+  // this function will check mongo for the password if it exists and correct return true other than data return false using get request
+
+  let { Password } = req.body;
+  let mongoRes = await Passcodes.findOne({ Passcode: Password });
+  if (!mongoRes) {
+    return res.status(400).json({ message: "Incorrect Password" });
+  }
+  return res.status(200).json({ message: "Correct Password" });
+};
+
 exports.beincamp6GenerateTicket = async (req, res) => {
   const { TicketID, Password } = req.body;
 

@@ -35,12 +35,13 @@ const {
 } = require("../controllers/beincamp.controller");
 
 const {
-    beincamp6Register,
-    beincamp6Validate,
-    beincamp6recordAttendance,
-    beincamp6GenerateTicket,
-    beincamp6SendTicket
-} = require('../controllers/beincamp6.controller')
+  beincamp6Register,
+  beincamp6Validate,
+  beincamp6recordAttendance,
+  beincamp6GenerateTicket,
+  beincamp6SendTicket,
+  beincamp6ConfirmRegistrationAdmin,
+} = require("../controllers/beincamp6.controller");
 
 const {
   sendcodestormuser,
@@ -85,13 +86,17 @@ router.post("/api/codestorm-email", sendMail);
 
 router.post("/api/bein6-register", beincamp6Register);
 
-router.post('/api/bein6-validate', beincamp6Validate)
+router.post("/api/bein6-validate", beincamp6Validate);
 
 router.post("/api/bein6-record-attendance", beincamp6recordAttendance);
 
-router.post('/api/bein6-generate-ticket', beincamp6GenerateTicket)
+router.post("/api/bein6-generate-ticket", beincamp6GenerateTicket);
 
-router.post('/api/bein6-send-ticket', beincamp6SendTicket)
+router.post("/api/bein6-send-ticket", beincamp6SendTicket);
 
+router.post(
+  "/api/bein6-confirm-registration-admin",
+  beincamp6ConfirmRegistrationAdmin
+);
 
-module.exports = router
+module.exports = router;

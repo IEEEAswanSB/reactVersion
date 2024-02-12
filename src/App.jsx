@@ -16,7 +16,7 @@ const CodeStormForm = React.lazy(() => import("./pages/CodeStormForm"));
 const Bein_event = React.lazy(() => import("./components/bein-event"));
 const VerifyCodeStorm = React.lazy(() => import("./pages/VerifyCodeStorm"));
 // const Bein6 = React.lazy(() => import("./pages/Bein6"));
-import { Bein6Attendance } from "./pages/Bein6Attendance";
+import Bein6Attendance from "./pages/Bein6Attendance";
 import { Box, Typography } from "@mui/material";
 // const Bein6Attendance = React.lazy(() => import("./pages/Bein6Attendance"));
 const Bein6Validate = React.lazy(() => import("./pages/Bein6Validate"));
@@ -25,13 +25,13 @@ const Ending = React.lazy(() => import("./components/Ending"));
 const CiCodeStormForm = React.lazy(() => import("./pages/ciPage"));
 
 function App() {
-  if (
-    window?.location.pathname.toLowerCase() === "/bein6/register" ||
-    window?.location.pathname.toLowerCase() === "/bein6/attend" ||
-    window?.location.pathname.toLowerCase() === "/bein6/validate"
-  ) {
-    // import("./bein6ClosedForm.css");
+  if (window?.location.pathname.toLowerCase() === "/bein6/validate") {
     import("./bein6.css");
+  } else if (
+    window?.location.pathname.toLowerCase() === "/bein6/register" ||
+    window?.location.pathname.toLowerCase() === "/bein6/attend"
+  ) {
+    import("./bein6ClosedForm.css");
   } else {
     import("./App.css");
     import("./index.css");
