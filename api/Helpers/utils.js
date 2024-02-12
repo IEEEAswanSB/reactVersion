@@ -186,18 +186,18 @@ const generateQRCode = async (text) => {
 };
 
 let mailTransporter = nodemailer.createTransport({
-  service: "gmail",
+  service: process.env.EMAIL_SERVICE,
   pool: true,
   auth: {
-    user: "ieeeasw@gmail.com",
-    pass: "ybcoifgmjzbbuyrt",
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
-  from: "ieeeasw@gmail.com",
+  from: process.env.EMAIL_USER,
 });
 
 exports.sendMail = async (to, subject, body, attachments = [], callback) => {
   let mailDetails = {
-    from: "ieeeasw@gmail.com",
+    from: process.env.EMAIL_USER,
     to: to,
     subject: subject,
     text: body,
