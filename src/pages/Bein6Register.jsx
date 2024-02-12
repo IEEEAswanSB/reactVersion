@@ -165,7 +165,7 @@ function RHFAutoComplete({ name, control, options, isSubmitting, helperText }) {
   );
 }
 
-function Main() {
+export function Bein6Register() {
   const [severity, setSeverity] = useState("alert");
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -997,7 +997,7 @@ function Closed() {
         alignItems: "center",
       }}
     >
-      <Box>
+      <Box bgcolor={"#000"}>
         <div className="test">
           Form closed
           <p className="small">– SEE YOU TOMORROW – </p>
@@ -1067,7 +1067,7 @@ function Closed() {
   );
 }
 
-export default function Bein6Register() {
+export default function Main() {
   const theme = createTheme({
     palette: {
       mode: "dark",
@@ -1077,8 +1077,8 @@ export default function Bein6Register() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Main />
-      {/* <Closed /> */}
+      {/* <Bein6Register /> */}
+      <Closed />
     </ThemeProvider>
   );
 }
