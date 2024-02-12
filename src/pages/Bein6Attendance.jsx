@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { QrReader } from "react-qr-reader";
 import { RecordAttendanceBein6 } from "../../services/register.service";
+
 import Info from "./Info";
 import { Box } from "@mui/material";
 
@@ -31,22 +32,26 @@ export function Bein6Attendance() {
           setTimeout(() => {
             setData(null);
           }, 3000);
+
         });
     }
   }, [data]);
 
   return (
+
     <Box>
       <QrReader
         constraints={{
           facingMode: "environment",
         }}
         key="environment"
+
         onResult={(result, error) => {
           if (!!result) {
             setData(result?.text);
           }
         }}
+
         style={{
           width: "100%",
         }}
@@ -146,5 +151,6 @@ export default function Main() {
       {/* <Bein6Attendance /> */}
       <Closed />
     </Box>
+
   );
 }

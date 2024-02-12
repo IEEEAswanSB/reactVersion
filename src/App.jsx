@@ -25,6 +25,7 @@ const Ending = React.lazy(() => import("./components/Ending"));
 const CiCodeStormForm = React.lazy(() => import("./pages/ciPage"));
 
 function App() {
+
   if (window?.location.pathname.toLowerCase() === "/bein6/validate") {
     import("./bein6.css");
   } else if (
@@ -32,6 +33,7 @@ function App() {
     window?.location.pathname.toLowerCase() === "/bein6/attend"
   ) {
     import("./bein6ClosedForm.css");
+
   } else {
     import("./App.css");
     import("./index.css");
