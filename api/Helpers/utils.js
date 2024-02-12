@@ -1,8 +1,8 @@
 const path = require("path");
 const fs = require("fs");
-const Themes = require('../models/theme.model')
-const PDFlib = require('pdf-lib')
-const fontkit = require('fontkit');
+const Themes = require("../models/theme.model");
+const PDFlib = require("pdf-lib");
+const fontkit = require("fontkit");
 const qr = require("qrcode");
 const nodemailer = require("nodemailer");
 
@@ -52,96 +52,96 @@ exports.randomString = (len, status = 0) => {
   return randomString;
 };
 
-
 /*
  function to convert string to title case
  example: input => "hello world" output => "Hello World"
 */
-exports.titleCase =  (str) => {
-  return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+exports.titleCase = (str) => {
+  return str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
 };
 
-exports.makePDF = async (theme,data /* Array */,QRdata)=>{
-
-  const ThemeData = await Themes.findOne({theme:theme});
+exports.makePDF = async (theme, data /* Array */, QRdata) => {
+  const ThemeData = await Themes.findOne({ theme: theme });
   const PDFpath = path.join(
-      __dirname,
-      "..",
-      "..",
-      "static",
-      "CertificateThemes",
-      theme+".pdf"
+    __dirname,
+    "..",
+    "..",
+    "static",
+    "CertificateThemes",
+    theme + ".pdf"
   );
   const exBytes = fs.readFileSync(PDFpath, null).buffer;
-  const pdfDoc = await PDFlib.PDFDocument.load(exBytes)
+  const pdfDoc = await PDFlib.PDFDocument.load(exBytes);
   pdfDoc.registerFontkit(fontkit);
   const pages = pdfDoc.getPages();
   const firstP = pages[0];
 
-  for(let i=0;i<data.length;i++){
-      const Xend = parseInt(ThemeData['Data'][i]['Position']['Xend']);
-      const Xstart = parseInt(ThemeData['Data'][i]['Position']['Xstart']);
-      const Ystart = parseInt(ThemeData['Data'][i]['Position']['Ystart']);
-      // Yend not needed
-      const MinSize = parseInt(ThemeData['Data'][i]['Position']['MinSize']);
-      const MaxSize = parseInt(ThemeData['Data'][i]['Position']['MaxSize']);
-      const ColorR = parseFloat(ThemeData['Data'][i]['Color']['R']);
-      const ColorG = parseFloat(ThemeData['Data'][i]['Color']['G']);
-      const ColorB = parseFloat(ThemeData['Data'][i]['Color']['B']);
-      const ThemeFont = ThemeData['Data'][i]['Font'];
+  for (let i = 0; i < data.length; i++) {
+    const Xend = parseInt(ThemeData["Data"][i]["Position"]["Xend"]);
+    const Xstart = parseInt(ThemeData["Data"][i]["Position"]["Xstart"]);
+    const Ystart = parseInt(ThemeData["Data"][i]["Position"]["Ystart"]);
+    // Yend not needed
+    const MinSize = parseInt(ThemeData["Data"][i]["Position"]["MinSize"]);
+    const MaxSize = parseInt(ThemeData["Data"][i]["Position"]["MaxSize"]);
+    const ColorR = parseFloat(ThemeData["Data"][i]["Color"]["R"]);
+    const ColorG = parseFloat(ThemeData["Data"][i]["Color"]["G"]);
+    const ColorB = parseFloat(ThemeData["Data"][i]["Color"]["B"]);
+    const ThemeFont = ThemeData["Data"][i]["Font"];
 
-      const Text2Write = data[i];
-      const FontPath = path.join(
-          __dirname,
-          "..",
-          "..",
-          "static",
-          "Fonts",
-          ThemeFont+".ttf"
-      );
+    const Text2Write = data[i];
+    const FontPath = path.join(
+      __dirname,
+      "..",
+      "..",
+      "static",
+      "Fonts",
+      ThemeFont + ".ttf"
+    );
 
-      const exFont = fs.readFileSync(FontPath,null).buffer;
-      const Font = await pdfDoc.embedFont(exFont);
+    const exFont = fs.readFileSync(FontPath, null).buffer;
+    const Font = await pdfDoc.embedFont(exFont);
 
-  //Calculate Font Size and center the text
-  const FontSize = getFontSizeForWidth(Text2Write, Xend-Xstart,Font,MinSize,MaxSize);
-  const width = Font.widthOfTextAtSize(Text2Write, FontSize);;
-  const StartLocation = ((Xend+Xstart) - width)/2;
+    //Calculate Font Size and center the text
+    const FontSize = getFontSizeForWidth(
+      Text2Write,
+      Xend - Xstart,
+      Font,
+      MinSize,
+      MaxSize
+    );
+    const width = Font.widthOfTextAtSize(Text2Write, FontSize);
+    const StartLocation = (Xend + Xstart - width) / 2;
 
-   firstP.drawText(Text2Write,{
-      x:StartLocation,
-      y:Ystart,
-      size:FontSize,
-      font:Font,
-      color: PDFlib.rgb(ColorR, ColorG, ColorB)
-  })
-
+    firstP.drawText(Text2Write, {
+      x: StartLocation,
+      y: Ystart,
+      size: FontSize,
+      font: Font,
+      color: PDFlib.rgb(ColorR, ColorG, ColorB),
+    });
   }
 
+  if (QRdata) {
+    const qrCodeImage = await generateQRCode(QRdata);
+    const qrCodeImageXObject = await pdfDoc.embedPng(qrCodeImage);
+    const qrCodeImageDims = qrCodeImageXObject.scale(ThemeData["QR"]["scale"]); // Scale the image size
 
-  if(QRdata){
-        const qrCodeImage = await generateQRCode(QRdata);
-        const qrCodeImageXObject = await pdfDoc.embedPng(qrCodeImage);
-        const qrCodeImageDims = qrCodeImageXObject.scale(ThemeData['QR']['scale']); // Scale the image size
-
-        firstP.drawImage(qrCodeImageXObject, {
-            x: ThemeData['QR']['x'],
-            y: ThemeData['QR']['y'],
-            width: qrCodeImageDims.width,
-            height: qrCodeImageDims.height,
+    firstP.drawImage(qrCodeImageXObject, {
+      x: ThemeData["QR"]["x"],
+      y: ThemeData["QR"]["y"],
+      width: qrCodeImageDims.width,
+      height: qrCodeImageDims.height,
     });
-
   }
 
   const uri = await pdfDoc.saveAsBase64({ dataUri: true });
-  pdfDoc.sa 
+  pdfDoc.sa;
   return uri;
+};
 
-}
-
-
-
-const getFontSizeForWidth=(string, maxWidth,font)=> {
+const getFontSizeForWidth = (string, maxWidth, font) => {
   // Set the minimum and maximum font sizes to consider
   let minFontSize = 1;
   let maxFontSize = 45;
@@ -162,15 +162,14 @@ const getFontSizeForWidth=(string, maxWidth,font)=> {
     if (width > maxWidth) {
       maxFontSize = fontSize;
     } else {
-
       minFontSize = fontSize;
     }
   }
 
   return fontSize;
-}
+};
 
-const generateQRCode = async(text) =>{
+const generateQRCode = async (text) => {
   try {
     const qrCode = await qr.toBuffer(text, {
       errorCorrectionLevel: "H", // High error correction level
@@ -184,35 +183,36 @@ const generateQRCode = async(text) =>{
     console.error("Error generating QR code:", error);
     // throw error;
   }
-}
-
+};
 
 let mailTransporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: "gmail",
   pool: true,
   auth: {
-      user: 'ieeeasw@gmail.com',
-      pass: 'ybcoifgmjzbbuyrt'
+    user: "ieeeasw@gmail.com",
+    pass: "ybcoifgmjzbbuyrt",
   },
-  from: 'ieeeasw@gmail.com',
+  from: "ieeeasw@gmail.com",
 });
 
-exports.sendMail = async (to,subject,body,attachments=[],callback) => {
-
+exports.sendMail = async (to, subject, body, attachments = [], callback) => {
   let mailDetails = {
-    from: 'ieeeasw@gmail.com',
+    from: "ieeeasw@gmail.com",
     to: to,
     subject: subject,
     text: body,
-    attachments: attachments
-};
+    attachments: attachments,
+  };
 
-  mailTransporter.sendMail(mailDetails, callback || function(err, data) {
-      if(err) {
+  mailTransporter.sendMail(
+    mailDetails,
+    callback ||
+      function (err, data) {
+        if (err) {
           console.log(`Error happened for email ${to} with error: ${err}`);
-      } else {
+        } else {
           console.log(`Email sent for ${to}`);
+        }
       }
-  });
- 
+  );
 };

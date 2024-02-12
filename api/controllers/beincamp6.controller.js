@@ -11,7 +11,12 @@ const {
   checkNationalId,
   checkImg,
 } = require("../Helpers/Validators");
-const { randomString,makePDF ,titleCase ,sendMail } = require("../Helpers/utils");
+const {
+  randomString,
+  makePDF,
+  titleCase,
+  sendMail,
+} = require("../Helpers/utils");
 const { google } = require("googleapis");
 const { Readable } = require("stream");
 const axios = require("axios");
@@ -87,7 +92,7 @@ exports.beincamp6Register = async (req, res) => {
         .json({ message: "Please enter a valid national ID" });
     }
 
-    if(paymentImage){
+    if (paymentImage) {
       let imgStatus = await checkImg(paymentImage.data);
 
       if (imgStatus)
@@ -110,32 +115,30 @@ exports.beincamp6Register = async (req, res) => {
         .json({ message: "This user is already registered" });
     }
 
-
     let Img = null;
 
-    if(paymentImage){
+    if (paymentImage) {
+      const convertedImage = await sharp(paymentImage.data)
+        .toFormat("webp")
+        .toBuffer();
 
-    const convertedImage = await sharp(paymentImage.data)
-      .toFormat("webp")
-      .toBuffer();
-
-    let { data: driveRes } = await driveAPI.files.create({
-      media: {
-        mimeType: "image/webp",
-        body: Readable.from(convertedImage),
-      },
-      requestBody: {
-        name: TicketID + ".webp",
-        parents: ["1SgsC69z1gqcr7yEQkrbOVE-jsB0KTLxO"],
-      },
-      fields: "id",
-    });
-    Img = `https://drive.google.com/file/d/${driveRes.id}/preview`;
-  }
+      let { data: driveRes } = await driveAPI.files.create({
+        media: {
+          mimeType: "image/webp",
+          body: Readable.from(convertedImage),
+        },
+        requestBody: {
+          name: TicketID + ".webp",
+          parents: ["1SgsC69z1gqcr7yEQkrbOVE-jsB0KTLxO"],
+        },
+        fields: "id",
+      });
+      Img = `https://drive.google.com/file/d/${driveRes.id}/preview`;
+    }
     const beincamp = new Beincamp6({
       ...req.body,
       TicketID: TicketID,
-      PaymentImg: Img?Img : "Cash",
+      PaymentImg: Img ? Img : "Cash",
     });
 
     await beincamp.save();
@@ -151,7 +154,7 @@ exports.beincamp6Register = async (req, res) => {
 
 exports.beincamp6Validate = async (req, res) => {
   try {
-    let { TicketID,Password } = req.body;
+    let { TicketID, Password } = req.body;
     if (!TicketID || !Password) {
       return res
         .status(400)
@@ -162,7 +165,7 @@ exports.beincamp6Validate = async (req, res) => {
 
     let mongoRes2 = await Passcodes.findOne({ Passcode: Password });
 
-    if(!mongoRes2){
+    if (!mongoRes2) {
       return res.status(400).json({ message: "Incorrect Password" });
     }
 
@@ -241,12 +244,9 @@ exports.beincamp6recordAttendance = async (req, res) => {
   }
 };
 
-
 exports.beincamp6SendTicket = async (req, res) => {
-
-  try{
-
-    let { TicketID,Password } = req.body;
+  try {
+    let { TicketID, Password } = req.body;
     if (!TicketID || !Password) {
       return res
         .status(400)
@@ -257,7 +257,7 @@ exports.beincamp6SendTicket = async (req, res) => {
 
     let mongoRes2 = await Passcodes.findOne({ Passcode: Password });
 
-    if(!mongoRes2){
+    if (!mongoRes2) {
       return res.status(400).json({ message: "Incorrect Password" });
     }
 
@@ -265,23 +265,30 @@ exports.beincamp6SendTicket = async (req, res) => {
       return res.status(400).json({ message: "This user is not registered" });
     }
 
-    let pdfData = await makePDF("BeinCampTicket06",[titleCase(mongoRes.certificateName)],mongoRes.TicketID);
-    
+    let pdfData = await makePDF(
+      "BeinCampTicket06",
+      [titleCase(mongoRes.certificateName)],
+      mongoRes.TicketID
+    );
+
     pdfData = pdfData.replace(/^data:application\/pdf;base64,/, "");
 
-    const attachments = [{
-      filename: 'BeinCampTicket06.pdf',
-      content: pdfData,
-      encoding: 'base64'
-    }]
+    const attachments = [
+      {
+        filename: "BeinCampTicket06.pdf",
+        content: pdfData,
+        encoding: "base64",
+      },
+    ];
+
+    let body = "";
+
+    if (mongoRes.PaymentImg === "Cash") {
+      body = `Dear ${titleCase(mongoRes.certificateName)},
   
-    let body= "";
-  
-    if(mongoRes.PaymentImg === "Cash"){
-  
-    body = `Dear ${titleCase(mongoRes.certificateName)},
-  
-    Thank you for registering for the ${mongoRes.track} track in Be Informed Camp 6, taking place from February 11th to 15th.
+    Thank you for registering for the ${
+      mongoRes.track
+    } track in Be Informed Camp 6, taking place from February 11th to 15th.
     
     Please note the following important information:
     
@@ -295,12 +302,13 @@ exports.beincamp6SendTicket = async (req, res) => {
     
     Best regards,
     
-    IEEE Aswan`
+    IEEE Aswan`;
+    } else {
+      body = `Dear ${titleCase(mongoRes.certificateName)},
   
-    }else{
-      body =`Dear ${titleCase(mongoRes.certificateName)},
-  
-      Thank you for registering for the ${mongoRes.track} track in Be Informed Camp 6, taking place from February 11th to 15th. Your ticket is confirmed!
+      Thank you for registering for the ${
+        mongoRes.track
+      } track in Be Informed Camp 6, taking place from February 11th to 15th. Your ticket is confirmed!
       
       Please note the following important information:
       
@@ -313,60 +321,65 @@ exports.beincamp6SendTicket = async (req, res) => {
       
       Best regards,
       
-      IEEE Aswan`
+      IEEE Aswan`;
     }
-  
+
     const subject = "Be Informed Camp 6 Ticket";
-  
-    await sendMail(mongoRes.email,subject,body,attachments,(err, data)=> {
-      if(err) {
-          // console.log(`Error happened for email ${to} with error: ${err}`);
-          return res.status(400).json({message: err});
+
+    await sendMail(mongoRes.email, subject, body, attachments, (err, data) => {
+      if (err) {
+        // console.log(`Error happened for email ${to} with error: ${err}`);
+        return res.status(400).json({ message: err });
       } else {
-
-          return res.status(200).json({message: 'Email Sent Successfully'});
+        return res.status(200).json({ message: "Email Sent Successfully" });
       }
-
     });
-
-  }catch(e){
+  } catch (e) {
     console.log(e);
   }
-
 };
 
+exports.beincamp6ConfirmRegistrationAdmin = async (req, res) => {
+  // this function will check mongo for the password if it exists and correct return true other than data return false using get request
+
+  let { Password } = req.body;
+  let mongoRes = await Passcodes.findOne({ Passcode: Password });
+  if (!mongoRes) {
+    return res.status(400).json({ message: "Incorrect Password" });
+  }
+  return res.status(200).json({ message: "Correct Password" });
+};
 
 exports.beincamp6GenerateTicket = async (req, res) => {
- 
-  const{TicketID,Password} = req.body;
+  const { TicketID, Password } = req.body;
 
   if (!TicketID || !Password) {
     return res
       .status(400)
       .json({ message: "Please enter a valid Ticket ID and Password" });
   }
-  
-  let mongoRes2 = await Passcodes.findOne({ Passcode: Password });
-  const results = await Beincamp6.findOne({TicketID:TicketID});
 
-  if(!mongoRes2){
+  let mongoRes2 = await Passcodes.findOne({ Passcode: Password });
+  const results = await Beincamp6.findOne({ TicketID: TicketID });
+
+  if (!mongoRes2) {
     return res.status(400).json({ message: "Incorrect Password" });
   }
 
-  if(!results){
-    return res.status(422).json({message: 'Enter a valid Ticket id!'}) 
+  if (!results) {
+    return res.status(422).json({ message: "Enter a valid Ticket id!" });
   }
 
+  let pdfData = await makePDF(
+    "BeinCampTicket06",
+    [titleCase(results.certificateName)],
+    results.TicketID
+  );
 
-  let pdfData = await makePDF("BeinCampTicket06",[titleCase(results.certificateName)],results.TicketID);
-  
-
-  return res.status(200).json({message: 'Ticket Generated Successfully',pdf:pdfData});
-
-
-
-}
-
+  return res
+    .status(200)
+    .json({ message: "Ticket Generated Successfully", pdf: pdfData });
+};
 
 const saveGoogleSheet = async () => {
   let Columns = [
