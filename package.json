@@ -25,6 +25,7 @@
     "@react-three/fiber": "^8.15.16",
     "@studio-freight/react-lenis": "^0.0.43",
     "axios": "^1.5.1",
+    "dotenv": "^16.4.3",
     "framer-motion": "^10.16.4",
     "gsap": "^3.12.5",
     "react": "^18.2.0",

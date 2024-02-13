@@ -1,5 +1,7 @@
 const Beincamp6 = require("../models/beincamp6.model");
 const Passcodes = require("../models/passcodes.model");
+require("dotenv").config();
+
 const fs = require("fs");
 const sharp = require("sharp");
 
@@ -21,11 +23,12 @@ const { google } = require("googleapis");
 const { Readable } = require("stream");
 const axios = require("axios");
 
+const privateKey = process.env.VITE_API_private_key.replace(/\\n/g, "\n");
 const credentials = {
   type: process.env.VITE_API_type,
   project_id: process.env.VITE_API_project_id,
   private_key_id: process.env.VITE_API_private_key_id,
-  private_key: process.env.VITE_API_private_key,
+  private_key: privateKey,
   client_email: process.env.VITE_API_client_email,
   client_id: process.env.VITE_API_client_id,
   auth_uri: process.env.VITE_API_auth_uri,
@@ -35,6 +38,7 @@ const credentials = {
   universe_domain: process.env.VITE_API_universe_domain,
 };
 
+
 const auth = new google.auth.GoogleAuth({
   credentials: credentials,
   scopes: [
@@ -43,19 +47,21 @@ const auth = new google.auth.GoogleAuth({
   ],
 });
 
+
 const sheetsAPI = google.sheets({
   version: "v4",
   auth: auth,
 });
-
 const driveAPI = google.drive({ version: "v3", auth: auth });
 
 const sheets = google.sheets("v4");
 const spreadsheetId = "1SRZBNA8-l6hCdutRGLCJjhCfJTFIM45Rsik_PLHhUUc";
 const range = "Sheet1!A1:Z";
+console.log("Sheet Updated");
 
 exports.beincamp6Register = async (req, res) => {
   try {
+    console.log("\n\n\n\n\nSheet Updated\n\n\n\n\n");
     let { name, email, phone, certificateName, id, Captcha } = req.body;
     let paymentImage = req?.files?.image;
 
@@ -197,6 +203,7 @@ exports.beincamp6Validate = async (req, res) => {
 
     return res.status(200).json({ message: "Validated Successfully" });
   } catch (err) {
+    console.log(err);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
@@ -421,7 +428,7 @@ const saveGoogleSheet = async () => {
     ],
   ];
 
-  // const results = await Beincamp6.find({}).sort({ field1: 1, field2: -1 });
+  // // const results = await Beincamp6.find({}).sort({ field1: 1, field2: -1 });
 
   let projectStage = {
     attendedDays: {
