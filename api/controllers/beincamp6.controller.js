@@ -57,7 +57,6 @@ const driveAPI = google.drive({ version: "v3", auth: auth });
 const sheets = google.sheets("v4");
 const spreadsheetId = "1SRZBNA8-l6hCdutRGLCJjhCfJTFIM45Rsik_PLHhUUc";
 const range = "Sheet1!A1:Z";
-console.log("Sheet Updated");
 
 exports.beincamp6Register = async (req, res) => {
   try {
@@ -515,4 +514,6 @@ const saveGoogleSheet = async () => {
       requests: [checkboxFormat2],
     },
   });
+console.log("Sheet Updated");
+
 };
