@@ -41,6 +41,7 @@ const {
   beincamp6GenerateTicket,
   beincamp6SendTicket,
   beincamp6ConfirmRegistrationAdmin,
+  exportBein6Certificate,
 } = require("../controllers/beincamp6.controller");
 
 const {
@@ -98,5 +99,7 @@ router.post(
   "/api/bein6-confirm-registration-admin",
   beincamp6ConfirmRegistrationAdmin
 );
+router.post('/api/export-bein6-cert', exportBein6Certificate)
+
 
 module.exports = router;

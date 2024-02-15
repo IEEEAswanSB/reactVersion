@@ -4,6 +4,7 @@ import { RecordAttendanceBein6 } from "../../services/register.service";
 
 import Info from "./Info";
 import { Box } from "@mui/material";
+import { func } from "prop-types";
 
 export function Bein6Attendance() {
   const [open, setOpen] = useState(false);
@@ -36,13 +37,14 @@ export function Bein6Attendance() {
     }
   }, [data]);
 
+
   return (
-    <Box>
-      <QrReader
-        constraints={{
-          facingMode: "environment",
-        }}
-        key="environment"
+   <div>
+    <QrReader
+            constraints={{
+            audio: false,
+            video: { facingMode: "environment" }}}
+
         onResult={(result, error) => {
           if (!!result) {
             setData(result?.text);
@@ -59,9 +61,10 @@ export function Bein6Attendance() {
         setOpen={setOpen}
         severity={severity}
       />
-    </Box>
+    </div>
   );
 }
+
 
 function Closed() {
   return (
@@ -148,4 +151,5 @@ export default function Main() {
       <Closed />
     </Box>
   );
+      
 }

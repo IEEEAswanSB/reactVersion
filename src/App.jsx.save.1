@@ -27,17 +27,26 @@ const Ending = React.lazy(() => import("./components/Ending"));
 const CiCodeStormForm = React.lazy(() => import("./pages/ciPage"));
 
 function App() {
+<<<<<<< HEAD
 
+  if (window?.location.pathname.toLowerCase() === "/bein6/validate") {
+    import("./bein6.css");
+  } else if (
+=======
   if (
+>>>>>>> 5b7546b1165aacf35ffbbfe593a3007180ac4709
     window?.location.pathname.toLowerCase() === "/bein6/register" ||
     window?.location.pathname.toLowerCase() === "/bein6/attend"
   ) {
     import("./bein6ClosedForm.css");
+<<<<<<< HEAD
 
+=======
   } else if (
     window?.location.pathname.toLowerCase() === "/bein6/certificate" ||
     window?.location.pathname.toLowerCase() === "/bein6/validate") {
     import("./bein6.css");
+>>>>>>> 5b7546b1165aacf35ffbbfe593a3007180ac4709
   } else {
     import("./App.css");
     import("./index.css");
@@ -129,5 +138,4 @@ function App() {
     </Suspense>
   );
 }
-
 export default App;
