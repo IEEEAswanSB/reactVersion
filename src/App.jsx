@@ -19,7 +19,6 @@ const VerifyCodeStorm = React.lazy(() => import("./pages/VerifyCodeStorm"));
 // const Bein6 = React.lazy(() => import("./pages/Bein6"));
 import { Bein6Attendance } from "./pages/Bein6Attendance";
 import { Box, Typography } from "@mui/material";
-import Test from "./pages/test";
 // const Bein6Attendance = React.lazy(() => import("./pages/Bein6Attendance"));
 const Bein6Validate = React.lazy(() => import("./pages/Bein6Validate"));
 const Bein6Register = React.lazy(() => import("./pages/Bein6Register"));
@@ -33,7 +32,9 @@ function App() {
     window?.location.pathname.toLowerCase() === "/bein6/attend"
   ) {
     import("./bein6ClosedForm.css");
-  } else if (window?.location.pathname.toLowerCase() === "/bein6/validate") {
+  } else if (
+    window?.location.pathname.toLowerCase() === "/bein6/certificate" ||
+    window?.location.pathname.toLowerCase() === "/bein6/validate") {
     import("./bein6.css");
   } else {
     import("./App.css");
@@ -117,7 +118,7 @@ function App() {
         <Route path="/Bein6/register" element={<Bein6Register />} />
 
         <Route path="/done" element={<Ending />} />
-        <Route path="/test" element={<Test />} />
+       
         {/* <Route path="/upload" element={<Upload/>}/> */}
         {/* <Route path="/email" element={<Email/>}/> */}
 
