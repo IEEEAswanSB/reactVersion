@@ -33,38 +33,34 @@ function Main() {
   } = useForm();
 
   useEffect(() => {
-    if (!!data) {           
-        // exportBein6Certificate({TicketID:"54187-B6-88780"})
-        // .then((r)=>{
-        //   downloadBase64File(r[0].PDF,'lol.pdf')
-        // })
-        // .then((res) => {
-        //   setLoading(false);
-        //   downloadBase64File(res[0].PDF, `${res[0].TicketID}.pdf`);
-        //   setResponse("Downloaded");
-        //   setSeverity("success");
-        //   setOpen(true);
-        //   setTimeout(() => {
-        //     setData(null);
-        //   }
-        //   , 3000);
-        // })
-        // .catch((err) => {
-        //   setResponse(err?.response?.data?.message || 'Not enough hours attended. Please contact authorities for resolution.');
-        //   setSeverity("error");
-        //   setOpen(true);
-
-        //   setLoading(false);
-
-        //   setTimeout(() => {
-        //     setData(null);
-        //   }
-        //   , 3000);
-
-        // });
-    }    
+    if (!!data) {
+      // exportBein6Certificate({TicketID:"54187-B6-88780"})
+      // .then((r)=>{
+      //   downloadBase64File(r[0].PDF,'lol.pdf')
+      // })
+      // .then((res) => {
+      //   setLoading(false);
+      //   downloadBase64File(res[0].PDF, `${res[0].TicketID}.pdf`);
+      //   setResponse("Downloaded");
+      //   setSeverity("success");
+      //   setOpen(true);
+      //   setTimeout(() => {
+      //     setData(null);
+      //   }
+      //   , 3000);
+      // })
+      // .catch((err) => {
+      //   setResponse(err?.response?.data?.message || 'Not enough hours attended. Please contact authorities for resolution.');
+      //   setSeverity("error");
+      //   setOpen(true);
+      //   setLoading(false);
+      //   setTimeout(() => {
+      //     setData(null);
+      //   }
+      //   , 3000);
+      // });
+    }
   }, [data]);
-
 
   function downloadBase64File(contentBase64, fileName) {
     const linkSource = `${contentBase64}`;
@@ -88,28 +84,31 @@ function Main() {
     });
     setLoading(true);
 
-    let ticketID = document.getElementsByName("TicketID")[0].value;
+    let id = document.getElementsByName("id")[0].value;
     // let password = document.getElementsByName("Password")[0].value;
     const buttonName = e.nativeEvent.submitter.name;
 
     if (buttonName === "Download") {
-      exportBein6Certificate({ TicketID: ticketID })
+      exportBein6Certificate({ id: id })
         .then((res) => {
           setLoading(false);
-          downloadBase64File(res[0].PDF, `${res[0].TicketID}.pdf`);
+          downloadBase64File(res[0].PDF, `${res[0].id}.pdf`);
           setResponse("Downloaded");
           setSeverity("success");
           setOpen(true);
         })
         .catch((err) => {
-          console.log(err)
-          setResponse(err?.response?.data?.message || 'Not enough hours attended. Please contact authorities for resolution.');
+          console.log(err);
+          setResponse(
+            err?.response?.data?.message ||
+              "Not enough hours attended. Please contact authorities for resolution."
+          );
           setSeverity("error");
           setOpen(true);
 
           setLoading(false);
         });
-    } 
+    }
   }
 
   return (
@@ -125,23 +124,38 @@ function Main() {
         justifyContent: "center",
         alignItems: "center",
         gap: "1rem",
+        bgcolor: "rgba(0,0,0,0.3)",
+        "& p.MuiFormHelperText-root": {
+          // position: "absolute",
+          // color: "#f44336",
+          color: "rgba(255, 255, 255, 0.7) ",
+          // textAlign: "center",
+          // fontWeight: "bolder",
+          direction: "rtl",
+          textAlign: "right",
+          // ! Add a symbol before the helper text
+          "&::before": {
+            content: '"ⓘ "',
+          },
+        },
       }}
     >
-      {/* <input type="text" name="TicketID" placeholder="Ticket ID" />
+      {/* <input type="text" name="id" placeholder="Ticket ID" />
       <input type="submit" onClick={Validate} value="Validate" />
       <p>{response}</p> */}
       <TextField
         variant="filled"
-        label={errors.TicketID ? "Invalid Ticket ID" : "Ticket ID"}
-        {...register("TicketID", {
-          required: true,
+        label={errors.id ? "Invalid ID" : "ID"}
+        {...register("id", {
+          required: "ID is required",
           pattern: {
-            value: /^[0-9]{5}-B6-[0-9]{5}$/,
-            message: "Invalid Ticket ID",
+            value: /^[0-9]{14}$/,
+            message: "Invalid egyptian ID",
           },
         })}
-        error={errors?.TicketID}
+        error={errors?.id}
         // reset value
+        helperText={"الرقم القومي المكون من 14 خانة أمام البطاقة الشخصية"}
       />
       {/* <div className="w-screen flex justify-center items-center text-center text-2xl">IEEE ASW QR READER</div>
     <div className="border-2 border-red-700 py-2 h-[400px] w-screen">
@@ -170,7 +184,6 @@ function Main() {
       >
         Download Certificate
       </LoadingButton>
-
 
       <Info
         response={response}

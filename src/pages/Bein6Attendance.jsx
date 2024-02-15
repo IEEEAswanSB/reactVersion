@@ -37,14 +37,13 @@ export function Bein6Attendance() {
     }
   }, [data]);
 
-
   return (
-   <div>
-    <QrReader
-            constraints={{
-            audio: false,
-            video: { facingMode: "environment" }}}
-
+    <div>
+      <QrReader
+        constraints={{
+          audio: false,
+          video: { facingMode: "environment" },
+        }}
         onResult={(result, error) => {
           if (!!result) {
             setData(result?.text);
@@ -64,7 +63,6 @@ export function Bein6Attendance() {
     </div>
   );
 }
-
 
 function Closed() {
   return (
@@ -151,5 +149,4 @@ export default function Main() {
       <Closed />
     </Box>
   );
-      
 }

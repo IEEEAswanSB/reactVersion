@@ -2,12 +2,12 @@ const Beincamp6 = require("../models/beincamp6.model");
 const Passcodes = require("../models/passcodes.model");
 require("dotenv").config();
 
-const Themes = require('../models/theme.model')
+const Themes = require("../models/theme.model");
 const fs = require("fs");
 const sharp = require("sharp");
 const path = require("path");
-const PDFlib = require('pdf-lib')
-const fontkit = require('fontkit');
+const PDFlib = require("pdf-lib");
+const fontkit = require("fontkit");
 const qr = require("qrcode");
 
 const {
@@ -43,7 +43,6 @@ const credentials = {
   universe_domain: process.env.VITE_API_universe_domain,
 };
 
-
 const auth = new google.auth.GoogleAuth({
   credentials: credentials,
   scopes: [
@@ -51,7 +50,6 @@ const auth = new google.auth.GoogleAuth({
     "https://www.googleapis.com/auth/drive",
   ],
 });
-
 
 const sheetsAPI = google.sheets({
   version: "v4",
@@ -519,48 +517,49 @@ const saveGoogleSheet = async () => {
       requests: [checkboxFormat2],
     },
   });
-console.log("Sheet Updated");
-
+  console.log("Sheet Updated");
 };
 
-
-
-
 exports.exportBein6Certificate = async (req, res) => {
+  const { id } = req.body;
+  const results = await Beincamp6.findOne({ id: id });
+  if (results.length == 0) {
+    res.status(422).json([
+      {
+        message: "Enter a valid id!",
+      },
+    ]);
+    return;
+  }
 
-    const {TicketID} = req.body
-    const results = await Beincamp6.findOne({ TicketID: TicketID });
-    if(results.length ==0){
-      res.status(422).json([{
-        message: 'Enter a valid id!'
-      }])
-      return;
-    }
+  const attend = [];
+  attend.push(results.Day1);
+  attend.push(results.Day2);
+  attend.push(results.Day3);
+  attend.push(results.Day4);
+  attend.push(results.Day5);
+  console.log(results);
+  const attendance = attend.filter((e) => e === true).length;
+  console.log(attendance, "attendance");
+  if (attendance < 3) {
+    res.status(400).json([
+      {
+        message:
+          "Not enough hours attended. Please contact authorities for resolution.",
+      },
+    ]);
+    return;
+  }
 
-    const attend = []
-    attend.push(results.Day1)
-    attend.push(results.Day2)
-    attend.push(results.Day3)
-    attend.push(results.Day4)
-    attend.push(results.Day5)
-    const attendance  = attend.filter(e=> e === true).length
-    console.log(attendance,'attendance')
-    if(attendance < 4){
-      res.status(400).json([{
-        message: 'Not enough hours attended. Please contact authorities for resolution.'
-      }])
-      return;
-    }
-    let pdfData = await makePDF(
-      "bein6Certificate",
-      [titleCase(results.certificateName),(results.track)],
-    );
+  let pdfData = await makePDF("bein6Certificate", [
+    titleCase(results.certificateName),
+    results.track,
+  ]);
 
-    res.status(200).json([{
-        TicketID: results['TicketID'],
-        PDF: pdfData
-        }])
-
-
-}
-
+  res.status(200).json([
+    {
+      TicketID: results["TicketID"],
+      PDF: pdfData,
+    },
+  ]);
+};
