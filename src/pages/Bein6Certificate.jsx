@@ -34,9 +34,10 @@ function Main() {
 
   useEffect(() => {
     if (!!data) {           
-        exportBein6Certificate({TicketID:"54187-B6-88780"}).then((r)=>{
-          downloadBase64File(r[0].PDF,'lol.pdf')
-        })
+        // exportBein6Certificate({TicketID:"54187-B6-88780"})
+        // .then((r)=>{
+        //   downloadBase64File(r[0].PDF,'lol.pdf')
+        // })
         // .then((res) => {
         //   setLoading(false);
         //   downloadBase64File(res[0].PDF, `${res[0].TicketID}.pdf`);
@@ -92,7 +93,7 @@ function Main() {
     const buttonName = e.nativeEvent.submitter.name;
 
     if (buttonName === "Download") {
-      exportBein6Certificate({ TicketID: '73587-B6-78859' })
+      exportBein6Certificate({ TicketID: ticketID })
         .then((res) => {
           setLoading(false);
           downloadBase64File(res[0].PDF, `${res[0].TicketID}.pdf`);
@@ -116,20 +117,20 @@ function Main() {
       component={"form"}
       onSubmit={handleSubmit(onSubmit)}
       sx={{
-        paddingTop:'100px',
+        // paddingTop:'100px',
         width: "100vw",
         height: "100vh",
-      //   display: "flex",
-      //   flexDirection: "column",
-      //   justifyContent: "center",
-      //   alignItems: "center",
-      //   gap: "1rem",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "1rem",
       }}
     >
       {/* <input type="text" name="TicketID" placeholder="Ticket ID" />
       <input type="submit" onClick={Validate} value="Validate" />
       <p>{response}</p> */}
-      {/* <TextField
+      <TextField
         variant="filled"
         label={errors.TicketID ? "Invalid Ticket ID" : "Ticket ID"}
         {...register("TicketID", {
@@ -141,8 +142,8 @@ function Main() {
         })}
         error={errors?.TicketID}
         // reset value
-      /> */}
-      <div className="w-screen flex justify-center items-center text-center text-2xl">IEEE ASW QR READER</div>
+      />
+      {/* <div className="w-screen flex justify-center items-center text-center text-2xl">IEEE ASW QR READER</div>
     <div className="border-2 border-red-700 py-2 h-[400px] w-screen">
     <QrReader
             constraints={{
@@ -158,9 +159,9 @@ function Main() {
               width: "100%"}}
               />
         </div>
-      <div className="w-screen flex justify-center text-red-500 items-center text-center text-lg mt-10">IF YOU HAVE ANY PROBLEM CONTACT US</div>
+      <div className="w-screen flex justify-center text-red-500 items-center text-center text-lg mt-10">IF YOU HAVE ANY PROBLEM CONTACT US</div> */}
 
-      {/* <LoadingButton
+      <LoadingButton
         variant="contained"
         color="success"
         loading={loading}
@@ -168,7 +169,7 @@ function Main() {
         name="Download"
       >
         Download Certificate
-      </LoadingButton> */}
+      </LoadingButton>
 
 
       <Info
