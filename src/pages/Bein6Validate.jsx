@@ -312,7 +312,7 @@ export default function Bein6Validate() {
       <Box
         sx={{
           position: "fixed",
-          bottom: "2rem",
+          bottom: "5rem",
           left: "2rem",
           display: "flex",
           gap: "1rem",
