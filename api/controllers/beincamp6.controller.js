@@ -1,11 +1,8 @@
 const Beincamp6 = require("../models/beincamp6.model");
 const Passcodes = require("../models/passcodes.model");
-<<<<<<< HEAD
 require("dotenv").config();
 
-=======
 const Themes = require('../models/theme.model')
->>>>>>> 5b7546b1165aacf35ffbbfe593a3007180ac4709
 const fs = require("fs");
 const sharp = require("sharp");
 const path = require("path");

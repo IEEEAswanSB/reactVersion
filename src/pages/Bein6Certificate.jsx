@@ -34,31 +34,33 @@ function Main() {
 
   useEffect(() => {
     if (!!data) {           
-        exportBein6Certificate({TicketID:data})
-        .then((res) => {
-          setLoading(false);
-          downloadBase64File(res[0].PDF, `${res[0].TicketID}.pdf`);
-          setResponse("Downloaded");
-          setSeverity("success");
-          setOpen(true);
-          setTimeout(() => {
-            setData(null);
-          }
-          , 3000);
+        exportBein6Certificate({TicketID:"54187-B6-88780"}).then((r)=>{
+          downloadBase64File(r[0].PDF,'lol.pdf')
         })
-        .catch((err) => {
-          setResponse(err?.response?.data?.message || 'Not enough hours attended. Please contact authorities for resolution.');
-          setSeverity("error");
-          setOpen(true);
+        // .then((res) => {
+        //   setLoading(false);
+        //   downloadBase64File(res[0].PDF, `${res[0].TicketID}.pdf`);
+        //   setResponse("Downloaded");
+        //   setSeverity("success");
+        //   setOpen(true);
+        //   setTimeout(() => {
+        //     setData(null);
+        //   }
+        //   , 3000);
+        // })
+        // .catch((err) => {
+        //   setResponse(err?.response?.data?.message || 'Not enough hours attended. Please contact authorities for resolution.');
+        //   setSeverity("error");
+        //   setOpen(true);
 
-          setLoading(false);
+        //   setLoading(false);
 
-          setTimeout(() => {
-            setData(null);
-          }
-          , 3000);
+        //   setTimeout(() => {
+        //     setData(null);
+        //   }
+        //   , 3000);
 
-        });
+        // });
     }    
   }, [data]);
 
