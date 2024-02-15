@@ -1,7 +1,12 @@
 const Beincamp6 = require("../models/beincamp6.model");
 const Passcodes = require("../models/passcodes.model");
+const Themes = require('../models/theme.model')
 const fs = require("fs");
 const sharp = require("sharp");
+const path = require("path");
+const PDFlib = require('pdf-lib')
+const fontkit = require('fontkit');
+const qr = require("qrcode");
 
 const {
   checkName,
@@ -486,3 +491,45 @@ const saveGoogleSheet = async () => {
     },
   });
 };
+
+
+
+
+exports.exportBein6Certificate = async (req, res) => {
+
+    const {TicketID} = req.body
+    const results = await Beincamp6.findOne({ TicketID: TicketID });
+    if(results.length ==0){
+      res.status(422).json([{
+        message: 'Enter a valid id!'
+      }])
+      return;
+    }
+
+    const attend = []
+    attend.push(results.Day1)
+    attend.push(results.Day2)
+    attend.push(results.Day3)
+    attend.push(results.Day4)
+    attend.push(results.Day5)
+    const attendance  = attend.filter(e=> e === true).length
+    console.log(attendance,'attendance')
+    if(attendance < 4){
+      res.status(400).json([{
+        message: 'Not enough hours attended. Please contact authorities for resolution.'
+      }])
+      return;
+    }
+    let pdfData = await makePDF(
+      "bein6Certificate",
+      [titleCase(results.certificateName),(results.track)],
+    );
+
+    res.status(200).json([{
+        TicketID: results['TicketID'],
+        PDF: pdfData
+        }])
+
+
+}
+

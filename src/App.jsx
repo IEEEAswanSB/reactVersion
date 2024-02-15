@@ -8,6 +8,7 @@ import { Route, Link, Routes } from "react-router-dom";
 import { useNavigate } from "react-router";
 import Upload from "./components/upload";
 import Email from "./components/email";
+import './index.css'
 // import Bein_event from "./components/bein-event";
 import React, { Suspense } from "react";
 import Home from "./pages/Home";
@@ -18,9 +19,11 @@ const VerifyCodeStorm = React.lazy(() => import("./pages/VerifyCodeStorm"));
 // const Bein6 = React.lazy(() => import("./pages/Bein6"));
 import { Bein6Attendance } from "./pages/Bein6Attendance";
 import { Box, Typography } from "@mui/material";
+import Test from "./pages/test";
 // const Bein6Attendance = React.lazy(() => import("./pages/Bein6Attendance"));
 const Bein6Validate = React.lazy(() => import("./pages/Bein6Validate"));
 const Bein6Register = React.lazy(() => import("./pages/Bein6Register"));
+const Bein6Certificate = React.lazy(() => import("./pages/Bein6Certificate"));
 const Ending = React.lazy(() => import("./components/Ending"));
 const CiCodeStormForm = React.lazy(() => import("./pages/ciPage"));
 
@@ -28,6 +31,7 @@ function App() {
   if (
     window?.location.pathname.toLowerCase() === "/bein6/register" ||
     window?.location.pathname.toLowerCase() === "/bein6/attend" ||
+    window?.location.pathname.toLowerCase() === "/bein6/certificate" ||
     window?.location.pathname.toLowerCase() === "/bein6/validate"
   ) {
     // import("./bein6ClosedForm.css");
@@ -114,10 +118,11 @@ function App() {
         <Route path="/Bein6/register" element={<Bein6Register />} />
 
         <Route path="/done" element={<Ending />} />
+        <Route path="/test" element={<Test />} />
         {/* <Route path="/upload" element={<Upload/>}/> */}
         {/* <Route path="/email" element={<Email/>}/> */}
 
-        <Route path="/certificate" element={<CiCodeStormForm />} />
+        <Route path="/Bein6/certificate" element={<Bein6Certificate />} />
       </Routes>
     </Suspense>
   );

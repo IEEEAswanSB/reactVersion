@@ -39,7 +39,8 @@ const {
     beincamp6Validate,
     beincamp6recordAttendance,
     beincamp6GenerateTicket,
-    beincamp6SendTicket
+    beincamp6SendTicket,
+    exportBein6Certificate
 } = require('../controllers/beincamp6.controller')
 
 const {
@@ -92,6 +93,8 @@ router.post("/api/bein6-record-attendance", beincamp6recordAttendance);
 router.post('/api/bein6-generate-ticket', beincamp6GenerateTicket)
 
 router.post('/api/bein6-send-ticket', beincamp6SendTicket)
+
+router.post('/api/export-bein6-cert', exportBein6Certificate)
 
 
 module.exports = router

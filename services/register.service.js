@@ -75,3 +75,8 @@ export const generateBein6Ticket = payload => {
 export const sendBein6Ticket = payload => {
     return api.post('bein6-send-ticket', payload).then(res => res.data)
 }
+
+
+export const exportBein6Certificate = payload => {
+    return api.post('export-bein6-cert', payload).then(res => res.data)
+}
