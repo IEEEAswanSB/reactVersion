@@ -1,10 +1,10 @@
-<<<<<<< HEAD
 import { useState, useEffect } from "react";
 import { QrReader } from "react-qr-reader";
 import { RecordAttendanceBein6 } from "../../services/register.service";
 
 import Info from "./Info";
 import { Box } from "@mui/material";
+import { func } from "prop-types";
 
 export function Bein6Attendance() {
   const [open, setOpen] = useState(false);
@@ -37,33 +37,6 @@ export function Bein6Attendance() {
     }
   }, [data]);
 
-  return (
-    <Box>
-      <QrReader
-        constraints={{
-          facingMode: "environment",
-        }}
-        key="environment"
-=======
-import { useState,useEffect } from 'react'
-import { QrReader } from 'react-qr-reader';
-import {RecordAttendanceBein6 } from '../../services/register.service';
-
-export function Bein6Attendance() {
-    const [data, setData] = useState(null);
-    const [response, setResponse] = useState('');
-
-    useEffect(() => {
-        if (!!data) {           
-            RecordAttendanceBein6({TicketID:data})
-            .then((res) => {
-                setResponse(res.message);
-            })
-            .catch((err) => {
-                setResponse(err.response.data.message);
-            });
-        }    
-      }, [data]);
 
   return (
    <div>
@@ -72,13 +45,11 @@ export function Bein6Attendance() {
             audio: false,
             video: { facingMode: "environment" }}}
 
->>>>>>> 5b7546b1165aacf35ffbbfe593a3007180ac4709
         onResult={(result, error) => {
           if (!!result) {
             setData(result?.text);
           }
         }}
-<<<<<<< HEAD
         style={{
           width: "100%",
         }}
@@ -90,9 +61,10 @@ export function Bein6Attendance() {
         setOpen={setOpen}
         severity={severity}
       />
-    </Box>
+    </div>
   );
 }
+
 
 function Closed() {
   return (
@@ -179,12 +151,5 @@ export default function Main() {
       <Closed />
     </Box>
   );
-=======
-        style={{ width: '100%' }}
-      />
-      <p>{response}</p>
-      {/* <h1>ds</h1> */}
-   </div>
-  )
->>>>>>> 5b7546b1165aacf35ffbbfe593a3007180ac4709
+      
 }
