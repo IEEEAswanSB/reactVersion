@@ -521,45 +521,55 @@ const saveGoogleSheet = async () => {
 };
 
 exports.exportBein6Certificate = async (req, res) => {
-  const { id } = req.body;
-  const results = await Beincamp6.findOne({ id: id });
-  if (results.length == 0) {
-    res.status(422).json([
+  try {
+    const { id } = req.body;
+    const results = await Beincamp6.findOne({ id: id });
+    console.log(results, "results");
+    if (results.length == 0) {
+      res.status(422).json([
+        {
+          message: "Enter a valid id!",
+        },
+      ]);
+      return;
+    }
+
+    const attend = [];
+    attend.push(results.Day1);
+    attend.push(results.Day2);
+    attend.push(results.Day3);
+    attend.push(results.Day4);
+    attend.push(results.Day5);
+    console.log(results);
+    const attendance = attend.filter((e) => e === true).length;
+    console.log(attendance, "attendance");
+    if (attendance < 3) {
+      res.status(400).json([
+        {
+          message:
+            "Not enough hours attended. Please contact authorities for resolution.",
+        },
+      ]);
+      return;
+    }
+
+    let pdfData = await makePDF("bein6Certificate", [
+      titleCase(results.certificateName),
+      results.track,
+    ]);
+
+    res.status(200).json([
       {
-        message: "Enter a valid id!",
+        Name: results["certificateName"],
+        PDF: pdfData,
       },
     ]);
-    return;
-  }
-
-  const attend = [];
-  attend.push(results.Day1);
-  attend.push(results.Day2);
-  attend.push(results.Day3);
-  attend.push(results.Day4);
-  attend.push(results.Day5);
-  console.log(results);
-  const attendance = attend.filter((e) => e === true).length;
-  console.log(attendance, "attendance");
-  if (attendance < 3) {
-    res.status(400).json([
+  } catch (e) {
+    console.log(e);
+    res.status(500).json([
       {
-        message:
-          "Not enough hours attended. Please contact authorities for resolution.",
+        message: "Internal Server Error",
       },
     ]);
-    return;
   }
-
-  let pdfData = await makePDF("bein6Certificate", [
-    titleCase(results.certificateName),
-    results.track,
-  ]);
-
-  res.status(200).json([
-    {
-      TicketID: results["TicketID"],
-      PDF: pdfData,
-    },
-  ]);
 };

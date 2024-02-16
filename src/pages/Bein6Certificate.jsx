@@ -91,18 +91,17 @@ function Main() {
     if (buttonName === "Download") {
       exportBein6Certificate({ id: id })
         .then((res) => {
+          console.table(res);
           setLoading(false);
-          downloadBase64File(res[0].PDF, `${res[0].id}.pdf`);
+          downloadBase64File(res[0].PDF, `${res[0].Name}.pdf`);
           setResponse("Downloaded");
           setSeverity("success");
           setOpen(true);
         })
         .catch((err) => {
           console.log(err);
-          setResponse(
-            err?.response?.data?.message ||
-              "Not enough hours attended. Please contact authorities for resolution."
-          );
+
+          setResponse(err?.response?.data?.message || "Network Error");
           setSeverity("error");
           setOpen(true);
 
@@ -153,7 +152,7 @@ function Main() {
             message: "Invalid egyptian ID",
           },
         })}
-        error={errors?.id}
+        error={!!errors?.id}
         // reset value
         helperText={"الرقم القومي المكون من 14 خانة أمام البطاقة الشخصية"}
       />
