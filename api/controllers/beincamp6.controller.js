@@ -544,12 +544,12 @@ exports.exportBein6Certificate = async (req, res) => {
     const attendance = attend.filter((e) => e === true).length;
     console.log(attendance, "attendance");
     if (attendance < 3) {
-      res.status(400).json([
+      res.status(400).json(
         {
           message:
             "Not enough hours attended. Please contact authorities for resolution.",
         },
-      ]);
+      );
       return;
     }
 
