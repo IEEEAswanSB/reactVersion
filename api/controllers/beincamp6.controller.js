@@ -360,6 +360,294 @@ exports.beincamp6SendTicket = async (req, res) => {
   }
 };
 
+exports.beincamp6SendCertificateCorrection = async (req, res) => {
+  try {
+    // let mongoRes = await Beincamp6.findOne({ TicketID: TicketID });
+    // get all emails + this list :
+    /**
+     *
+     */
+
+    success = 0;
+    fail = 0;
+
+    // const mongoRes = await Beincamp6.find({});
+    const mongoRes = [
+      {
+        email: "nahedelmalek@gmail.com",
+        certificateName: "ناهد احمد حسين محمد",
+        track: "Classic control",
+      },
+
+      {
+        email: "engmostafa385@gmail.com",
+        certificateName: "Mostafa Ramadan Ahmed Ali",
+        track: "Data analysis",
+      },
+      {
+        email: "safaamahmoudfouad@gmail.com",
+        certificateName: "Safaa Mahmoud Fouad",
+        track: "Bussniss development",
+      },
+      {
+        email: "amralomda598@gmail.com",
+        certificateName: "Amr Abdelnaser Ibrahim",
+        track: "Graphic design",
+      },
+      {
+        email: "zezo.hamedo2018@gmail.com",
+        certificateName: "Ziad Abdelhamed",
+        track: "Bussniss development",
+      },
+      {
+        email: "na811718@gmail.com",
+        certificateName: "Nada ahmed",
+        track: "3D max",
+      },
+      {
+        email: "munzerath@gmail.com",
+        certificateName: "Munzer Ahmed Tharwat",
+        track: "Bussniss development",
+      },
+      {
+        email: "gadamohy2003@gmail.com",
+        certificateName: "ghada Mohy eldein",
+        track: "Bussniss development",
+      },
+      {
+        email: "mohamedanawr583@gmail.com",
+        certificateName: "Basma mohammed",
+        track: "Bussniss development",
+      },
+      {
+        email: "oamin0077@gmail.com",
+        certificateName: "Omar Mohamed amin",
+        track: "Data analysis",
+      },
+      {
+        email: "Momenzahr2003@gmail.com",
+        certificateName: "Moamen Zahr Eldeen",
+        track: "Data analysis",
+      },
+      {
+        email: "salma2102005@gmail.com",
+        certificateName: "Salma mostafa",
+        track: "Bussniss development",
+      },
+      {
+        email: "zekoomran752@gmail.com",
+        certificateName: "زكريا عمران جاد",
+        track: "Graphic design",
+      },
+      {
+        email: "ala97mahmoud@gmail.com",
+        certificateName: "Alaa Mahmoud hassan",
+        track: "Bussniss development",
+      },
+      {
+        email: "fxtim1@outlook.com",
+        certificateName: "Fatima Omar Abdulaal",
+        track: "Data analysis",
+      },
+      {
+        email: "hadeeeramadan@gmail.com",
+        certificateName: "Hadeer Ramadan Hussien",
+        track: "Data analysis",
+      },
+      {
+        email: "menaagamalzaky@gmail.com",
+        certificateName: "Menna gamal",
+        track: "Bussniss development",
+      },
+      {
+        email: "mennaqurashi@gmail.com",
+        certificateName: "Mennatullah Qurashi Hassan Muhamed",
+        track: "Data analysis",
+      },
+      {
+        email: "doaaali9920@gmail.com",
+        certificateName: "Doaa Ali Ibrahim",
+        track: "Bussniss development",
+      },
+      {
+        email: "dohaezz232@gmail.com",
+        certificateName: "ضحى عز الدين عبد المعطي",
+        track: "Data analysis",
+      },
+      {
+        email: "mohmedfathii04@gmail.com",
+        certificateName: "محمد أحمد فتحي",
+        track: "Graphic design",
+      },
+      {
+        email: "aliaaclever12345@gmail.com",
+        certificateName: "Aliaa Tarek Ali",
+        track: "Data analysis",
+      },
+      {
+        email: "amosaad612@gmail.com",
+        certificateName: "Abdelrahman Mosaad ahmed",
+        track: "Graphic design",
+      },
+      {
+        email: "rawansaid036@gmail.com",
+        certificateName: "روان سعيد",
+        track: "Bussniss development",
+      },
+      {
+        email: "aminamohmd0123@gmail.com",
+        certificateName: "Amina mohammed",
+        track: "Data analysis",
+      },
+      {
+        email: "ahmeedgamal291@gmail.com",
+        certificateName: "ahmed gamal mhalel",
+        track: "Data analysis",
+      },
+      {
+        email: "mtolba2004@gmail.com",
+        certificateName: "Abdelrahman Ahmed Saad eldin",
+        track: "Data analysis",
+      },
+      {
+        email: "randasabrii96@gmail.com",
+        certificateName: "Randa Sabri",
+        track: "Data analysis",
+      },
+      {
+        email: "randadanial218@gmail.com",
+        certificateName: "Randa Danial Mourice",
+        track: "Data analysis",
+      },
+      {
+        email: "Youssefsalah1162003@gmail.com",
+        certificateName: "Youssef Salah mohamed Youssef",
+        track: "Classic control",
+      },
+      {
+        email: "ab01158128811@gmail.com",
+        certificateName: "Abdallah elshamly",
+        track: "Classic control",
+      },
+    ];
+
+    // find all that email = "mtolba200@gmail.com"
+    // let mongoRes = await Beincamp6.find({ email: "mtolba2004@gmail.com" });
+    if (!mongoRes) {
+      return res.status(400).json({ message: "This user is not registered" });
+    }
+
+    for (let i = 0; i < mongoRes.length; i++) {
+      let pdfData = await makePDF("bein6Certificate", [
+        titleCase(mongoRes[i].certificateName),
+        mongoRes[i].track,
+        //       Graphic design	Eng : M.Zaki
+        // Data analysis	Eng : Hala Mostafa
+        // Classic control	Eng : Ahmed eid
+        // business development	Dr : abdullah sedeeq
+        // 3D max	Eng : Eman gaber
+
+        mongoRes[i].track === "2D - Graphic design"
+          ? "Eng : M.Zaki"
+          : mongoRes[i].track === "Data analysis"
+          ? "Eng : Hala Mostafa"
+          : mongoRes[i].track === "Classic Control"
+          ? "Eng : Ahmed eid"
+          : mongoRes[i].track === "Business development"
+          ? "Dr : abdullah sedeeq"
+          : mongoRes[i].track === "3D max"
+          ? "Eng : Eman gaber"
+          : "?????",
+      ]);
+
+      pdfData = pdfData.replace(/^data:application\/pdf;base64,/, "");
+
+      const attachments = [
+        {
+          filename: "bein6Certificate.pdf",
+          content: pdfData,
+          encoding: "base64",
+        },
+      ];
+
+      let body = "";
+
+      body = `Dear ${titleCase(mongoRes[i].certificateName)},
+
+      We at IEEE Aswan SB are writing to sincerely apologize for an error on some of the attendance certificates issued for the ${
+        mongoRes[i].track
+      } workshop.
+      
+      The certificates unfortunately contain incorrect information regarding the instructor's name for the track. We understand this mistake may cause confusion and inconvenience, and we deeply regret it.
+      
+      **The correct instructor name for the ${mongoRes[i].track} track is ${
+        mongoRes[i].correctInstructorName
+      }.**
+      
+      We are pleased to provide you with a revised certificate attached to this email that reflects the accurate information. 
+      
+      We value your participation in our workshops and strive to provide the best possible experience. We apologize again for this error and appreciate your understanding.
+      
+      Sincerely,
+      
+      The IEEE Aswan SB Team`;
+
+      const subject = `Important Correction - Attendance Certificate for ${mongoRes[i].track} Workshop`;
+
+      await sendMail(
+        mongoRes[i].email,
+        subject,
+        body,
+        attachments,
+        (err, data) => {
+          if (err) {
+            console.log(`Error happened for email ${to} with error: ${err}`);
+            fail++;
+            // console.log(`Error happened for email ${to} with error: ${err}`);
+            // return res.status(400).json({ message: err });
+          } else {
+            success++;
+            console.log({
+              message:
+                "Email Sent Successfully to " +
+                mongoRes[i].email +
+                " remaining " +
+                (mongoRes.length - i) +
+                " emails " +
+                success +
+                " succeeded, " +
+                fail +
+                " failed",
+            });
+            // return res.status(200).json({
+            //   message:
+            //     "Email Sent Successfully to " +
+            //     mongoRes[i].email +
+            //     "\t remaining " +
+            //     (mongoRes[i].length - i) +
+            //     " emails",
+            // });
+          }
+        }
+      );
+    }
+    return res.status(200).json({
+      message: `Email sent successful: 
+    success: ${success}
+    fail: ${fail}
+    `,
+    });
+  } catch (e) {
+    return res.status(500).json({
+      message: `Email sent successful: 
+    success: ${success}
+    fail: ${fail}
+    `,
+    });
+    console.log(e);
+  }
+};
+
 exports.beincamp6ConfirmRegistrationAdmin = async (req, res) => {
   // this function will check mongo for the password if it exists and correct return true other than data return false using get request
 
@@ -525,12 +813,17 @@ exports.exportBein6Certificate = async (req, res) => {
     const { id } = req.body;
     const results = await Beincamp6.findOne({ id: id });
     console.log(results, "results");
-    if (results.length == 0) {
-      res.status(422).json([
-        {
-          message: "Enter a valid id!",
-        },
-      ]);
+    if (
+      results?.length == 0 ||
+      results == null ||
+      results == undefined ||
+      results == "" ||
+      results == {} ||
+      results == []
+    ) {
+      res.status(422).json({
+        message: "Enter a valid id!",
+      });
       return;
     }
 
@@ -544,18 +837,34 @@ exports.exportBein6Certificate = async (req, res) => {
     const attendance = attend.filter((e) => e === true).length;
     console.log(attendance, "attendance");
     if (attendance < 3) {
-      res.status(400).json(
-        {
-          message:
-            "Not enough hours attended. Please contact authorities for resolution.",
-        },
-      );
+      res.status(400).json({
+        message:
+          "Not enough hours attended. Please contact authorities for resolution.",
+      });
       return;
     }
 
     let pdfData = await makePDF("bein6Certificate", [
       titleCase(results.certificateName),
       results.track,
+      // if it was from the left side set the right side as in the array
+      //       Graphic design	Eng : M.Zaki
+      // Data analysis	Eng : Hala Mostafa
+      // Classic control	Eng : Ahmed eid
+      // business development	Dr : abdullah sedeeq
+      // 3D max	Eng : Eman gaber
+
+      results.track === "2D - Graphic design"
+        ? "Eng : M.Zaki"
+        : results.track === "Data analysis"
+        ? "Eng : Hala Mostafa"
+        : results.track === "Classic Control"
+        ? "Eng : Ahmed eid"
+        : results.track === "Business development"
+        ? "Dr : abdullah sedeeq"
+        : results.track === "3D max"
+        ? "Eng : Eman gaber"
+        : "?????",
     ]);
 
     res.status(200).json([
@@ -566,10 +875,8 @@ exports.exportBein6Certificate = async (req, res) => {
     ]);
   } catch (e) {
     console.log(e);
-    res.status(500).json([
-      {
-        message: "Internal Server Error",
-      },
-    ]);
+    res.status(500).json({
+      message: "Internal Server Error",
+    });
   }
 };
