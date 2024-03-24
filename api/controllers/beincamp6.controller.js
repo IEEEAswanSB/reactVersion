@@ -580,9 +580,7 @@ exports.beincamp6SendCertificateCorrection = async (req, res) => {
       
       The certificates unfortunately contain incorrect information regarding the instructor's name for the track. We understand this mistake may cause confusion and inconvenience, and we deeply regret it.
       
-      **The correct instructor name for the ${mongoRes[i].track} track is ${
-        mongoRes[i].correctInstructorName
-      }.**
+      
       
       We are pleased to provide you with a revised certificate attached to this email that reflects the accurate information. 
       
