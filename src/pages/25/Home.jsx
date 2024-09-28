@@ -4,7 +4,6 @@ import Amr from "../../assets/img/excomm/Amr.webp";
 import noha from "../../assets/img/excomm/noha.webp";
 import Abdelrhman from "../../assets/img/excomm/Abdelrhman.webp";
 import abdallah from "../../assets/img/excomm/abdallah.webp";
-import abdelrhman from "../../assets/img/excomm/abdelrhman.webp";
 import omar from "../../assets/img/excomm/omar.webp";
 import olaa from "../../assets/img/excomm/olaa.webp";
 
@@ -313,7 +312,7 @@ function Home() {
                       height="120"
                       width="120"
                       alt="..."
-                      src={abdelrhman}
+                      src={Abdelrhman}
                       className="shadow-lg rounded-full mx-auto max-w-120-px"
                       loading="lazy"
                       style={{
