@@ -3,8 +3,10 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { sendcodestormuser } from "../../../services/register.service";
 
 const CodeStormForm = () => {
+  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -12,7 +14,7 @@ const CodeStormForm = () => {
     faculty: "",
     academicYear: "",
     handle: "",
-    favouritePlatform: "",
+    favoritePlatform: "",
     nationalId: "",
   });
 
@@ -139,6 +141,15 @@ const CodeStormForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
+      sendcodestormuser(formData)
+        .then((res) => {
+          console.log(res);
+          setError("Submitted Successfully");
+        })
+        .catch((err) => {
+          console.log(err);
+          setError(err.response.data[0].message);
+        });
       console.log("Form submitted successfully", formData);
     }
   };
@@ -149,34 +160,45 @@ const CodeStormForm = () => {
         <form onSubmit={handleSubmit} className="code-storm-form">
           <h2 className="animated-header">IEEE CodeStorm Competition</h2>
           {[
-            "name",
-            "email",
-            "university",
-            "faculty",
-            "handle",
-            "favouritePlatform",
-            "nationalId",
+            { name: "name", type: "text", label: "name" },
+            { name: "email", type: "email", label: "email" },
+            { name: "university", type: "text", label: "university" },
+            { name: "faculty", type: "text", label: "faculty" },
+            { name: "handle", type: "text", label: "handle" },
+            {
+              name: "favoritePlatform",
+              type: "text",
+              label: "favorite problem solving platform",
+            },
+            {
+              name: "nationalId",
+              type: "number",
+              label: "nationalId",
+            },
+            { name: "phone", type: "number", label: "phone" },
           ].map((field) => (
             <div key={field} className="form-group">
               <label>
-                {field.charAt(0).toUpperCase() +
-                  field
+                {field.label.charAt(0).toUpperCase() +
+                  field.label
                     .slice(1)
                     .replace(/([A-Z])/g, " $1")
                     .trim()}
               </label>
               <input
-                type="text"
-                name={field}
-                value={formData[field]}
+                type={field.type}
+                name={field.name}
+                value={formData[field.name]}
                 onChange={handleChange}
-                className={`animated-input ${errors[field] ? "error" : ""}`}
-                placeholder={`Enter your ${field
+                className={`animated-input ${
+                  errors[field.name] ? "error" : ""
+                }`}
+                placeholder={`Enter your ${field.name
                   .replace(/([A-Z])/g, " $1")
                   .toLowerCase()}`}
               />
-              {errors[field] && (
-                <span className="error-message">{errors[field]}</span>
+              {errors[field.name] && (
+                <span className="error-message">{errors[field.name]}</span>
               )}
             </div>
           ))}
@@ -200,7 +222,16 @@ const CodeStormForm = () => {
               <span className="error-message">{errors.academicYear}</span>
             )}
           </div>
-
+          <p
+            style={{
+              color: error == "Submitted Successfully" ? "green" : "red",
+              textAlign: "center",
+              fontSize: "1.5rem",
+              marginTop: "1rem",
+            }}
+          >
+            {error || " "}
+          </p>
           <button type="submit" className="animated-button">
             Submit
           </button>
