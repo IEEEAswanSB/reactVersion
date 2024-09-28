@@ -54,6 +54,10 @@ export const sendBein6Ticket = (payload) => {
   return api.post("bein6-send-ticket", payload).then((res) => res.data);
 };
 
+export const sendcodestormuser = (payload) => {
+  return api.post("send-users", payload).then((res) => res.data);
+};
+
 export const confirmBein6RegistrationAdmin = (payload) => {
   return api
     .post("bein6-confirm-registration-admin", payload)
