@@ -15,7 +15,7 @@ const CodeStormForm = () => {
     academicYear: "",
     handle: "",
     favoritePlatform: "",
-    nationalId: "",
+    id: "",
   });
 
   const academicYearOptions = ["Prep", "1", "2", "3", "4", "5"];
@@ -133,7 +133,7 @@ const CodeStormForm = () => {
     if (!formData.academicYear)
       tempErrors.academicYear = "Academic Year is required";
     if (!formData.handle) tempErrors.handle = "Handle is required";
-    if (!formData.nationalId) tempErrors.nationalId = "National ID is required";
+    if (!formData.id) tempErrors.id = "National ID is required";
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
@@ -171,9 +171,9 @@ const CodeStormForm = () => {
               label: "favorite problem solving platform",
             },
             {
-              name: "nationalId",
+              name: "id",
               type: "number",
-              label: "nationalId",
+              label: "National Id",
             },
             { name: "phone", type: "number", label: "phone" },
           ].map((field) => (

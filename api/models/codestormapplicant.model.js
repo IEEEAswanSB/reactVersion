@@ -33,7 +33,7 @@ const CodeSormapplicantSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    nationalId: {
+    id: {
       type: String,
       required: true,
       unique: true,
@@ -45,6 +45,7 @@ const CodeSormapplicantSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
 
 const CodeSormapplicant = mongoose.model(
   "CodeStormApplicant",

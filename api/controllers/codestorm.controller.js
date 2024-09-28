@@ -28,7 +28,7 @@ exports.sendcodestormuser = async (req, res) => {
       return;
     }
 
-    if (checkNationalId(rec["nationalId"])) {
+    if (checkNationalId(rec["id"])) {
       res.status(422).json([
         {
           message: "Enter a valid national id!",
