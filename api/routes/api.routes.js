@@ -42,7 +42,7 @@ const {
   beincamp6SendTicket,
   beincamp6ConfirmRegistrationAdmin,
   exportBein6Certificate,
-  beincamp6SendCertificateCorrection,
+  beincamp6SendCertificateCorrection
 } = require("../controllers/beincamp6.controller");
 
 const {
@@ -77,8 +77,7 @@ router.get("/api/export-beincamp", exportBeincamp);
 
 router.post("/api/export-beinticket", exportBeinTicket);
 
-router.post("/api/send-users", sendcodestormuser);
-
+// router.post('/api/send-users',sendcodestormuser)
 router.get("/api/export-codestorm", exportCodeStorm);
 
 router.post("/api/export-codestormticket", exportCodeStormTicket);
@@ -101,11 +100,8 @@ router.post(
   "/api/bein6-confirm-registration-admin",
   beincamp6ConfirmRegistrationAdmin
 );
-router.post("/api/export-bein6-cert", exportBein6Certificate);
+router.post('/api/export-bein6-cert', exportBein6Certificate)
 
-router.get(
-  "/api/export-bein6-cert-correction",
-  beincamp6SendCertificateCorrection
-);
+router.get("/api/export-bein6-cert-correction", beincamp6SendCertificateCorrection);
 
 module.exports = router;
