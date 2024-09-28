@@ -215,13 +215,13 @@ function Home() {
                     Code Storm 2.1
                   </h3>
                   <p className="text-lg font-normal leading-relaxed mt-4 mb-4 text-blueGray-300">
-                    Join the CodeStorm competition in Aswan for a competitive
-                    problem solving experience! Elevate your skills with 5 hours
-                    of top problem sheets, guided by experts. Delve into the
-                    community of competitivity, attend for an amazing prizes,
-                    and gain insights from thought-provoking talks. Ignite your
-                    solving skills, uncover your mind, and launch your coding
-                    journey at CodeStorm! 🌪️
+                    CodeStorm is and individual contest that fosters to simulate
+                    one of the biggest competitive programming hackathons
+                    IEEEXtreme. In the journey of CodeStorm you can pass from
+                    CodeStorm scoreboard to IEEEXtreme scoreboard.There you will
+                    know what IEEEXtreme , test a demo and and win the IEEE
+                    membership, your ticket to participate in IEEEXtreme.
+                    Codestorm! 🌪️
                   </p>
                   <Link
                     to="/codestorm"
