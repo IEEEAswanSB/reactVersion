@@ -1,0 +1,58 @@
+.bg-img {
+    background-image: url("../../assets/img/team.webp");
+}
+html{
+  overflow-x: hidden;
+}
+.main-logo{
+    animation: floating 4s ease infinite;
+  }
+  @keyframes floating{
+      0%,100%{
+          transform: scale(1.08);
+      }
+      50%{
+          transform: translateY(10px);
+      }
+  }
+
+  .parent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+  }
+  
+  .partlogo{
+    max-width: 160px;
+    max-height: 90px;
+    overflow: hidden;
+    vertical-align: middle;
+  }
+  
+  
+  .partlogo:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+    transition-duration: .6s;
+  }
+  .footimg{
+    width: 1.4rem;
+    display: inline;
+  }
+
+  .react{
+    animation: rotation 5s infinite linear;
+  }
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+  
+  .fa-home{
+    margin-left: -1px;
+  }

@@ -1,4 +1,4 @@
-import '../App.css'
+import '../styles/24/App24.css'
 
 function PartnerLogo({partnerImg}){
     return(
