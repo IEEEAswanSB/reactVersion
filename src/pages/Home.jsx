@@ -1,8 +1,10 @@
 import logo from "../assets/img/logo.png";
 import codestormLogo from "../assets/img/codeStormLogo2.png";
-import Amr from "../assets/img/excomm/Amr.webp";
-import noha from "../assets/img/excomm/noha.webp";
-import Abdelrhman from "../assets/img/excomm/Abdelrhman.webp";
+
+import abdallah from "../assets/img/excomm/abdallah.webp";
+import abdelrhman from "../assets/img/excomm/abdelrhman.webp";
+import omar from "../assets/img/excomm/omar.webp";
+import olaa from "../assets/img/excomm/olaa.webp";
 
 import NTRA from "../assets/img/NTRA.webp";
 import vodafone from "../assets/img/vodafone.webp";
@@ -195,8 +197,8 @@ function Home() {
                   <div className="p-6 relative flex flex-col min-w-0 break-words w-full mb-6 rounded-lg">
                     <img
                       alt="..."
-                      src={'/bein6logo.png'}
-                      style={{filter:'brightness'}}
+                      src={"/bein6logo.png"}
+                      style={{ filter: "brightness" }}
                       className="w-full align-middle rounded-t-lg main-logo"
                       loading="lazy"
                     />
@@ -208,13 +210,16 @@ function Home() {
                     <i className="fas fa-info text-xl"></i>
                   </div>
                   <h3 className="text-3xl mb-2 font-semibold leading-normal">
-                  Be Informed Camp 6
+                    Be Informed Camp 6
                   </h3>
                   <p className="text-lg font-normal leading-relaxed mt-4 mb-4 text-blueGray-300">
-                  Join the Be-In camp in Aswan for a 5-day tech-centric experience!
-                   Elevate your skills with 25 hours of top-notch courses, guided by experts. Delve into engineering majors,
-                    attend technical and non-technical sessions, and gain insights from thought-provoking talks. 
-                  Ignite your future, uncover your passion, and launch your success journey at Be-In!
+                    Join the Be-In camp in Aswan for a 5-day tech-centric
+                    experience! Elevate your skills with 25 hours of top-notch
+                    courses, guided by experts. Delve into engineering majors,
+                    attend technical and non-technical sessions, and gain
+                    insights from thought-provoking talks. Ignite your future,
+                    uncover your passion, and launch your success journey at
+                    Be-In!
                   </p>
                   <Link
                     to="/Bein6"
@@ -262,14 +267,14 @@ function Home() {
                   <div className="px-6">
                     <img
                       alt="..."
-                      src={noha}
+                      src={abdallah}
                       className="shadow-lg rounded-full mx-auto max-w-120-px"
                       loading="lazy"
                     />
                     <div className="pt-6 text-center">
-                      <h5 className="text-xl font-bold">Noha Elrashedy</h5>
+                      <h5 className="text-xl font-bold">Abdullah Alshamly</h5>
                       <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                        Chairwoman
+                        Chairman
                       </p>
                       <div className="mt-6">
                         <button
@@ -277,7 +282,7 @@ function Home() {
                           type="button"
                         >
                           <a
-                            href="mailto:noha.rashedy@ieee.org"
+                            href="mailto:ab01158128811@gmail.com"
                             target="_blank"
                           >
                             <i className="fas fa-envelope"></i>
@@ -288,21 +293,10 @@ function Home() {
                           type="button"
                         >
                           <a
-                            href="https://www.linkedin.com/in/noha-nour22/"
+                            href="https://www.linkedin.com/in/abdallah-elshamly-19294422b/"
                             target="_blank"
                           >
                             <i className="fab fa-linkedin-in"></i>
-                          </a>
-                        </button>
-                        <button
-                          className="bg-social-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                          type="button"
-                        >
-                          <a
-                            href="https://github.com/nohanour222"
-                            target="_blank"
-                          >
-                            <i className="fab fa-github-alt"></i>
                           </a>
                         </button>
                       </div>
@@ -313,67 +307,14 @@ function Home() {
                   <div className="px-6">
                     <img
                       alt="..."
-                      src={Amr}
-                      className="shadow-lg rounded-full mx-auto max-w-120-px"
-                      loading="lazy"
-                    />
-                    <div className="pt-6 text-center">
-                      <h5 className="text-xl font-bold">Amr Khaled</h5>
-                      <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                        Vice-Chairman
-                      </p>
-                      <div className="mt-6">
-                        <button
-                          className="bg-social-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                          type="button"
-                        >
-                          <a
-                            href="mailto:amrnour1010@gmail.com"
-                            target="_blank"
-                          >
-                            <i className="fas fa-envelope"></i>
-                          </a>
-                        </button>
-                        <button
-                          className="bg-social-200 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                          type="button"
-                        >
-                          <a
-                            href="https://www.linkedin.com/in/amr-nour-b56925235/"
-                            target="_blank"
-                          >
-                            <i className="fab fa-linkedin-in"></i>
-                          </a>
-                        </button>
-                        <button
-                          className="bg-social-200 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                          type="button"
-                        >
-                          <a
-                            href="https://www.behance.net/3mrno1"
-                            target="_blank"
-                          >
-                            <i className="fab fa-behance"></i>
-                          </a>
-                        </button>
-                        
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-                  <div className="px-6">
-                    <img
-                      alt="..."
-                      src={Abdelrhman}
+                      src={abdelrhman}
                       className="shadow-lg rounded-full mx-auto max-w-120-px"
                       loading="lazy"
                     />
                     <div className="pt-6 text-center">
                       <h5 className="text-xl font-bold">Abdelrahman Ibrahem</h5>
                       <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                        Secretary
+                        Vice-Chairman
                       </p>
                       <div className="mt-6">
                         <button
@@ -396,6 +337,105 @@ function Home() {
                             target="_blank"
                           >
                             <i className="fab fa-linkedin-in"></i>
+                          </a>
+                        </button>
+                        <button
+                          className="bg-social-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <a
+                            href="https://github.com/abdelrahmanlatif04"
+                            target="_blank"
+                          >
+                            <i className="fab fa-github-alt"></i>
+                          </a>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+                  <div className="px-6">
+                    <img
+                      alt="..."
+                      src={omar}
+                      className="shadow-lg rounded-full mx-auto max-w-120-px"
+                      loading="lazy"
+                    />
+                    <div className="pt-6 text-center">
+                      <h5 className="text-xl font-bold">Omar Amin</h5>
+                      <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
+                        Secretary
+                      </p>
+                      <div className="mt-6">
+                        <button
+                          className="bg-social-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <a href="mailto:oamin0077@gmail.com" target="_blank">
+                            <i className="fas fa-envelope"></i>
+                          </a>
+                        </button>
+                        <button
+                          className="bg-social-200 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <a
+                            href="https://www.linkedin.com/in/omar-amin-6b1445261/"
+                            target="_blank"
+                          >
+                            <i className="fab fa-linkedin-in"></i>
+                          </a>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+                  <div className="px-6">
+                    <img
+                      alt="..."
+                      src={olaa}
+                      className="shadow-lg rounded-full mx-auto max-w-120-px"
+                      loading="lazy"
+                    />
+                    <div className="pt-6 text-center">
+                      <h5 className="text-xl font-bold">Olaa Qoutb</h5>
+                      <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
+                        Treasurer
+                      </p>
+                      <div className="mt-6">
+                        <button
+                          className="bg-social-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <a
+                            href="mailto:olaaahmed750@gmail.com"
+                            target="_blank"
+                          >
+                            <i className="fas fa-envelope"></i>
+                          </a>
+                        </button>
+                        <button
+                          className="bg-social-200 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <a
+                            href="https://www.linkedin.com/in/olaa-qoutb-10543426a/"
+                            target="_blank"
+                          >
+                            <i className="fab fa-linkedin-in"></i>
+                          </a>
+                        </button>
+                        <button
+                          className="bg-social-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <a
+                            href="https://github.com/olaaqoutb"
+                            target="_blank"
+                          >
+                            <i className="fab fa-github-alt"></i>
                           </a>
                         </button>
                       </div>
