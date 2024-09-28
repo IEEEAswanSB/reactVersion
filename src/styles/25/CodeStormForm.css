@@ -80,8 +80,8 @@ select {
   letter-spacing: 0.4px !important;
   width: 100% !important;
   padding: 15px !important;
-  /* border-radius: 13px !important; */
-  /* border: 1px solid #ccc !important; */
+  border-radius: 13px !important;
+  border: 1px solid #ccc !important;
   background: #000 !important;
   color: #fa0 !important;
   font-size: 1.2rem !important;
