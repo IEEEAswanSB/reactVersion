@@ -48,7 +48,7 @@ const CodeSormapplicantSchema = new mongoose.Schema(
 
 
 const CodeSormapplicant = mongoose.model(
-  "CodeStormApplicant",
+  "codestormapplicant25",
   CodeSormapplicantSchema
 );
 
