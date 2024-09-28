@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../Popup.css";
+import "../styles/24/Popup.css";
 export const Popup = ({ title,text, closePopup,copy = true }) => {
     let [copyed,setCopyed] = useState(false)
     let copyToClipboard = ()=>{

@@ -1,0 +1,193 @@
+/* 
+
+*{
+    margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  font-family: monospace !important;
+} 
+  
+*/
+
+.body {
+  font-family: "Poppins", sans-serif !important;
+  background-image: url("../../assets/img/crumpled-black-paper-texture.jpg") !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  color: #fff !important;
+  & {
+    font-family: monospace !important;
+  }
+}
+
+.wall {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 2rem !important;
+  position: relative !important;
+}
+
+.form-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 2rem !important;
+  position: relative !important;
+  z-index: 9 !important;
+}
+
+.code-storm-form {
+  position: relative !important;
+  z-index: 10 !important;
+  max-width: 600px !important;
+  margin: auto !important;
+  padding: 20px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 20px !important;
+  background-color: #333 !important;
+
+  color: #fff !important;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5) !important;
+  transition: box-shadow 0.3s ease !important;
+}
+
+.code-storm-form:hover {
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7) !important;
+}
+
+h2.animated-header {
+  text-align: center !important;
+  margin-bottom: 20px !important;
+  font-size: 30px !important;
+  color: rgb(222, 137, 10) !important;
+}
+
+.form-group {
+  margin-bottom: 15px !important;
+}
+
+label {
+  font-size: 1.2rem !important;
+  color: #fa0 !important;
+  display: block !important;
+  margin-bottom: 5px !important;
+}
+
+input,
+select {
+  letter-spacing: 0.4px !important;
+  width: 100% !important;
+  padding: 15px !important;
+  border-radius: 13px !important;
+  border: 1px solid #ccc !important;
+  background: #000 !important;
+  color: #fa0 !important;
+  font-size: 1.2rem !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+select {
+  cursor: pointer !important;
+}
+
+input:hover,
+select:hover {
+  border-color: #ecf00d !important;
+  box-shadow: 0 0 15px rgba(212, 124, 0, 0.7) !important;
+}
+
+input:focus,
+select:focus {
+  outline: none !important;
+  border-color: #d4d4d4 !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7) !important;
+}
+
+input::placeholder {
+  color: rgb(255, 255, 255) !important;
+}
+
+/* Submit Button Styling */
+button:not(.back) {
+  width: 100% !important;
+  padding: 10px !important;
+  border: 5px solid #b36b00 !important;
+  border-radius: 20px !important;
+  background-color: #302f2f !important;
+  color: #b36b00 !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease !important;
+}
+
+button:not(.back):hover {
+  background-color: #b36b00 !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 0 10px rgba(212, 124, 0, 0.7) !important;
+
+  color: white !important;
+}
+
+.error {
+  border-color: red !important;
+}
+
+.error-message {
+  color: red !important;
+  font-size: 0.875em !important;
+}
+
+/* Random Code Rain Effect */
+.rain-drop {
+  position: absolute !important;
+  top: -20px !important;
+  color: #c6a70c !important;
+  font-family: "Courier New", Courier, monospace !important;
+  font-size: 1.5rem !important;
+  white-space: nowrap !important;
+  filter: blur(0.5px) !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 600px) {
+  .code-storm-form {
+    width: 100% !important;
+    padding: 15px !important;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 12px !important;
+    font-size: 0.9rem !important;
+  }
+
+  h2.animated-header {
+    font-size: 26px !important;
+  }
+
+  .submit-btn {
+    font-size: 18px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  body {
+    overflow-y: scroll !important;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 10px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .submit-btn {
+    padding: 12px !important;
+  }
+}
