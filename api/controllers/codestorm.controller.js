@@ -28,14 +28,14 @@ exports.sendcodestormuser = async (req, res) => {
       return;
     }
 
-    if (checkNationalId(rec["id"])) {
-      res.status(422).json([
-        {
-          message: "Enter a valid national id!",
-        },
-      ]);
-      return;
-    }
+    // if (checkNationalId(rec["id"])) {
+    //   res.status(422).json([
+    //     {
+    //       message: "Enter a valid national id!",
+    //     },
+    //   ]);
+    //   return;
+    // }
 
     if (checkEmail(rec["email"])) {
       res.status(422).json([
