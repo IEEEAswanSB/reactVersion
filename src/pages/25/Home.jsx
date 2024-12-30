@@ -1,5 +1,6 @@
 import logo from "../../assets/img/logo.png";
 import codestormLogo from "../../assets/img/codeStormLogo2.png";
+import UEA from "../../assets/img/UEA.webp";
 import Amr from "../../assets/img/excomm/Amr.webp";
 import noha from "../../assets/img/excomm/noha.webp";
 import Abdelrhman from "../../assets/img/excomm/Abdelrhman.webp";
@@ -55,7 +56,7 @@ function Home() {
             <div className="absolute top-0 w-full h-full bg-center bg-cover bg-img">
               <span
                 id="blackOverlay"
-                className="w-full h-full absolute opacity-75 bg-black"
+                className="w-full h-full absolute opacity-50 bg-black"
               ></span>
             </div>
             <div className="container relative mx-auto">
@@ -70,22 +71,6 @@ function Home() {
                   <p className="mt-1 text-xs text-blueGray-200">Founded 2010</p>
                 </div>
               </div>
-            </div>
-            <div className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px">
-              <svg
-                className="absolute bottom-0 overflow-hidden"
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="none"
-                version="1.1"
-                viewBox="0 0 2560 100"
-                x="0"
-                y="0"
-              >
-                <polygon
-                  className="text-blueGray-200 fill-current"
-                  points="2560 0 2560 100 0 100"
-                ></polygon>
-              </svg>
             </div>
           </div>
 
@@ -139,7 +124,7 @@ function Home() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center mt-24">
+              <div className="flex flex-wrap items-center mt-24 mb-24">
                 <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
                   <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
                     <i className="fas fa-info text-xl"></i>
@@ -172,25 +157,45 @@ function Home() {
               </div>
             </div>
           </section>
+          <section className="pb-36 pt-10 bg-[#6946ca] -mt-24">
+            <div className="container mx-auto px-4">
+              <div className="flex flex-wrap items-center mt-24">
+                <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                  <div className="p-6 relative flex flex-col min-w-0 break-words w-full mb-6 rounded-lg">
+                    <img
+                      alt="..."
+                      src={UEA}
+                      style={{ filter: "brightness" }}
+                      className="w-full align-middle rounded-t-lg main-logo"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
 
-          <section className="pb-20 relative block bg-blueGray-800">
-            <div className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20">
-              <svg
-                className="absolute bottom-0 overflow-hidden"
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="none"
-                version="1.1"
-                viewBox="0 0 2560 100"
-                x="0"
-                y="0"
-              >
-                <polygon
-                  className="text-blueGray-800 fill-current"
-                  points="2560 0 2560 100 0 100"
-                ></polygon>
-              </svg>
+                <div className="w-full md:w-5/12 text-white px-4 mr-auto ml-auto">
+                  <div className="text-[#6946ca] p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
+                    <i className="fas fa-info text-xl"></i>
+                  </div>
+                  <h3 className="text-3xl mb-2 font-semibold leading-normal">
+                    UAE 7
+                  </h3>
+                  <p className="text-lg font-normal leading-relaxed mt-4 mb-4 text-blueGray-300">
+                    UEA is a conference that consists of a gallery for
+                    projects from Upper Egypt along with several sessions about market, soft
+                    and technical skills.
+                  </p>
+                  <Link
+                    to={"/uea7"}
+                    className="hover:bg-[#ff63a6] hover:text-white duration-300 font-bold text-[#6946ca] mt-8 w-40 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center bg-white"
+                  >
+                    Check it out
+                  </Link>
+                </div>
+              </div>
             </div>
           </section>
+
+
           <section className="pb-32 bg-blueGray-800 -mt-24">
             <div className="container mx-auto px-4">
               <div className="flex flex-wrap items-center mt-24">
@@ -222,33 +227,13 @@ function Home() {
                     membership, your ticket to participate in IEEEXtreme.
                     Codestorm! 🌪️
                   </p>
-                  <Link
-                    to="/codestorm"
-                    className="font-bold text-blueGray-800 mt-8 w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center bg-white"
+                  <p
+                    className="cursor-not-allowed hover:bg-red-600 hover:text-white duration-300 font-bold text-blueGray-800 mt-8 w-40 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center bg-white"
                   >
-                    Register Now!
-                  </Link>
+                    Form Closed
+                  </p>
                 </div>
               </div>
-            </div>
-          </section>
-
-          <section className="relative pt-10">
-            <div className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20">
-              <svg
-                className="absolute bottom-0 overflow-hidden"
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="none"
-                version="1.1"
-                viewBox="0 0 2560 100"
-                x="0"
-                y="0"
-              >
-                <polygon
-                  className="text-white fill-current"
-                  points="2560 0 2560 100 0 100"
-                ></polygon>
-              </svg>
             </div>
           </section>
 
@@ -461,67 +446,11 @@ function Home() {
                     </div>
                   </div>
                 </div>
-                {/* <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-                  <div className="px-6">
-                    <img
-                      alt="..."
-                      src={esraa}
-                      className="shadow-lg rounded-full mx-auto max-w-120-px"
-                      loading="lazy"
-                    />
-                    <div className="pt-6 text-center">
-                      <h5 className="text-xl font-bold">Esraa Mohamed</h5>
-                      <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                        Treasurer
-                      </p>
-                      <div className="mt-6">
-                        <button
-                          className="bg-social-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                          type="button"
-                        >
-                          <a
-                            href="mailto:esraamohamed1008@gmail.com"
-                            target="_blank"
-                          >
-                            <i className="fas fa-envelope"></i>
-                          </a>
-                        </button>
-                        <button
-                          className="bg-social-200 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                          type="button"
-                        >
-                          <a
-                            href="https://www.linkedin.com/in/esraa-mohamed-12142a216"
-                            target="_blank"
-                          >
-                            <i className="fab fa-linkedin-in"></i>
-                          </a>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
               </div>
             </div>
           </section>
 
           <section className="pb-20 pt-20 relative bg-blueGray-200 mt-24">
-            <div className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20">
-              <svg
-                className="absolute bottom-0 overflow-hidden"
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="none"
-                version="1.1"
-                viewBox="0 0 2560 100"
-                x="0"
-                y="0"
-              >
-                <polygon
-                  className="text-blueGray-200 fill-current"
-                  points="2560 0 2560 100 0 100"
-                ></polygon>
-              </svg>
-            </div>
             <div className="container mx-auto px-4 lg:py-8">
               <div className="w-full mx-auto lg:w-6/12 px-4 text-center">
                 <h2 className="text-4xl font-semibold">
@@ -536,25 +465,6 @@ function Home() {
                   <PartnerLogo partnerImg={partner} key={partner} />
                 ))}
               </div>
-            </div>
-          </section>
-
-          <section className="pb-20 relative block bg-blueGray-800">
-            <div className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20">
-              <svg
-                className="absolute bottom-0 overflow-hidden"
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="none"
-                version="1.1"
-                viewBox="0 0 2560 100"
-                x="0"
-                y="0"
-              >
-                <polygon
-                  className="text-blueGray-800 fill-current"
-                  points="2560 0 2560 100 0 100"
-                ></polygon>
-              </svg>
             </div>
           </section>
 

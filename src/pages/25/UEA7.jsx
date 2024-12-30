@@ -1,0 +1,303 @@
+/* eslint-disable react/jsx-no-target-blank */
+
+import { useState, useEffect } from 'react';
+
+function UEA7() {
+  const sponsors = [
+    { src: './logo-w.png', title: 'Organizer', class: 'text-2xl' },
+    { src: './ntra.svg', title: 'Official Partner', class: 'text-xl' },
+    { src: './vodafonee.png', title: 'Platinum Sponsor', class: 'text-xl' },
+    { src: './nvl.svg', title: 'Golden Sponsor', class: 'text-xl' },
+    { src: './Consulting.webp', title: 'Silver Sponsor', class: 'text-xl' },
+    { src: './TICO.webp', title: 'Silver Sponsor', class: 'text-xl' },
+  ];
+
+
+  const competitions = [
+    {
+      imgSrc: './grad.webp',
+      title: 'Graduation Projects',
+      // prizes: [
+      //   { imgSrc: './gold.png', amount: '10,000EGP' },
+      //   { imgSrc: './silver.png', amount: '6,000EGP' },
+      //   { imgSrc: './bronze.png', amount: '3,000EGP' },
+      // ],
+      status: 'Coming Soon..',
+    },
+    {
+      imgSrc: './pre.webp',
+      title: 'Pre-Graduation Projects',
+      status: 'Coming Soon..',
+    },
+    {
+      imgSrc: './school.webp',
+      title: 'School Projects',
+      status: 'Coming Soon..',
+    },
+    {
+      imgSrc: './tech.webp',
+      title: 'Technical Projects',
+      status: 'Coming Soon..',
+    },
+    {
+      imgSrc: './bridge.webp',
+      title: 'Spaghetti Bridge',
+      status: 'Coming Soon..',
+      rulebook: '/rulebook.pdf',
+    },
+    {
+      imgSrc: './arc.webp',
+      title: 'ARC',
+      status: 'Coming Soon..',
+      rulebook: '/Book of Rules.pdf',
+    },
+    {
+      imgSrc: './startups.webp',
+      title: 'Startups Contest',
+      status: 'Coming Soon..',
+    },
+    {
+      imgSrc: './green.webp',
+      title: 'Green Energy Hackathon',
+      status: 'Coming Soon..',
+    },
+    {
+      imgSrc: './forum.png',
+      title: 'Job Fair',
+      prizes: [],
+      status: 'Coming Soon..',
+    },
+  ];
+  return (
+    <>
+      <div className="main">
+        <section className="py-10 ">
+          <div className="container mx-auto">
+            <div className="flex flex-wrap items-center">
+              <div className="px-4 mx-auto">
+                <div
+                  className="flex flex-col min-w-0 mx-auto break-words w-full mb-6"
+                >
+                  <img
+                    alt="..."
+                    src="UEA.webp"
+                    className="w-full md:w-5/12 mx-auto"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <div className="w-full text-white px-4 text-center mx-auto">
+                <h3 className="text-3xl mb-2 font-semibold leading-normal">
+                  Upper Egypt in Action 6<sup>th</sup> edition
+                </h3>
+                <h3 className="text-xl mb-2 font-semibold leading-normal flex justify-center items-center gap-2">
+                  <i className="fas fa-calendar-alt"></i>
+                  14 Apr 2022
+                </h3>
+                <h3 className="text-xl mb-2 font-semibold leading-normal flex justify-center items-center gap-2">
+                  <i className="fas fa-map-marker-alt"></i>
+                  <a href="https://goo.gl/maps/EdTeAhhrzhBwPJZw9" target="_blank">
+                    Tolip Hotel Aswan
+                  </a>
+                </h3>
+                <p
+                  className="text-lg w-full md:w-6/12 text-center font-light leading-relaxed my-4 mx-auto"
+                >
+                  UEA is a conference that consists of a gallery for
+                  projects from Upper Egypt along with several sessions about market, soft
+                  and technical skills.
+                </p>
+              </div>
+            </div>
+
+            <CountdownTimer />
+
+            <section className="flex flex-wrap justify-center py-12 items-center">
+              {sponsors.map((sponsor, index) => (
+                <div key={index} className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg">
+                  <div className="px-6 spon pb-2">
+                    <div className="img-holder">
+                      <img
+                        alt="..."
+                        src={sponsor.src}
+                        className="p-2"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="mt-2 text-center">
+                      <h5 className={`${sponsor.class} text-black font-bold`}>{sponsor.title}</h5>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </section>
+
+            <div className="container mx-auto px-4 pt-18 pb-10">
+              <div className="flex flex-wrap text-center justify-center">
+                <div className="w-full lg:w-6/12 px-4">
+                  <h2 className="text-5xl text-center font-bold text-social-4 mx-auto my-4">
+                    Competitions
+                  </h2>
+                  <p className="text-xl leading-relaxed my-4 text-white">
+                    Enjoy free accommodation for 2 members per team!
+                  </p>
+                </div>
+              </div>
+            </div>
+            <section className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5  py-12">
+
+              {competitions.map((competition, index) => (
+                <div key={index} className="w-full lg:mb-0 mb-12 text-center text-white hover:bg-white/40 transition cursor-pointer rounded-lg border border-white/30">
+                  <div className="p-5 overflow-hidden">
+                    <div className="h-40 flex py-9 items-center">
+                      <img className="h-36 mx-auto" src={competition.imgSrc} alt="card 1" />
+                    </div>
+                    <div className="px-4 py-2">
+                      <h2 className="text-2xl font-semibold mb-3 truncate">
+                        {competition.title}
+                      </h2>
+                      <div className="text-lg font-semibold">
+                      </div>
+                      <div className="text-center mt-2">
+                        <p className="py-2 text-sm text-social-4 font-bold uppercase hover:underline">{competition.status}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </section>
+
+
+          </div>
+
+        </section>
+
+        <div className="container mx-auto px-4 pb-8 text-white">
+          <div className="flex flex-wrap text-center lg:text-left">
+            <div className="w-full lg:w-8/12 px-4">
+              <h4 className="text-3xl font-semibold">Let's keep in touch!</h4>
+              <h5 className="text-lg my-2">
+                <i className="fas fa-home"></i> Aswan Faculty of Engineering
+              </h5>
+              <h5 className="text-lg my-2">
+                <i className="fas fa-envelope"></i> <a href="mailto:sb.aswan@ieee.org">sb.aswan@ieee.org</a>
+              </h5>
+              <div className="mt-6 lg:mb-0 mb-6">
+              </div>
+            </div>
+            <div className="w-full lg:w-4/12 px-4">
+              <h4 className="text-3xl font-semibold">Follow Us</h4>
+              <div className="mt-6 lg:mb-0 mb-6">
+                <a href="https://www.facebook.com/IEEEAswanSB" target="_blank">
+                  <button
+                    className="bg-social-100 text-white shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+                    type="button"
+                  >
+                    <i className="fab fa-facebook-f"></i>
+                  </button>
+                </a>
+                <a href="https://www.linkedin.com/company/ieeeaswansb" target="_blank">
+                  <button
+                    className="bg-social-200 text-white shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+                    type="button"
+                  >
+                    <i className="fab fa-linkedin-in"></i>
+                  </button>
+                </a>
+                <a href="https://twitter.com/IEEEAswanSB" target="_blank">
+                  <button
+                    className="bg-social-300 text-white shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+                    type="button"
+                  >
+                    <i className="fab fa-twitter"></i>
+                  </button>
+                </a>
+                <a href="https://www.instagram.com/ieeeaswansb/" target="_blank">
+                  <button
+                    className="bg-gradient-to-r from-social-1 via-social-2 to-social-3 text-white shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+                    type="button"
+                  >
+                    <i className="fab fa-instagram"></i>
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <hr className="my-6 border-white" />
+        </div>
+      </div>
+    </>
+  )
+}
+
+
+
+const CountdownTimer = () => {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    const targetDate = new Date('2025-04-14T00:00:00');
+
+    const calculateTimeLeft = () => {
+      const now = new Date();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((difference / 1000 / 60) % 60);
+        const seconds = Math.floor((difference / 1000) % 60);
+
+        setTimeLeft({ days, hours, minutes, seconds });
+      }
+    };
+
+    const timer = setInterval(calculateTimeLeft, 1000);
+    calculateTimeLeft();
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="container mx-auto px-4 py-12">
+      <div className="border border-white bg-black/20 backdrop-blur-sm rounded-xl p-8">
+        <h2 className="text-3xl font-bold text-white mb-8 text-center">Time Until The Event</h2>
+        <div className="flex flex-wrap justify-center gap-8 text-white">
+          <div className="flex flex-col items-center">
+            <div className="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
+              <div className="text-4xl font-bold">{timeLeft.days}</div>
+            </div>
+            <div className="text-lg font-medium">Days</div>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
+              <div className="text-4xl font-bold">{timeLeft.hours}</div>
+            </div>
+            <div className="text-lg font-medium">Hours</div>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
+              <div className="text-4xl font-bold">{timeLeft.minutes}</div>
+            </div>
+            <div className="text-lg font-medium">Minutes</div>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
+              <div className="text-4xl font-bold">{timeLeft.seconds}</div>
+            </div>
+            <div className="text-lg font-medium">Seconds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+export default UEA7

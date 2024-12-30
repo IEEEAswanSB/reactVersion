@@ -11,6 +11,7 @@ import "./styles/25/index.css";
 import React, { Suspense } from "react";
 import Home from "./pages/25/Home";
 import { Box, Typography } from "@mui/material";
+import UEA7 from "./pages/25/UEA7";
 
 // Routes
 const CodeStormForm = React.lazy(() => import("./pages/25/CodeStormForm"));
@@ -87,7 +88,8 @@ function App() {
     >
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/codestorm" element={<CodeStormForm />} />
+        {/* <Route path="/codestorm" element={<CodeStormForm />} /> */}
+        <Route path="/uea7" element={<UEA7 />} />
       </Routes>
     </Suspense>
   );
