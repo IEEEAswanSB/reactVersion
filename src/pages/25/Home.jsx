@@ -1,5 +1,4 @@
 import logo from "../../assets/img/logo.png";
-import codestormLogo from "../../assets/img/codeStormLogo2.png";
 import UEA from "../../assets/img/UEA.webp";
 import Abdelrhman from "../../assets/img/excomm/Abdelrhman.webp";
 import abdallah from "../../assets/img/excomm/abdallah.webp";
@@ -187,48 +186,6 @@ function Home() {
                   >
                     Check it out
                   </Link>
-                </div>
-              </div>
-            </div>
-          </section>
-
-
-          <section className="pb-32 bg-blueGray-800 -mt-24">
-            <div className="container mx-auto px-4">
-              <div className="flex flex-wrap items-center mt-24">
-                <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
-                  <div className="p-6 relative flex flex-col min-w-0 break-words w-full mb-6 rounded-lg">
-                    <img
-                      alt="..."
-                      src={codestormLogo}
-                      style={{ filter: "brightness" }}
-                      className="w-full align-middle rounded-t-lg main-logo"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-
-                <div className="w-full md:w-5/12 text-white px-4 mr-auto ml-auto">
-                  <div className="text-blueGray-800 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                    <i className="fas fa-info text-xl"></i>
-                  </div>
-                  <h3 className="text-3xl mb-2 font-semibold leading-normal">
-                    Code Storm 2.1
-                  </h3>
-                  <p className="text-lg font-normal leading-relaxed mt-4 mb-4 text-blueGray-300">
-                    CodeStorm is and individual contest that fosters to simulate
-                    one of the biggest competitive programming hackathons
-                    IEEEXtreme. In the journey of CodeStorm you can pass from
-                    CodeStorm scoreboard to IEEEXtreme scoreboard.There you will
-                    know what IEEEXtreme , test a demo and and win the IEEE
-                    membership, your ticket to participate in IEEEXtreme.
-                    Codestorm! 🌪️
-                  </p>
-                  <p
-                    className="cursor-not-allowed hover:bg-red-600 hover:text-white duration-300 font-bold text-blueGray-800 mt-8 w-40 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center bg-white"
-                  >
-                    Form Closed
-                  </p>
                 </div>
               </div>
             </div>
