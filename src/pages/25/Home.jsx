@@ -1,13 +1,10 @@
 import logo from "../../assets/img/logo.png";
 import codestormLogo from "../../assets/img/codeStormLogo2.png";
 import UEA from "../../assets/img/UEA.webp";
-import Amr from "../../assets/img/excomm/Amr.webp";
-import noha from "../../assets/img/excomm/noha.webp";
 import Abdelrhman from "../../assets/img/excomm/Abdelrhman.webp";
 import abdallah from "../../assets/img/excomm/abdallah.webp";
 import omar from "../../assets/img/excomm/omar.webp";
 import olaa from "../../assets/img/excomm/olaa.webp";
-
 import NTRA from "../../assets/img/NTRA.webp";
 import vodafone from "../../assets/img/vodafone.webp";
 import Valeo from "../../assets/img/Valeo.webp";

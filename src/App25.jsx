@@ -1,25 +1,13 @@
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import { Route, Link, Routes } from "react-router-dom";
-import { useNavigate } from "react-router";
-import Upload from "./components/upload";
-import Email from "./components/email";
+
+import { Route, Routes } from "react-router-dom";
 import "./styles/25/index.css";
 import React, { Suspense } from "react";
 import Home from "./pages/25/Home";
 import { Box, Typography } from "@mui/material";
 import UEA7 from "./pages/25/UEA7";
 
-// Routes
-const CodeStormForm = React.lazy(() => import("./pages/25/CodeStormForm"));
 
 function App() {
-  if (window?.location.pathname.toLowerCase() === "/codestorm") {
-    import("./styles/25/CodeStormForm.css");
-  }
 
   return (
     <Suspense
