@@ -93,7 +93,7 @@ function UEA7() {
                 </h3>
                 <h3 className="text-xl mb-2 font-semibold leading-normal flex justify-center items-center gap-2">
                   <i className="fas fa-calendar-alt"></i>
-                  14 Apr 2022
+                  14 Apr 2025
                 </h3>
                 <h3 className="text-xl mb-2 font-semibold leading-normal flex justify-center items-center gap-2">
                   <i className="fas fa-map-marker-alt"></i>
