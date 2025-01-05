@@ -1,22 +1,51 @@
 /* eslint-disable react/jsx-no-target-blank */
 
+import { rule } from 'postcss';
 import { useState, useEffect } from 'react';
 
 function UEA7() {
   const sponsors = [
+    { src: './aswuni.png', title: 'Organizer', class: 'text-xl' },
+    { src: './download.webp', title: 'Organizer', class: 'text-xl' },
     { src: './logo-w.png', title: 'Organizer', class: 'text-2xl' },
-    { src: './ntra.svg', title: 'Official Partner', class: 'text-xl' },
-    { src: './vodafonee.png', title: 'Platinum Sponsor', class: 'text-xl' },
     { src: './nvl.svg', title: 'Golden Sponsor', class: 'text-xl' },
-    { src: './Consulting.webp', title: 'Silver Sponsor', class: 'text-xl' },
-    { src: './TICO.webp', title: 'Silver Sponsor', class: 'text-xl' },
+    // { src: './Consulting.webp', title: 'Silver Sponsor', class: 'text-xl' },
+    // { src: './TICO.webp', title: 'Silver Sponsor', class: 'text-xl' },
   ];
 
 
   const competitions = [
     {
+      imgSrc: './hackathon.png',
+      title: 'Problem Solving',
+      status: 'Coming Soon..',
+    },
+    {
+      imgSrc: './capture-the-flag.png',
+      title: 'CTF',
+      status: 'Coming Soon..',
+    },
+    {
+      imgSrc: './arc.webp',
+      title: 'Robotics Competition',
+      status: 'Coming Soon..',
+      rulebook: './Book_of_Rules.pdf',
+    },
+    {
+      imgSrc: './bridge.webp',
+      title: 'Spaghetti Bridge',
+      status: 'Coming Soon..',
+      rulebook: './rulebook.pdf',
+    },
+    {
+      imgSrc: './tech.webp',
+      title: 'Technical Projects',
+      status: 'Coming Soon..',
+    },
+    {
       imgSrc: './grad.webp',
       title: 'Graduation Projects',
+      rule: "must be in the final year of the university",
       // prizes: [
       //   { imgSrc: './gold.png', amount: '10,000EGP' },
       //   { imgSrc: './silver.png', amount: '6,000EGP' },
@@ -27,46 +56,31 @@ function UEA7() {
     {
       imgSrc: './pre.webp',
       title: 'Pre-Graduation Projects',
+      rule: "Must not be in the final year of university.",
       status: 'Coming Soon..',
     },
     {
       imgSrc: './school.webp',
       title: 'School Projects',
       status: 'Coming Soon..',
+      rule: "Must be in the school stage.",
     },
-    {
-      imgSrc: './tech.webp',
-      title: 'Technical Projects',
-      status: 'Coming Soon..',
-    },
-    {
-      imgSrc: './bridge.webp',
-      title: 'Spaghetti Bridge',
-      status: 'Coming Soon..',
-      rulebook: '/rulebook.pdf',
-    },
-    {
-      imgSrc: './arc.webp',
-      title: 'ARC',
-      status: 'Coming Soon..',
-      rulebook: '/Book of Rules.pdf',
-    },
-    {
-      imgSrc: './startups.webp',
-      title: 'Startups Contest',
-      status: 'Coming Soon..',
-    },
-    {
-      imgSrc: './green.webp',
-      title: 'Green Energy Hackathon',
-      status: 'Coming Soon..',
-    },
-    {
-      imgSrc: './forum.png',
-      title: 'Job Fair',
-      prizes: [],
-      status: 'Coming Soon..',
-    },
+    // {
+    //   imgSrc: './startups.webp',
+    //   title: 'Startups Contest',
+    //   status: 'Coming Soon..',
+    // },
+    // {
+    //   imgSrc: './green.webp',
+    //   title: 'Green Energy Hackathon',
+    //   status: 'Coming Soon..',
+    // },
+    // {
+    //   imgSrc: './forum.png',
+    //   title: 'Job Fair',
+    //   prizes: [],
+    //   status: 'Coming Soon..',
+    // },
   ];
   return (
     <>
@@ -89,16 +103,16 @@ function UEA7() {
 
               <div className="w-full text-white px-4 text-center mx-auto">
                 <h3 className="text-3xl mb-2 font-semibold leading-normal">
-                  Upper Egypt in Action 6<sup>th</sup> edition
+                  Upper Egypt in Action 7<sup>th</sup> edition
                 </h3>
                 <h3 className="text-xl mb-2 font-semibold leading-normal flex justify-center items-center gap-2">
                   <i className="fas fa-calendar-alt"></i>
-                  14 Apr 2025
+                  10 Apr 2025
                 </h3>
                 <h3 className="text-xl mb-2 font-semibold leading-normal flex justify-center items-center gap-2">
                   <i className="fas fa-map-marker-alt"></i>
                   <a href="https://goo.gl/maps/EdTeAhhrzhBwPJZw9" target="_blank">
-                    Tolip Hotel Aswan
+                    Tolip Hotel Aswan (proposed)
                   </a>
                 </h3>
                 <p
@@ -111,13 +125,13 @@ function UEA7() {
               </div>
             </div>
 
-            <CountdownTimer />
+            <CountdownTimer target={'2025-04-10T00:00:00'} message={"Time Until The Event"} />
 
-            <section className="flex flex-wrap justify-center py-12 items-center">
+            <section className="flex flex-wrap justify-center lg:items-end items-center py-12">
               {sponsors.map((sponsor, index) => (
                 <div key={index} className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg">
-                  <div className="px-6 spon pb-2">
-                    <div className="img-holder">
+                  <div className="px-6 pb-2">
+                    <div className="flex justify-center items-center">
                       <img
                         alt="..."
                         src={sponsor.src}
@@ -145,7 +159,29 @@ function UEA7() {
                 </div>
               </div>
             </div>
-            <section className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5  py-12">
+
+            <div className="container mx-auto px-4 pt-18 pb-10">
+              <div className="flex flex-wrap text-center justify-center">
+                <div className="w-full lg:w-6/12 px-4">
+                  <h2 className="text-5xl text-center font-bold text-social-4 mx-auto mb-7">
+                    Submission Dates
+                  </h2>
+                  <div className='flex flex-col justify-center items-center gap-4 mb-7'>
+                    <p className="text-lg leading-relaxed text-white">
+                      Submission opening: 1st February
+                    </p>
+                    <CountdownTimer target={'2025-02-01T00:00:00'} message={"Until Submition Opening"} circle={"3rem"} />
+                  </div>
+                  <div className='flex flex-col justify-center items-center gap-4'>
+                    <p className="text-lg leading-relaxed text-white">
+                      Submission closing: 20th February
+                    </p>
+                    <CountdownTimer target={'2025-02-20T00:00:00'} message={"Until Submition Closing"} circle={"3rem"} />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <section className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5  py-12 items-center">
 
               {competitions.map((competition, index) => (
                 <div key={index} className="w-full lg:mb-0 mb-12 text-center text-white hover:bg-white/40 transition cursor-pointer rounded-lg border border-white/30">
@@ -162,6 +198,12 @@ function UEA7() {
                       <div className="text-center mt-2">
                         <p className="py-2 text-sm text-social-4 font-bold uppercase hover:underline">{competition.status}</p>
                       </div>
+                      {competition.rulebook && <div className="text-center mt-2">
+                        <a href={competition.rulebook} target='_blank' className="py-2 text-sm text-social-4 font-bold uppercase hover:underline">Check Rule book</a>
+                      </div>}
+                      {competition.rule && <div className="text-center mt-2">
+                        <p className="py-2 text-sm text-social-4 font-bold uppercase hover:underline">{competition.rule}</p>
+                      </div>}
                     </div>
                   </div>
                 </div>
@@ -233,7 +275,7 @@ function UEA7() {
 
 
 
-const CountdownTimer = () => {
+const CountdownTimer = ({ target, message, circle }) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -242,7 +284,7 @@ const CountdownTimer = () => {
   });
 
   useEffect(() => {
-    const targetDate = new Date('2025-04-14T00:00:00');
+    const targetDate = new Date(target);
 
     const calculateTimeLeft = () => {
       const now = new Date();
@@ -265,31 +307,31 @@ const CountdownTimer = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto">
       <div className="border border-white bg-black/20 backdrop-blur-sm rounded-xl p-8">
-        <h2 className="text-3xl font-bold text-white mb-8 text-center">Time Until The Event</h2>
+        <h2 className={`font-bold text-white mb-8 text-center ${circle ? "text-xl" : "text-3xl"}`}>{message}</h2>
         <div className="flex flex-wrap justify-center gap-8 text-white">
           <div className="flex flex-col items-center">
-            <div className="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
-              <div className="text-4xl font-bold">{timeLeft.days}</div>
+            <div style={circle ? { width: circle, height: circle } : { width: "6rem", height: "6rem" }} className="rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
+              <div className={`font-bold ${circle ? "text-lg" : "text-4xl"}`}>{timeLeft.days}</div>
             </div>
             <div className="text-lg font-medium">Days</div>
           </div>
           <div className="flex flex-col items-center">
-            <div className="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
-              <div className="text-4xl font-bold">{timeLeft.hours}</div>
+            <div style={circle ? { width: circle, height: circle } : { width: "6rem", height: "6rem" }} className="rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
+              <div className={`font-bold ${circle ? "text-lg" : "text-4xl"}`}>{timeLeft.hours}</div>
             </div>
             <div className="text-lg font-medium">Hours</div>
           </div>
           <div className="flex flex-col items-center">
-            <div className="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
-              <div className="text-4xl font-bold">{timeLeft.minutes}</div>
+            <div style={circle ? { width: circle, height: circle } : { width: "6rem", height: "6rem" }} className="rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
+              <div className={`font-bold ${circle ? "text-lg" : "text-4xl"}`}>{timeLeft.minutes}</div>
             </div>
             <div className="text-lg font-medium">Minutes</div>
           </div>
           <div className="flex flex-col items-center">
-            <div className="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
-              <div className="text-4xl font-bold">{timeLeft.seconds}</div>
+            <div style={circle ? { width: circle, height: circle } : { width: "6rem", height: "6rem" }} className="rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
+              <div className={`font-bold ${circle ? "text-lg" : "text-4xl"}`}>{timeLeft.seconds}</div>
             </div>
             <div className="text-lg font-medium">Seconds</div>
           </div>
