@@ -8,7 +8,7 @@ function UEA7() {
     { src: './aswuni.png', title: 'Organizer', class: 'text-xl' },
     { src: './download.webp', title: 'Organizer', class: 'text-xl' },
     { src: './logo-w.png', title: 'Organizer', class: 'text-2xl' },
-    { src: './nvl.svg', title: 'Golden Sponsor', class: 'text-xl' },
+    { src: './NVL-logo-white.svg', title: 'Golden Sponsor', class: 'text-xl' },
     // { src: './Consulting.webp', title: 'Silver Sponsor', class: 'text-xl' },
     // { src: './TICO.webp', title: 'Silver Sponsor', class: 'text-xl' },
   ];
