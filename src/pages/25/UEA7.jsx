@@ -5,10 +5,10 @@ import { useState, useEffect } from 'react';
 
 function UEA7() {
   const sponsors = [
-    { src: './aswuni.png', title: 'Organizer', class: 'text-xl' },
-    { src: './download.webp', title: 'Organizer', class: 'text-xl' },
-    { src: './logo-w.png', title: 'Organizer', class: 'text-2xl' },
-    { src: './NVL-logo-white.svg', title: 'Organizer', class: 'text-xl' },
+    { src: './aswuni.png', class: 'text-xl' },
+    { src: './download.webp', class: 'text-xl' },
+    { src: './logo-w.png', class: 'text-2xl' },
+    { src: './NVL-logo-white.svg', class: 'text-xl' },
     // { src: './Consulting.webp', title: 'Silver Sponsor', class: 'text-xl' },
     // { src: './TICO.webp', title: 'Silver Sponsor', class: 'text-xl' },
   ];
@@ -130,7 +130,8 @@ function UEA7() {
 
             <CountdownTimer target={'2025-04-10T00:00:00'} message={"Time Until The Event"} />
 
-            <section className="flex flex-wrap justify-center lg:items-end items-center py-12">
+            <h3 className="text-5xl mt-10 mb-5 font-semibold leading-normal text-center text-white">Organizers</h3>
+            <section className="flex flex-wrap justify-center lg:items-end items-center pb-12">
               {sponsors.map((sponsor, index) => (
                 <div key={index} className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg">
                   <div className="px-6 pb-2">
