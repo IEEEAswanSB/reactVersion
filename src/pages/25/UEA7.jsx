@@ -105,6 +105,9 @@ function UEA7() {
                 <h3 className="text-3xl mb-2 font-semibold leading-normal">
                   Upper Egypt in Action 7<sup>th</sup> edition
                 </h3>
+                <h3 className="text-xl my-3 font-semibold leading-normal flex justify-center items-center gap-2">
+                  The Convergence of AI, Cybersecurity, and Entrepreneurship: Impact on Energy, Food, and Water Nexus
+                </h3>
                 <h3 className="text-xl mb-2 font-semibold leading-normal flex justify-center items-center gap-2">
                   <i className="fas fa-calendar-alt"></i>
                   10 Apr 2025
