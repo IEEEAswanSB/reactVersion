@@ -1,5 +1,5 @@
 import logo from "../../assets/img/logo.png";
-import UEA from "../../assets/img/UEA-7.png";
+import UEA from "../../assets/img/UEA.webp";
 import Abdelrhman from "../../assets/img/excomm/Abdelrhman.webp";
 import abdallah from "../../assets/img/excomm/abdallah.webp";
 import omar from "../../assets/img/excomm/omar.webp";
