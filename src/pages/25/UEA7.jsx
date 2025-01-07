@@ -3,8 +3,10 @@
 import { rule } from "postcss";
 import { useState, useEffect } from "react";
 
+import UEALogo from "../../assets/img/UEA-7.png";
+
 function UEA7() {
-  const organizers = [
+  const sponsors = [
     { src: "./aswuni.png", class: "text-xl" },
     { src: "./download.webp", class: "text-xl" },
     { src: "./logo-w.png", class: "text-2xl" },
@@ -94,7 +96,7 @@ function UEA7() {
                 <div className="flex flex-col min-w-0 mx-auto break-words w-full mb-6">
                   <img
                     alt="..."
-                    src="/src/assets/img/UEA-7.png"
+                    src={UEALogo}
                     className="w-full md:w-5/12 mx-auto"
                     loading="lazy"
                   />
@@ -113,16 +115,7 @@ function UEA7() {
                   <i className="fas fa-calendar-alt"></i>
                   10 Apr 2025
                 </h3>
-
                 <h3 className="text-xl mb-2 font-semibold leading-normal flex justify-center items-center gap-2">
-                  <i className="fas fa-map-marker-alt"></i>
-                  Aswan
-                </h3>
-
-
-
-                
-                {/* <h3 className="text-xl mb-2 font-semibold leading-normal flex justify-center items-center gap-2">
                   <i className="fas fa-map-marker-alt"></i>
                   <a
                     href="https://goo.gl/maps/EdTeAhhrzhBwPJZw9"
@@ -130,8 +123,7 @@ function UEA7() {
                   >
                     Tolip Hotel Aswan (proposed)
                   </a>
-                </h3> */}
-
+                </h3>
                 <p className="text-lg w-full md:w-6/12 text-center font-light leading-relaxed my-4 mx-auto">
                   UEA is a conference that consists of a gallery for projects
                   from Upper Egypt along with several sessions about market,
@@ -148,8 +140,8 @@ function UEA7() {
             <h3 className="text-5xl mt-10 mb-5 font-semibold leading-normal text-center text-white">
               Organizers
             </h3>
-            <section className="flex flex-wrap items-center justify-center lg:items-end pb-12">
-              {organizers.map((sponsor, index) => (
+            <section className="flex flex-wrap justify-center lg:items-end items-center pb-12">
+              {sponsors.map((sponsor, index) => (
                 <div
                   key={index}
                   className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg"
@@ -164,34 +156,13 @@ function UEA7() {
                       />
                     </div>
                     <div className="mt-2 text-center">
-                      <h5 className={`text-2xl text-black font-bold`}>
+                      <h5 className={`${sponsor.class} text-black font-bold`}>
                         {sponsor.title}
                       </h5>
                     </div>
                   </div>
                 </div>
               ))}
-            </section>
-
-            <h3 className="text-5xl mt-10 mb-5 font-semibold leading-normal text-center text-white">
-              Strategic partners
-            </h3>
-            <section className="flex flex-wrap justify-center lg:items-end items-center pb-12">
-              <div className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg">
-                <div className="px-6 pb-2">
-                  <div className="flex justify-center items-center">
-                    <img
-                      alt="..."
-                      src="./src/assets/img/NTRA.png"
-                      className="p-2"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="mt-2 text-center">
-                    <h5 className={`text-black font-bold`}></h5>
-                  </div>
-                </div>
-              </div>
             </section>
 
             <div className="container mx-auto px-4 pt-18 pb-10">
@@ -224,16 +195,16 @@ function UEA7() {
               </div>
             </div>
 
-              <div className="container mx-auto px-4 pt-18 pb-10">
-                <div className="flex flex-wrap text-center justify-center">
-                  <div className="w-full lg:w-6/12 px-4">
-                    <h2 className="text-5xl text-center font-bold text-social-4 mx-auto my-4">
-                      Competitions
-                    </h2>
-                    <p className="text-xl leading-relaxed my-4 text-white">
-                      Enjoy free accommodation for 2 members per team!
-                    </p>
-                  </div>
+            <div className="container mx-auto px-4 pt-18 pb-10">
+              <div className="flex flex-wrap text-center justify-center">
+                <div className="w-full lg:w-6/12 px-4">
+                  <h2 className="text-5xl text-center font-bold text-social-4 mx-auto my-4">
+                    Competitions
+                  </h2>
+                  <p className="text-xl leading-relaxed my-4 text-white">
+                    Enjoy free accommodation for 2 members per team!
+                  </p>
+                </div>
               </div>
               <section className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5  py-12 items-center">
                 {competitions.map((competition, index) => (
