@@ -13,6 +13,8 @@ function UEA7() {
     // { src: './TICO.webp', title: 'Silver Sponsor', class: 'text-xl' },
   ];
 
+  const strategic_partners = [{ src: "./aswuni.png", class: "text-xl" }];
+
   const competitions = [
     {
       imgSrc: "./hackathon.png",
@@ -81,6 +83,7 @@ function UEA7() {
     //   status: 'Coming Soon..',
     // },
   ];
+
   return (
     <>
       <div className="main">
@@ -115,6 +118,10 @@ function UEA7() {
                   <i className="fas fa-map-marker-alt"></i>
                   Aswan
                 </h3>
+
+
+
+                
                 {/* <h3 className="text-xl mb-2 font-semibold leading-normal flex justify-center items-center gap-2">
                   <i className="fas fa-map-marker-alt"></i>
                   <a
@@ -190,19 +197,6 @@ function UEA7() {
             <div className="container mx-auto px-4 pt-18 pb-10">
               <div className="flex flex-wrap text-center justify-center">
                 <div className="w-full lg:w-6/12 px-4">
-                  <h2 className="text-5xl text-center font-bold text-social-4 mx-auto my-4">
-                    Competitions
-                  </h2>
-                  <p className="text-xl leading-relaxed my-4 text-white">
-                    Enjoy free accommodation for 2 members per team!
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="container mx-auto px-4 pt-18 pb-10">
-              <div className="flex flex-wrap text-center justify-center">
-                <div className="w-full lg:w-6/12 px-4">
                   <h2 className="text-5xl text-center font-bold text-social-4 mx-auto mb-7">
                     Submission Dates
                   </h2>
@@ -229,53 +223,66 @@ function UEA7() {
                 </div>
               </div>
             </div>
-            <section className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5  py-12 items-center">
-              {competitions.map((competition, index) => (
-                <div
-                  key={index}
-                  className="w-full lg:mb-0 mb-12 text-center text-white hover:bg-white/40 transition cursor-pointer rounded-lg border border-white/30"
-                >
-                  <div className="p-5 overflow-hidden">
-                    <div className="h-40 flex py-9 items-center">
-                      <img
-                        className="h-36 mx-auto"
-                        src={competition.imgSrc}
-                        alt="card 1"
-                      />
-                    </div>
-                    <div className="px-4 py-2">
-                      <h2 className="text-2xl font-semibold mb-3 truncate">
-                        {competition.title}
-                      </h2>
-                      <div className="text-lg font-semibold"></div>
-                      <div className="text-center mt-2">
-                        <p className="py-2 text-sm text-social-4 font-bold uppercase hover:underline">
-                          {competition.status}
-                        </p>
+
+              <div className="container mx-auto px-4 pt-18 pb-10">
+                <div className="flex flex-wrap text-center justify-center">
+                  <div className="w-full lg:w-6/12 px-4">
+                    <h2 className="text-5xl text-center font-bold text-social-4 mx-auto my-4">
+                      Competitions
+                    </h2>
+                    <p className="text-xl leading-relaxed my-4 text-white">
+                      Enjoy free accommodation for 2 members per team!
+                    </p>
+                  </div>
+              </div>
+              <section className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5  py-12 items-center">
+                {competitions.map((competition, index) => (
+                  <div
+                    key={index}
+                    className="w-full lg:mb-0 mb-12 text-center text-white hover:bg-white/40 transition cursor-pointer rounded-lg border border-white/30"
+                  >
+                    <div className="p-5 overflow-hidden">
+                      <div className="h-40 flex py-9 items-center">
+                        <img
+                          className="h-36 mx-auto"
+                          src={competition.imgSrc}
+                          alt="card 1"
+                        />
                       </div>
-                      {competition.rulebook && (
-                        <div className="text-center mt-2">
-                          <a
-                            href={competition.rulebook}
-                            target="_blank"
-                            className="py-2 text-sm text-social-4 font-bold uppercase hover:underline"
-                          >
-                            Check Rule book
-                          </a>
-                        </div>
-                      )}
-                      {competition.rule && (
+                      <div className="px-4 py-2">
+                        <h2 className="text-2xl font-semibold mb-3 truncate">
+                          {competition.title}
+                        </h2>
+                        <div className="text-lg font-semibold"></div>
                         <div className="text-center mt-2">
                           <p className="py-2 text-sm text-social-4 font-bold uppercase hover:underline">
-                            {competition.rule}
+                            {competition.status}
                           </p>
                         </div>
-                      )}
+                        {competition.rulebook && (
+                          <div className="text-center mt-2">
+                            <a
+                              href={competition.rulebook}
+                              target="_blank"
+                              className="py-2 text-sm text-social-4 font-bold uppercase hover:underline"
+                            >
+                              Check Rule book
+                            </a>
+                          </div>
+                        )}
+                        {competition.rule && (
+                          <div className="text-center mt-2">
+                            <p className="py-2 text-sm text-social-4 font-bold uppercase hover:underline">
+                              {competition.rule}
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </section>
+                ))}
+              </section>
+            </div>
           </div>
         </section>
 
