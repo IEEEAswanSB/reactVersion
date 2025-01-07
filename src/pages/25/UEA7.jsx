@@ -1,68 +1,71 @@
 /* eslint-disable react/jsx-no-target-blank */
 
-import { rule } from 'postcss';
-import { useState, useEffect } from 'react';
+import { rule } from "postcss";
+import { useState, useEffect } from "react";
+
+import UEALogo from "../../assets/img/UEA-7.png";
 
 function UEA7() {
   const sponsors = [
-    { src: './aswuni.png', class: 'text-xl' },
-    { src: './download.webp', class: 'text-xl' },
-    { src: './logo-w.png', class: 'text-2xl' },
-    { src: './NVL-logo-white.svg', class: 'text-xl' },
+    { src: "./aswuni.png", class: "text-xl" },
+    { src: "./download.webp", class: "text-xl" },
+    { src: "./logo-w.png", class: "text-2xl" },
+    { src: "./NVL-logo-white.svg", class: "text-xl" },
     // { src: './Consulting.webp', title: 'Silver Sponsor', class: 'text-xl' },
     // { src: './TICO.webp', title: 'Silver Sponsor', class: 'text-xl' },
   ];
 
+  const strategic_partners = [{ src: "./aswuni.png", class: "text-xl" }];
 
   const competitions = [
     {
-      imgSrc: './hackathon.png',
-      title: 'Problem Solving',
-      status: 'Coming Soon..',
+      imgSrc: "./hackathon.png",
+      title: "Problem Solving",
+      status: "Coming Soon..",
     },
     {
-      imgSrc: './capture-the-flag.png',
-      title: 'CTF',
-      status: 'Coming Soon..',
+      imgSrc: "./capture-the-flag.png",
+      title: "CTF",
+      status: "Coming Soon..",
     },
     {
-      imgSrc: './arc.webp',
-      title: 'Robotics Competition',
-      status: 'Coming Soon..',
-      rulebook: './Book_of_Rules.pdf',
+      imgSrc: "./arc.webp",
+      title: "Robotics Competition",
+      status: "Coming Soon..",
+      rulebook: "./Book_of_Rules.pdf",
     },
     {
-      imgSrc: './bridge.webp',
-      title: 'Spaghetti Bridge',
-      status: 'Coming Soon..',
-      rulebook: './rulebook.pdf',
+      imgSrc: "./bridge.webp",
+      title: "Spaghetti Bridge",
+      status: "Coming Soon..",
+      rulebook: "./rulebook.pdf",
     },
     {
-      imgSrc: './tech.webp',
-      title: 'Technical Projects',
-      status: 'Coming Soon..',
+      imgSrc: "./tech.webp",
+      title: "Technical Projects",
+      status: "Coming Soon..",
     },
     {
-      imgSrc: './grad.webp',
-      title: 'Graduation Projects',
+      imgSrc: "./grad.webp",
+      title: "Graduation Projects",
       rule: "must be in the final year of the university",
       // prizes: [
       //   { imgSrc: './gold.png', amount: '10,000EGP' },
       //   { imgSrc: './silver.png', amount: '6,000EGP' },
       //   { imgSrc: './bronze.png', amount: '3,000EGP' },
       // ],
-      status: 'Coming Soon..',
+      status: "Coming Soon..",
     },
     {
-      imgSrc: './pre.webp',
-      title: 'Pre-Graduation Projects',
+      imgSrc: "./pre.webp",
+      title: "Pre-Graduation Projects",
       rule: "Must not be in the final year of university.",
-      status: 'Coming Soon..',
+      status: "Coming Soon..",
     },
     {
-      imgSrc: './school.webp',
-      title: 'School Projects',
-      status: 'Coming Soon..',
+      imgSrc: "./school.webp",
+      title: "School Projects",
+      status: "Coming Soon..",
       rule: "Must be in the school stage.",
     },
     // {
@@ -82,6 +85,7 @@ function UEA7() {
     //   status: 'Coming Soon..',
     // },
   ];
+
   return (
     <>
       <div className="main">
@@ -89,12 +93,10 @@ function UEA7() {
           <div className="container mx-auto">
             <div className="flex flex-wrap items-center">
               <div className="px-4 mx-auto">
-                <div
-                  className="flex flex-col min-w-0 mx-auto break-words w-full mb-6"
-                >
+                <div className="flex flex-col min-w-0 mx-auto break-words w-full mb-6">
                   <img
                     alt="..."
-                    src="UEA.webp"
+                    src={UEALogo}
                     className="w-full md:w-5/12 mx-auto"
                     loading="lazy"
                   />
@@ -106,7 +108,8 @@ function UEA7() {
                   Upper Egypt in Action 7<sup>th</sup> edition
                 </h3>
                 <h3 className="text-xl my-3 font-semibold leading-normal flex justify-center items-center gap-2">
-                  The Convergence of AI, Cybersecurity, and Entrepreneurship: Impact on Energy, Food, and Water Nexus
+                  The Convergence of AI, Cybersecurity, and Entrepreneurship:
+                  Impact on Energy, Food, and Water Nexus
                 </h3>
                 <h3 className="text-xl mb-2 font-semibold leading-normal flex justify-center items-center gap-2">
                   <i className="fas fa-calendar-alt"></i>
@@ -114,26 +117,35 @@ function UEA7() {
                 </h3>
                 <h3 className="text-xl mb-2 font-semibold leading-normal flex justify-center items-center gap-2">
                   <i className="fas fa-map-marker-alt"></i>
-                  <a href="https://goo.gl/maps/EdTeAhhrzhBwPJZw9" target="_blank">
+                  <a
+                    href="https://goo.gl/maps/EdTeAhhrzhBwPJZw9"
+                    target="_blank"
+                  >
                     Tolip Hotel Aswan (proposed)
                   </a>
                 </h3>
-                <p
-                  className="text-lg w-full md:w-6/12 text-center font-light leading-relaxed my-4 mx-auto"
-                >
-                  UEA is a conference that consists of a gallery for
-                  projects from Upper Egypt along with several sessions about market, soft
-                  and technical skills.
+                <p className="text-lg w-full md:w-6/12 text-center font-light leading-relaxed my-4 mx-auto">
+                  UEA is a conference that consists of a gallery for projects
+                  from Upper Egypt along with several sessions about market,
+                  soft and technical skills.
                 </p>
               </div>
             </div>
 
-            <CountdownTimer target={'2025-04-10T00:00:00'} message={"Time Until The Event"} />
+            <CountdownTimer
+              target={"2025-04-10T00:00:00"}
+              message={"Time Until The Event"}
+            />
 
-            <h3 className="text-5xl mt-10 mb-5 font-semibold leading-normal text-center text-white">Organizers</h3>
+            <h3 className="text-5xl mt-10 mb-5 font-semibold leading-normal text-center text-white">
+              Organizers
+            </h3>
             <section className="flex flex-wrap justify-center lg:items-end items-center pb-12">
               {sponsors.map((sponsor, index) => (
-                <div key={index} className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg">
+                <div
+                  key={index}
+                  className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg"
+                >
                   <div className="px-6 pb-2">
                     <div className="flex justify-center items-center">
                       <img
@@ -144,12 +156,44 @@ function UEA7() {
                       />
                     </div>
                     <div className="mt-2 text-center">
-                      <h5 className={`${sponsor.class} text-black font-bold`}>{sponsor.title}</h5>
+                      <h5 className={`${sponsor.class} text-black font-bold`}>
+                        {sponsor.title}
+                      </h5>
                     </div>
                   </div>
                 </div>
               ))}
             </section>
+
+            <div className="container mx-auto px-4 pt-18 pb-10">
+              <div className="flex flex-wrap text-center justify-center">
+                <div className="w-full lg:w-6/12 px-4">
+                  <h2 className="text-5xl text-center font-bold text-social-4 mx-auto mb-7">
+                    Submission Dates
+                  </h2>
+                  <div className="flex flex-col justify-center items-center gap-4 mb-7">
+                    <p className="text-lg leading-relaxed text-white">
+                      Submission opening: 1st February
+                    </p>
+                    <CountdownTimer
+                      target={"2025-02-01T00:00:00"}
+                      message={"Until Submition Opening"}
+                      circle={"3rem"}
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center items-center gap-4">
+                    <p className="text-lg leading-relaxed text-white">
+                      Submission closing: 20th February
+                    </p>
+                    <CountdownTimer
+                      target={"2025-02-20T00:00:00"}
+                      message={"Until Submition Closing"}
+                      circle={"3rem"}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <div className="container mx-auto px-4 pt-18 pb-10">
               <div className="flex flex-wrap text-center justify-center">
@@ -162,61 +206,55 @@ function UEA7() {
                   </p>
                 </div>
               </div>
-            </div>
-
-            <div className="container mx-auto px-4 pt-18 pb-10">
-              <div className="flex flex-wrap text-center justify-center">
-                <div className="w-full lg:w-6/12 px-4">
-                  <h2 className="text-5xl text-center font-bold text-social-4 mx-auto mb-7">
-                    Submission Dates
-                  </h2>
-                  <div className='flex flex-col justify-center items-center gap-4 mb-7'>
-                    <p className="text-lg leading-relaxed text-white">
-                      Submission opening: 1st February
-                    </p>
-                    <CountdownTimer target={'2025-02-01T00:00:00'} message={"Until Submition Opening"} circle={"3rem"} />
-                  </div>
-                  <div className='flex flex-col justify-center items-center gap-4'>
-                    <p className="text-lg leading-relaxed text-white">
-                      Submission closing: 20th February
-                    </p>
-                    <CountdownTimer target={'2025-02-20T00:00:00'} message={"Until Submition Closing"} circle={"3rem"} />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <section className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5  py-12 items-center">
-
-              {competitions.map((competition, index) => (
-                <div key={index} className="w-full lg:mb-0 mb-12 text-center text-white hover:bg-white/40 transition cursor-pointer rounded-lg border border-white/30">
-                  <div className="p-5 overflow-hidden">
-                    <div className="h-40 flex py-9 items-center">
-                      <img className="h-36 mx-auto" src={competition.imgSrc} alt="card 1" />
-                    </div>
-                    <div className="px-4 py-2">
-                      <h2 className="text-2xl font-semibold mb-3 truncate">
-                        {competition.title}
-                      </h2>
-                      <div className="text-lg font-semibold">
+              <section className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5  py-12 items-center">
+                {competitions.map((competition, index) => (
+                  <div
+                    key={index}
+                    className="w-full lg:mb-0 mb-12 text-center text-white hover:bg-white/40 transition cursor-pointer rounded-lg border border-white/30"
+                  >
+                    <div className="p-5 overflow-hidden">
+                      <div className="h-40 flex py-9 items-center">
+                        <img
+                          className="h-36 mx-auto"
+                          src={competition.imgSrc}
+                          alt="card 1"
+                        />
                       </div>
-                      <div className="text-center mt-2">
-                        <p className="py-2 text-sm text-social-4 font-bold uppercase hover:underline">{competition.status}</p>
+                      <div className="px-4 py-2">
+                        <h2 className="text-2xl font-semibold mb-3 truncate">
+                          {competition.title}
+                        </h2>
+                        <div className="text-lg font-semibold"></div>
+                        <div className="text-center mt-2">
+                          <p className="py-2 text-sm text-social-4 font-bold uppercase hover:underline">
+                            {competition.status}
+                          </p>
+                        </div>
+                        {competition.rulebook && (
+                          <div className="text-center mt-2">
+                            <a
+                              href={competition.rulebook}
+                              target="_blank"
+                              className="py-2 text-sm text-social-4 font-bold uppercase hover:underline"
+                            >
+                              Check Rule book
+                            </a>
+                          </div>
+                        )}
+                        {competition.rule && (
+                          <div className="text-center mt-2">
+                            <p className="py-2 text-sm text-social-4 font-bold uppercase hover:underline">
+                              {competition.rule}
+                            </p>
+                          </div>
+                        )}
                       </div>
-                      {competition.rulebook && <div className="text-center mt-2">
-                        <a href={competition.rulebook} target='_blank' className="py-2 text-sm text-social-4 font-bold uppercase hover:underline">Check Rule book</a>
-                      </div>}
-                      {competition.rule && <div className="text-center mt-2">
-                        <p className="py-2 text-sm text-social-4 font-bold uppercase hover:underline">{competition.rule}</p>
-                      </div>}
                     </div>
                   </div>
-                </div>
-              ))}
-            </section>
-
-
+                ))}
+              </section>
+            </div>
           </div>
-
         </section>
 
         <div className="container mx-auto px-4 pb-8 text-white">
@@ -227,10 +265,10 @@ function UEA7() {
                 <i className="fas fa-home"></i> Aswan Faculty of Engineering
               </h5>
               <h5 className="text-lg my-2">
-                <i className="fas fa-envelope"></i> <a href="mailto:sb.aswan@ieee.org">sb.aswan@ieee.org</a>
+                <i className="fas fa-envelope"></i>{" "}
+                <a href="mailto:sb.aswan@ieee.org">sb.aswan@ieee.org</a>
               </h5>
-              <div className="mt-6 lg:mb-0 mb-6">
-              </div>
+              <div className="mt-6 lg:mb-0 mb-6"></div>
             </div>
             <div className="w-full lg:w-4/12 px-4">
               <h4 className="text-3xl font-semibold">Follow Us</h4>
@@ -243,7 +281,10 @@ function UEA7() {
                     <i className="fab fa-facebook-f"></i>
                   </button>
                 </a>
-                <a href="https://www.linkedin.com/company/ieeeaswansb" target="_blank">
+                <a
+                  href="https://www.linkedin.com/company/ieeeaswansb"
+                  target="_blank"
+                >
                   <button
                     className="bg-social-200 text-white shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
                     type="button"
@@ -259,7 +300,10 @@ function UEA7() {
                     <i className="fab fa-twitter"></i>
                   </button>
                 </a>
-                <a href="https://www.instagram.com/ieeeaswansb/" target="_blank">
+                <a
+                  href="https://www.instagram.com/ieeeaswansb/"
+                  target="_blank"
+                >
                   <button
                     className="bg-gradient-to-r from-social-1 via-social-2 to-social-3 text-white shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
                     type="button"
@@ -274,17 +318,15 @@ function UEA7() {
         </div>
       </div>
     </>
-  )
+  );
 }
-
-
 
 const CountdownTimer = ({ target, message, circle }) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
-    seconds: 0
+    seconds: 0,
   });
 
   useEffect(() => {
@@ -313,29 +355,71 @@ const CountdownTimer = ({ target, message, circle }) => {
   return (
     <div className="container mx-auto">
       <div className="border border-white bg-black/20 backdrop-blur-sm rounded-xl p-8">
-        <h2 className={`font-bold text-white mb-8 text-center ${circle ? "text-xl" : "text-3xl"}`}>{message}</h2>
+        <h2
+          className={`font-bold text-white mb-8 text-center ${
+            circle ? "text-xl" : "text-3xl"
+          }`}
+        >
+          {message}
+        </h2>
         <div className="flex flex-wrap justify-center gap-8 text-white">
           <div className="flex flex-col items-center">
-            <div style={circle ? { width: circle, height: circle } : { width: "6rem", height: "6rem" }} className="rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
-              <div className={`font-bold ${circle ? "text-lg" : "text-4xl"}`}>{timeLeft.days}</div>
+            <div
+              style={
+                circle
+                  ? { width: circle, height: circle }
+                  : { width: "6rem", height: "6rem" }
+              }
+              className="rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3"
+            >
+              <div className={`font-bold ${circle ? "text-lg" : "text-4xl"}`}>
+                {timeLeft.days}
+              </div>
             </div>
             <div className="text-lg font-medium">Days</div>
           </div>
           <div className="flex flex-col items-center">
-            <div style={circle ? { width: circle, height: circle } : { width: "6rem", height: "6rem" }} className="rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
-              <div className={`font-bold ${circle ? "text-lg" : "text-4xl"}`}>{timeLeft.hours}</div>
+            <div
+              style={
+                circle
+                  ? { width: circle, height: circle }
+                  : { width: "6rem", height: "6rem" }
+              }
+              className="rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3"
+            >
+              <div className={`font-bold ${circle ? "text-lg" : "text-4xl"}`}>
+                {timeLeft.hours}
+              </div>
             </div>
             <div className="text-lg font-medium">Hours</div>
           </div>
           <div className="flex flex-col items-center">
-            <div style={circle ? { width: circle, height: circle } : { width: "6rem", height: "6rem" }} className="rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
-              <div className={`font-bold ${circle ? "text-lg" : "text-4xl"}`}>{timeLeft.minutes}</div>
+            <div
+              style={
+                circle
+                  ? { width: circle, height: circle }
+                  : { width: "6rem", height: "6rem" }
+              }
+              className="rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3"
+            >
+              <div className={`font-bold ${circle ? "text-lg" : "text-4xl"}`}>
+                {timeLeft.minutes}
+              </div>
             </div>
             <div className="text-lg font-medium">Minutes</div>
           </div>
           <div className="flex flex-col items-center">
-            <div style={circle ? { width: circle, height: circle } : { width: "6rem", height: "6rem" }} className="rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3">
-              <div className={`font-bold ${circle ? "text-lg" : "text-4xl"}`}>{timeLeft.seconds}</div>
+            <div
+              style={
+                circle
+                  ? { width: circle, height: circle }
+                  : { width: "6rem", height: "6rem" }
+              }
+              className="rounded-full border-2 border-white flex items-center justify-center bg-black/30 mb-3"
+            >
+              <div className={`font-bold ${circle ? "text-lg" : "text-4xl"}`}>
+                {timeLeft.seconds}
+              </div>
             </div>
             <div className="text-lg font-medium">Seconds</div>
           </div>
@@ -345,5 +429,4 @@ const CountdownTimer = ({ target, message, circle }) => {
   );
 };
 
-
-export default UEA7
+export default UEA7;

@@ -1,5 +1,5 @@
 import logo from "../../assets/img/logo.png";
-import UEA from "../../assets/img/UEA.webp";
+import UEA from "../../assets/img/UEA-7.png";
 import Abdelrhman from "../../assets/img/excomm/Abdelrhman.webp";
 import abdallah from "../../assets/img/excomm/abdallah.webp";
 import omar from "../../assets/img/excomm/omar.webp";
@@ -176,9 +176,9 @@ function Home() {
                     UAE 7
                   </h3>
                   <p className="text-lg font-normal leading-relaxed mt-4 mb-4 text-blueGray-300">
-                    UEA is a conference that consists of a gallery for
-                    projects from Upper Egypt along with several sessions about market, soft
-                    and technical skills.
+                    UEA is a conference that consists of a gallery for projects
+                    from Upper Egypt along with several sessions about market,
+                    soft and technical skills.
                   </p>
                   <Link
                     to={"/uea7"}
