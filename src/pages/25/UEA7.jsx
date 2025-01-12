@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { useState, useEffect } from 'react';
-
+import UEALogo from "../../assets/img/UEA-7.png";
 function UEA7() {
   const organizers = [
     { src: './aswuni.png', class: 'text-xl' },
