@@ -1,16 +1,17 @@
 /* eslint-disable react/jsx-no-target-blank */
-
-import { rule } from 'postcss';
 import { useState, useEffect } from 'react';
 
 function UEA7() {
-  const sponsors = [
+  const organizers = [
     { src: './aswuni.png', class: 'text-xl' },
     { src: './download.webp', class: 'text-xl' },
     { src: './logo-w.png', class: 'text-2xl' },
     { src: './NVL-logo-white.svg', class: 'text-xl' },
-    // { src: './Consulting.webp', title: 'Silver Sponsor', class: 'text-xl' },
-    // { src: './TICO.webp', title: 'Silver Sponsor', class: 'text-xl' },
+  ];
+
+  const sponsors = [
+    { src: './EG-CERT.png', class: 'text-xl' },
+    { src: './cyber-security-women.jpg', class: 'text-xl' },
   ];
 
 
@@ -114,9 +115,9 @@ function UEA7() {
                 </h3>
                 <h3 className="text-xl mb-2 font-semibold leading-normal flex justify-center items-center gap-2">
                   <i className="fas fa-map-marker-alt"></i>
-                  <a href="https://goo.gl/maps/EdTeAhhrzhBwPJZw9" target="_blank">
-                    Tolip Hotel Aswan (proposed)
-                  </a>
+                  {/* <a href="https://goo.gl/maps/EdTeAhhrzhBwPJZw9" target="_blank"> */}
+                  Aswan
+                  {/* </a> */}
                 </h3>
                 <p
                   className="text-lg w-full md:w-6/12 text-center font-light leading-relaxed my-4 mx-auto"
@@ -132,7 +133,7 @@ function UEA7() {
 
             <h3 className="text-5xl mt-10 mb-5 font-semibold leading-normal text-center text-white">Organizers</h3>
             <section className="flex flex-wrap justify-center lg:items-end items-center pb-12">
-              {sponsors.map((sponsor, index) => (
+              {organizers.map((sponsor, index) => (
                 <div key={index} className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg">
                   <div className="px-6 pb-2">
                     <div className="flex justify-center items-center">
@@ -145,6 +146,42 @@ function UEA7() {
                     </div>
                     <div className="mt-2 text-center">
                       <h5 className={`${sponsor.class} text-black font-bold`}>{sponsor.title}</h5>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </section>
+
+            <h3 className="text-5xl mt-10 mb-5 font-semibold leading-normal text-center text-white">Strategic partner</h3>
+            <section className="flex flex-wrap justify-center lg:items-end items-center pb-12">
+              <div className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg">
+                <div className="px-6 pb-">
+                  <div className="flex justify-center items-center">
+                    <img
+                      alt="..."
+                      src={"./ntra.webp"}
+                      className="p-2"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mt-2 text-center">
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <h3 className="text-5xl mt-10 mb-5 font-semibold leading-normal text-center text-white">Sponsors</h3>
+            <section className="flex flex-wrap justify-center lg:items-end items-center pb-12">
+              {sponsors.map((sponsor, index) => (
+                <div key={index} className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg">
+                  <div className="px-6 pb-2 flex justify-center items-center">
+                    <div className="flex justify-center items-center w-52 h-52 text-center">
+                      <img
+                        alt="..."
+                        src={sponsor.src}
+                        className="p-2 rounded-xl overflow-hidden"
+                        loading="lazy"
+                      />
                     </div>
                   </div>
                 </div>
@@ -222,7 +259,7 @@ function UEA7() {
         <div className="container mx-auto px-4 pb-8 text-white">
           <div className="flex flex-wrap text-center lg:text-left">
             <div className="w-full lg:w-8/12 px-4">
-              <h4 className="text-3xl font-semibold">Let's keep in touch!</h4>
+              <h4 className="text-3xl font-semibold">Let&#39;s keep in touch!</h4>
               <h5 className="text-lg my-2">
                 <i className="fas fa-home"></i> Aswan Faculty of Engineering
               </h5>
