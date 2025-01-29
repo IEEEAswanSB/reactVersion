@@ -261,8 +261,7 @@ function Home() {
                     />
                     <div className="pt-6 text-center">
                       <h5
-                        className="text-xl font-bold 
-                      whitespace-nowrap                      
+                        className="text-xl font-bold                      
                       "
                       >
                         Abdelrahman Ibrahem
