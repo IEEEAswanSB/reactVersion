@@ -25,6 +25,7 @@ import FlowingMenu from "../../../components/bein7/FlowingMenu";
 import Hyperspeed from "../../../components/bein7/Hyperspeed";
 import SpotlightCard from "../../../components/bein7/SpotlightCard";
 import SplashCursor from "../../../components/bein7/SplashCursor";
+import { Link } from "react-router-dom";
 
 function Bein7Landing() {
   const containerRef = useRef(null);
@@ -118,10 +119,10 @@ function Bein7Landing() {
           {/* <SplashCursor /> */}
           <motion.div
             className="flex lg:sticky top-[10%]  justify-center items-center gap-2 text-2xl md:text-5xl lg:text-5xl font-normal md:font-medium lg:font-bold w-full lg:w-1/2 mb-8 lg:mb-0"
-            // style={{
-            //   position: '',
-            //   top: '10%',
-            // }}
+          // style={{
+          //   position: '',
+          //   top: '10%',
+          // }}
           >
             Bein
             <RotatingText
@@ -289,9 +290,9 @@ function Bein7Landing() {
                       {course.title} course
                     </p>
                   </div>
-                  <button className="w-full bg-[#67e8f977] text-white p-2 rounded-lg">
+                  <Link to="/bein7/form" className="w-full bg-[#67e8f977] text-center text-white p-2 rounded-lg">
                     Join
-                  </button>
+                  </Link>
                 </div>
               </SpotlightCard>
             ))}

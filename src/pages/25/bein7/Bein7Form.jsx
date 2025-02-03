@@ -169,7 +169,7 @@ function Bein7Form() {
     data.append('course', course);
 
 
-    axios.post("http://localhost:9000/api/v1/course/register", data)
+    axios.post("https://ieee-recruitment-production.up.railway.app/api/v1/course/register", data)
       .then(res => {
         console.log(res.data);
         setLoading(false);
@@ -196,9 +196,9 @@ function Bein7Form() {
 
   return (
     <div className='w-screen h-[130vh] bg-[#060606] relative flex items-center justify-center'>
-      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:w-1/2 w-4/5 bg-[#222] p-8 rounded-2xl shadow-lg text-center'>
+      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:w-1/2 w-11/12 bg-[#222] p-8 rounded-2xl shadow-lg text-center'>
         <form onSubmit={handleSubmit} className='flex flex-col items-center justify-start gap-2'>
-          <h1 className='text-3xl font-bold text-white mb-1'>Course Name</h1>
+          {/* <h1 className='text-3xl font-bold text-white mb-1'>Course Name</h1> */}
           <label className='flex flex-col justify-start items-start w-full text-white gap-0.5'>
             <span className='text-lg font-medium'>Full Name</span>
             <input
