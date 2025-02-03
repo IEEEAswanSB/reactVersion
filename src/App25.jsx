@@ -5,6 +5,8 @@ import React, { Suspense } from "react";
 import Home from "./pages/25/Home";
 import { Box, Typography } from "@mui/material";
 import UEA7 from "./pages/25/UEA7";
+import Bein7Landing from "./pages/25/bein7/Bein7Landing";
+import Bein7Form from "./pages/25/bein7/Bein7Form";
 
 
 function App() {
@@ -78,6 +80,8 @@ function App() {
         <Route path="/" element={<Home />} />
         {/* <Route path="/codestorm" element={<CodeStormForm />} /> */}
         <Route path="/uea7" element={<UEA7 />} />
+        <Route path="/bein7" element={<Bein7Landing />} />
+        <Route path="/bein7/form" element={<Bein7Form />} />
       </Routes>
     </Suspense>
   );
