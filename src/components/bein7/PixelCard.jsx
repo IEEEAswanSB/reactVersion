@@ -277,7 +277,7 @@ export default function PixelCard({
       tabIndex={finalNoFocus ? -1 : 0}
     >
       <canvas
-        className="w-full h-full block"
+        className=" w-full h-full block"
         ref={canvasRef}
       />
       {children}
