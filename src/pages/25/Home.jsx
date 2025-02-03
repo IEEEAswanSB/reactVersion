@@ -191,6 +191,45 @@ function Home() {
             </div>
           </section>
 
+          <section className="pb-32 bg-blueGray-800 -mt-24">
+            <div className="container mx-auto px-4">
+              <div className="flex flex-wrap items-center mt-24">
+                <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                  <div className="p-6 relative flex flex-col min-w-0 break-words w-full mb-6 rounded-lg">
+                    <img
+                      alt="..."
+                      src={'/bein7-logo.png'}
+                      style={{ filter: 'brightness' }}
+                      className="w-full align-middle rounded-t-lg main-logo"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+
+                <div className="w-full md:w-5/12 text-white px-4 mr-auto ml-auto">
+                  <div className="text-blueGray-800 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
+                    <i className="fas fa-info text-xl"></i>
+                  </div>
+                  <h3 className="text-3xl mb-2 font-semibold leading-normal">
+                    Be Informed Camp 7
+                  </h3>
+                  <p className="text-lg font-normal leading-relaxed mt-4 mb-4 text-blueGray-300">
+                    Join the Be-In camp in Aswan for a 5-day tech-centric experience!
+                    Elevate your skills with 25 hours of top-notch courses, guided by experts. Delve into engineering majors,
+                    attend technical and non-technical sessions, and gain insights from thought-provoking talks.
+                    Ignite your future, uncover your passion, and launch your success journey at Be-In!
+                  </p>
+                  <Link
+                    to="/bein7"
+                    className="font-bold text-blueGray-800 mt-8 w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center bg-white"
+                  >
+                    Register Now!
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section className="pt-20 ">
             <div className="container mx-auto px-4">
               <div className="flex flex-wrap justify-center text-center mb-24">

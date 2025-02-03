@@ -7,6 +7,7 @@ import { Box, Typography } from "@mui/material";
 import UEA7 from "./pages/25/UEA7";
 import Bein7Landing from "./pages/25/bein7/Bein7Landing";
 import Bein7Form from "./pages/25/bein7/Bein7Form";
+import ScrollToTop from "./ScrollToTop";
 
 
 function App() {
@@ -76,6 +77,7 @@ function App() {
         </>
       }
     >
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path="/codestorm" element={<CodeStormForm />} /> */}
