@@ -309,14 +309,15 @@ function Bein7Form() {
               onChange={(e) => setCourse(e.target.value)}
               className='w-full !bg-[#333] p-2 rounded-lg mb-2 !focus:outline-none !outline-none'
             >
-              <option value={""}>select a course</option>
+              <option value={""} >select a course</option>
               {courses.map((course) => (
                 <option key={course} value={course}>{course}</option>
               ))}
             </select>
           </label>
           <label className='flex flex-col justify-start items-start w-full text-white gap-0.5'>
-            <span className='text-lg font-medium'>Payment Method</span>
+          <span className="text-lg font-medium">Payment Method</span>
+          <span className='text-lg font-medium text-right'>The ticket price is 80 Egyptian pounds for the number 0106 744 6502</span>
             <select
               name='paymentMethod'
               value={paymentMethod}
@@ -324,7 +325,7 @@ function Bein7Form() {
               onChange={(e) => setPaymentMethod(e.target.value)}
               className='w-full bg-[#333] p-2 rounded-lg mb-2 focus:outline-none outline-none'
             >
-              <option value={""}>select payment method</option>
+              <option value={""} disabled>select payment method</option>
               {paymentMethods.map((method) => (
                 <option key={method} value={method}>{method}</option>
               ))}
