@@ -332,7 +332,7 @@ function Bein7Form() {
           </label>
           {paymentMethod === "payment on arrival" && <span className='text-white text-lg font-bold text-left w-full'>NOTE! Ticket Price: 80 EGP</span>}
           {paymentMethod === "vodafone cash" && <label className='flex flex-col justify-start items-start w-full text-white gap-1'>
-            <span className='text-lg font-medium text-left'>Payment Receipt, Vodafone cash number: <span className='text-red-600'>0106 744 6502</span> <br /> Ticket Price: 80 EGP</span>
+            <span className='text-lg font-medium text-left'>Payment Receipt, Vodafone cash number: <span className='text-red-600'>0106 024 1356</span> <br /> Ticket Price: 80 EGP</span>
             <div
               className={`w-full h-32 relative border-2 border-dashed rounded-lg p-4 flex flex-col items-center justify-center cursor-pointer
       ${dragActive ? 'border-blue-500 bg-blue-50/10' : 'border-gray-500'}`}
