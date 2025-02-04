@@ -155,8 +155,8 @@ function Bein7Form() {
     data.append('course', course);
 
 
-    axios.post("http://localhost:9000/api/v1/course/register", data)
-      // axios.post("https://ieee-recruitment-production.up.railway.app/api/v1/course/register", data)
+    // axios.post("http://localhost:9000/api/v1/course/register", data)
+    axios.post("https://ieee-recruitment-production.up.railway.app/api/v1/course/register", data)
       .then(res => {
         console.log(res.data);
         setLoading(false);
