@@ -138,20 +138,6 @@ function Bein7Form() {
     e.preventDefault();
     validate();
 
-
-
-    console.log({
-      fullName,
-      email,
-      phoneNumber,
-      id,
-      college,
-      university,
-      year,
-      paymentMethod,
-      paymentReceipt,
-      otherUniversity
-    });
     const data = new FormData();
     data.append('fullName', fullName);
     data.append('email', email);
@@ -169,7 +155,8 @@ function Bein7Form() {
     data.append('course', course);
 
 
-    axios.post("https://ieee-recruitment-production.up.railway.app/api/v1/course/register", data)
+    axios.post("http://localhost:9000/api/v1/course/register", data)
+      // axios.post("https://ieee-recruitment-production.up.railway.app/api/v1/course/register", data)
       .then(res => {
         console.log(res.data);
         setLoading(false);
@@ -190,7 +177,7 @@ function Bein7Form() {
       .catch(err => {
         console.log(err);
         setLoading(false);
-        openSnackbar("An error occurred, please try again later", { type: "error" });
+        openSnackbar(err.response.data.message, { type: "error" });
       })
   };
 
