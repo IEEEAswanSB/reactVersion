@@ -289,6 +289,9 @@ function Bein7Landing() {
                     <p className="text-xl font-semibold">
                       {course.title} course
                     </p>
+                    <p>
+                      Ticket price: <span className="text-lg">80 EGP</span>
+                    </p>
                   </div>
                   <Link to="/bein7/form" className="w-full bg-[#67e8f977] text-center text-white p-2 rounded-lg">
                     Join
