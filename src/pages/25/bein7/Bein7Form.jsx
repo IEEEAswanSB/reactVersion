@@ -82,49 +82,49 @@ function Bein7Form() {
     if (hasNumbers(fullName)) {
       openSnackbar("Full name should not contain numbers", { type: "error" });
       setLoading(false);
-      return;
+      return true;
     }
 
     if (hasLetters(phoneNumber)) {
       openSnackbar("Phone number should only contain numbers", { type: "error" });
       setLoading(false);
-      return;
+      return true;
     }
 
     if (hasLetters(id)) {
       openSnackbar("ID should only contain numbers", { type: "error" });
       setLoading(false);
-      return;
+      return true;
     }
 
     if (university === "other" && hasNumbers(otherUniversity)) {
       openSnackbar("University name should not contain numbers", { type: "error" });
       setLoading(false);
-      return;
+      return true;
     }
 
     if (phoneNumber && phoneNumber.length !== 11) {
       openSnackbar("Phone number should be 11 digits", { type: "error" });
       setLoading(false);
-      return;
+      return true;
     }
 
     if (id && id.length !== 14) {
       openSnackbar("ID should be 14 digits", { type: "error" });
       setLoading(false);
-      return;
+      return true;
     }
 
     if (!course) {
       openSnackbar("Please select a course", { type: "error" });
       setLoading(false);
-      return;
+      return true;
     }
 
     if (paymentMethod === "vodafone cash" && !paymentReceipt) {
       openSnackbar("Please upload a payment receipt", { type: "error" });
       setLoading(false);
-      return;
+      return true;
     }
 
     return {
@@ -136,7 +136,7 @@ function Bein7Form() {
   const handleSubmit = (e) => {
     setLoading(true);
     e.preventDefault();
-    validate();
+    if (validate()) return;
 
     const data = new FormData();
     data.append('fullName', fullName);
