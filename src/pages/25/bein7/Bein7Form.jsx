@@ -82,61 +82,58 @@ function Bein7Form() {
     if (hasNumbers(fullName)) {
       openSnackbar("Full name should not contain numbers", { type: "error" });
       setLoading(false);
-      return true;
+      return false;
     }
 
     if (hasLetters(phoneNumber)) {
       openSnackbar("Phone number should only contain numbers", { type: "error" });
       setLoading(false);
-      return true;
+      return false;
     }
 
     if (hasLetters(id)) {
       openSnackbar("ID should only contain numbers", { type: "error" });
       setLoading(false);
-      return true;
+      return false;
     }
 
     if (university === "other" && hasNumbers(otherUniversity)) {
       openSnackbar("University name should not contain numbers", { type: "error" });
       setLoading(false);
-      return true;
+      return false;
     }
 
     if (phoneNumber && phoneNumber.length !== 11) {
       openSnackbar("Phone number should be 11 digits", { type: "error" });
       setLoading(false);
-      return true;
+      return false;
     }
 
     if (id && id.length !== 14) {
       openSnackbar("ID should be 14 digits", { type: "error" });
       setLoading(false);
-      return true;
+      return false;
     }
 
     if (!course) {
       openSnackbar("Please select a course", { type: "error" });
       setLoading(false);
-      return true;
+      return false;
     }
 
     if (paymentMethod === "vodafone cash" && !paymentReceipt) {
       openSnackbar("Please upload a payment receipt", { type: "error" });
       setLoading(false);
-      return true;
+      return false;
     }
 
-    return {
-      isValid: errors.length === 0,
-      errors
-    };
+    return true
   };
 
   const handleSubmit = (e) => {
     setLoading(true);
     e.preventDefault();
-    if (validate()) return;
+    if (!validate()) return;
 
     const data = new FormData();
     data.append('fullName', fullName);
@@ -217,7 +214,12 @@ function Bein7Form() {
               name='phoneNumber'
               value={phoneNumber}
               required
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              maxLength={11}
+              pattern="[0-9]{11}"
+              onChange={(e) => {
+                const value = e.target.value.replace(/\D/g, ''); // Only allow digits
+                setPhoneNumber(value);
+              }}
               placeholder='01234567891'
               className='w-full !bg-[#333] p-2 rounded-lg mb-2 !focus:outline-none !outline-none'
             />
@@ -229,8 +231,13 @@ function Bein7Form() {
               name='id'
               value={id}
               required
-              onChange={(e) => setId(e.target.value)}
-              placeholder='ID'
+              maxLength={14}
+              pattern="[0-9]{14}"
+              onChange={(e) => {
+                const value = e.target.value.replace(/\D/g, ''); // Only allow digits
+                setId(value);
+              }}
+              placeholder='14 digits national ID'
               className='w-full !bg-[#333] p-2 rounded-lg mb-2 !focus:outline-none !outline-none'
             />
           </label>
