@@ -1,71 +1,75 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import UEALogo from "../../assets/img/UEA-7.png";
 function UEA7() {
   const organizers = [
-    { src: './aswuni.png', class: 'text-xl' },
-    { src: './download.webp', class: 'text-xl' },
-    { src: './logo-w.png', class: 'text-2xl' },
-    { src: './NVL-logo-white.svg', class: 'text-xl' },
+    { src: "./aswuni.png", class: "text-xl" },
+    { src: "./download.webp", class: "text-xl" },
+    { src: "./logo-w.png", class: "text-2xl" },
+    { src: "./NVL-logo-white.svg", class: "text-xl" },
   ];
 
   const sponsors = [
-    { src: './EG-CERT.png', class: 'text-xl' },
-    { src: './cyber-security-women.jpg', class: 'text-xl' },
+    { src: "./EG-CERT.png", class: "text-xl" },
+    { src: "./cyber-security-women.jpg", class: "text-xl" },
   ];
 
   const strategic_partners = [{ src: "./aswuni.png", class: "text-xl" }];
 
   const competitions = [
-    {
-      imgSrc: "./hackathon.png",
-      title: "Problem Solving",
-      status: "Coming Soon..",
-    },
-    {
-      imgSrc: "./capture-the-flag.png",
-      title: "CTF",
-      status: "Coming Soon..",
-    },
+    // {
+    //   imgSrc: "./hackathon.png",
+    //   title: "Problem Solving",
+    //   status: "Coming Soon..",
+    // },
+    // {
+    //   imgSrc: "./capture-the-flag.png",
+    //   title: "CTF",
+    //   status: "Coming Soon..",
+    // },
     {
       imgSrc: "./arc.webp",
       title: "Robotics Competition",
-      status: "Coming Soon..",
-      rulebook: "./Book_of_Rules.pdf",
+      form: "https://docs.google.com/forms/d/e/1FAIpQLSe3Z430bgY1KsES8VyP-jH2RWOfXBUPN46r0AlslFkloZCTww/viewform",
+      rulebook: "./arc.pdf",
     },
     {
       imgSrc: "./bridge.webp",
       title: "Spaghetti Bridge",
-      status: "Coming Soon..",
-      rulebook: "./rulebook.pdf",
+      form: "https://docs.google.com/forms/d/e/1FAIpQLSe3Z430bgY1KsES8VyP-jH2RWOfXBUPN46r0AlslFkloZCTww/viewform",
+      rulebook: "./spaghetti.pdf",
     },
     {
       imgSrc: "./tech.webp",
       title: "Technical Projects",
-      status: "Coming Soon..",
+      form: "https://docs.google.com/forms/d/e/1FAIpQLSe3Z430bgY1KsES8VyP-jH2RWOfXBUPN46r0AlslFkloZCTww/viewform",
+      rulebook: "./test.pdf",
     },
     {
       imgSrc: "./grad.webp",
       title: "Graduation Projects",
-      rule: "must be in the final year of the university",
+      rule: "Must be 2025 graduate",
+      rulebook: "./test.pdf",
       // prizes: [
       //   { imgSrc: './gold.png', amount: '10,000EGP' },
       //   { imgSrc: './silver.png', amount: '6,000EGP' },
       //   { imgSrc: './bronze.png', amount: '3,000EGP' },
       // ],
-      status: "Coming Soon..",
+      form: "https://docs.google.com/forms/d/e/1FAIpQLSe3Z430bgY1KsES8VyP-jH2RWOfXBUPN46r0AlslFkloZCTww/viewform",
     },
     {
       imgSrc: "./pre.webp",
       title: "Pre-Graduation Projects",
-      rule: "Must not be in the final year of university.",
-      status: "Coming Soon..",
+      rule: "Must be 2026+ graduate",
+      form: "https://docs.google.com/forms/d/e/1FAIpQLSe3Z430bgY1KsES8VyP-jH2RWOfXBUPN46r0AlslFkloZCTww/viewform",
+      rulebook: "./test.pdf",
     },
     {
       imgSrc: "./school.webp",
       title: "School Projects",
-      status: "Coming Soon..",
+      form: "https://docs.google.com/forms/d/e/1FAIpQLSe3Z430bgY1KsES8VyP-jH2RWOfXBUPN46r0AlslFkloZCTww/viewform",
       rule: "Must be in the school stage.",
+      rulebook: "./test.pdf",
     },
     // {
     //   imgSrc: './startups.webp',
@@ -138,7 +142,10 @@ function UEA7() {
             </h3>
             <section className="flex flex-wrap justify-center lg:items-end items-center pb-12">
               {organizers.map((sponsor, index) => (
-                <div key={index} className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg">
+                <div
+                  key={index}
+                  className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg"
+                >
                   <div className="px-6 pb-2">
                     <div className="flex justify-center items-center">
                       <img
@@ -158,7 +165,9 @@ function UEA7() {
               ))}
             </section>
 
-            <h3 className="text-5xl mt-10 mb-5 font-semibold leading-normal text-center text-white">Strategic partner</h3>
+            <h3 className="text-5xl mt-10 mb-5 font-semibold leading-normal text-center text-white">
+              Strategic partner
+            </h3>
             <section className="flex flex-wrap justify-center lg:items-end items-center pb-12">
               <div className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg">
                 <div className="px-6 pb-">
@@ -170,16 +179,20 @@ function UEA7() {
                       loading="lazy"
                     />
                   </div>
-                  <div className="mt-2 text-center">
-                  </div>
+                  <div className="mt-2 text-center"></div>
                 </div>
               </div>
             </section>
 
-            <h3 className="text-5xl mt-10 mb-5 font-semibold leading-normal text-center text-white">Sponsors</h3>
+            <h3 className="text-5xl mt-10 mb-5 font-semibold leading-normal text-center text-white">
+              Sponsors
+            </h3>
             <section className="flex flex-wrap justify-center lg:items-end items-center pb-12">
               {sponsors.map((sponsor, index) => (
-                <div key={index} className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg">
+                <div
+                  key={index}
+                  className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg"
+                >
                   <div className="px-6 pb-2 flex justify-center items-center">
                     <div className="flex justify-center items-center w-52 h-52 text-center">
                       <img
@@ -194,19 +207,7 @@ function UEA7() {
               ))}
             </section>
 
-            <div className="container mx-auto px-4 pt-18 pb-10">
-              <div className="flex flex-wrap text-center justify-center">
-                <div className="w-full lg:w-6/12 px-4">
-                  <h2 className="text-5xl text-center font-bold text-social-4 mx-auto my-4">
-                    Competitions
-                  </h2>
-                  <p className="text-xl leading-relaxed my-4 text-white">
-                    Enjoy free accommodation for 2 members per team!
-                  </p>
-                </div>
-              </div>
-            </div>
-
+            {/* 
             <div className="container mx-auto px-4 pt-18 pb-10">
               <div className="flex flex-wrap text-center justify-center">
                 <div className="w-full lg:w-6/12 px-4">
@@ -235,7 +236,7 @@ function UEA7() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="container mx-auto px-4 pt-18 pb-10">
               <div className="flex flex-wrap text-center justify-center">
@@ -248,13 +249,13 @@ function UEA7() {
                   </p>
                 </div>
               </div>
-              <section className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5  py-12 items-center">
+              <section className=" grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5  py-12 items-center">
                 {competitions.map((competition, index) => (
                   <div
                     key={index}
-                    className="w-full lg:mb-0 mb-12 text-center text-white hover:bg-white/40 transition cursor-pointer rounded-lg border border-white/30"
+                    className="w-full lg:mb-0 mb-12 text-center relative text-white hover:bg-white/40 transition cursor-pointer rounded-lg border border-white/30"
                   >
-                    <div className="p-5 overflow-hidden">
+                    <div className="p-5 overflow-hidden relative">
                       <div className="h-40 flex py-9 items-center">
                         <img
                           className="h-36 mx-auto"
@@ -268,9 +269,13 @@ function UEA7() {
                         </h2>
                         <div className="text-lg font-semibold"></div>
                         <div className="text-center mt-2">
-                          <p className="py-2 text-sm text-social-4 font-bold uppercase hover:underline">
-                            {competition.status}
-                          </p>
+                          <a
+                            href="https://docs.google.com/forms/d/e/1FAIpQLSe3Z430bgY1KsES8VyP-jH2RWOfXBUPN46r0AlslFkloZCTww/viewform"
+                            target="_blank"
+                            className="py-2 text-base tracking-wide text-social-4 font-bold hover:underline"
+                          >
+                            Register now
+                          </a>
                         </div>
                         {competition.rulebook && (
                           <div className="text-center mt-2">
@@ -285,7 +290,7 @@ function UEA7() {
                         )}
                         {competition.rule && (
                           <div className="text-center mt-2">
-                            <p className="py-2 text-sm text-social-4 font-bold uppercase hover:underline">
+                            <p className="py-2 text-sm text- font-bold absolute w-full text-center bg-back left-0 bottom-0">
                               {competition.rule}
                             </p>
                           </div>
@@ -302,7 +307,9 @@ function UEA7() {
         <div className="container mx-auto px-4 pb-8 text-white">
           <div className="flex flex-wrap text-center lg:text-left">
             <div className="w-full lg:w-8/12 px-4">
-              <h4 className="text-3xl font-semibold">Let&#39;s keep in touch!</h4>
+              <h4 className="text-3xl font-semibold">
+                Let&#39;s keep in touch!
+              </h4>
               <h5 className="text-lg my-2">
                 <i className="fas fa-home"></i> Aswan Faculty of Engineering
               </h5>
@@ -398,8 +405,9 @@ const CountdownTimer = ({ target, message, circle }) => {
     <div className="container mx-auto">
       <div className="border border-white bg-black/20 backdrop-blur-sm rounded-xl p-8">
         <h2
-          className={`font-bold text-white mb-8 text-center ${circle ? "text-xl" : "text-3xl"
-            }`}
+          className={`font-bold text-white mb-8 text-center ${
+            circle ? "text-xl" : "text-3xl"
+          }`}
         >
           {message}
         </h2>
