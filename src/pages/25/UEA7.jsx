@@ -264,7 +264,7 @@ function UEA7() {
                         />
                       </div>
                       <div className="px-4 py-2">
-                        <h2 className="text-2xl font-semibold mb-3 truncate">
+                        <h2 className="text-2xl  mb-3 truncate font-bold">
                           {competition.title}
                         </h2>
                         <div className="text-lg font-semibold"></div>
