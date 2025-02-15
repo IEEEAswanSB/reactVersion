@@ -212,7 +212,7 @@ function UEA7() {
                         </a>
                         <div className="text-center mt-2">
                           <a
-                            href="https://docs.google.com/forms/d/e/1FAIpQLSe3Z430bgY1KsES8VyP-jH2RWOfXBUPN46r0AlslFkloZCTww/viewform"
+                            href={competition.form}
                             target="_blank"
                             className="py-2 text-base tracking-wide text-white font-bold hover:underline"
                           >
