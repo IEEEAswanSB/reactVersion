@@ -27,24 +27,7 @@ function UEA7() {
     //   title: "CTF",
     //   status: "Coming Soon..",
     // },
-    {
-      imgSrc: "./arc.webp",
-      title: "Robotics Competition",
-      form: "https://docs.google.com/forms/d/e/1FAIpQLSe3Z430bgY1KsES8VyP-jH2RWOfXBUPN46r0AlslFkloZCTww/viewform",
-      rulebook: "./arc.pdf",
-    },
-    {
-      imgSrc: "./bridge.webp",
-      title: "Spaghetti Bridge",
-      form: "https://docs.google.com/forms/d/e/1FAIpQLSe3Z430bgY1KsES8VyP-jH2RWOfXBUPN46r0AlslFkloZCTww/viewform",
-      rulebook: "./spaghetti.pdf",
-    },
-    {
-      imgSrc: "./tech.webp",
-      title: "Technical Projects",
-      form: "https://docs.google.com/forms/d/e/1FAIpQLSe3Z430bgY1KsES8VyP-jH2RWOfXBUPN46r0AlslFkloZCTww/viewform",
-      rulebook: "./test.pdf",
-    },
+
     {
       imgSrc: "./grad.webp",
       title: "Graduation Projects",
@@ -55,19 +38,19 @@ function UEA7() {
       //   { imgSrc: './silver.png', amount: '6,000EGP' },
       //   { imgSrc: './bronze.png', amount: '3,000EGP' },
       // ],
-      form: "https://docs.google.com/forms/d/e/1FAIpQLSe3Z430bgY1KsES8VyP-jH2RWOfXBUPN46r0AlslFkloZCTww/viewform",
+      form: "https://forms.gle/EvHxzkUweMQ7sPJY8",
     },
     {
       imgSrc: "./pre.webp",
       title: "Pre-Graduation Projects",
       rule: "Must be 2026+ graduate",
-      form: "https://docs.google.com/forms/d/e/1FAIpQLSe3Z430bgY1KsES8VyP-jH2RWOfXBUPN46r0AlslFkloZCTww/viewform",
+      form: "https://forms.gle/1uSiWxcuMQatVmtt6",
       rulebook: "./test.pdf",
     },
     {
       imgSrc: "./school.webp",
       title: "School Projects",
-      form: "https://docs.google.com/forms/d/e/1FAIpQLSe3Z430bgY1KsES8VyP-jH2RWOfXBUPN46r0AlslFkloZCTww/viewform",
+      form: "https://forms.gle/cRDAT1ZiHxKAtwRP9",
       rule: "Must be in the school stage.",
       rulebook: "./test.pdf",
     },
@@ -87,6 +70,26 @@ function UEA7() {
     //   prizes: [],
     //   status: 'Coming Soon..',
     // },
+
+    {
+      imgSrc: "./arc.webp",
+      title: "Robotics Competition",
+      form: "https://forms.gle/PVxNHYwaDm5pFjsJ6",
+      rulebook: "./arc.pdf",
+    },
+    {
+      imgSrc: "./bridge.webp",
+      title: "Spaghetti Bridge",
+      form: "https://forms.gle/7PX8QZnYNSCpQ2Cn8",
+      rulebook: "./spaghetti.pdf",
+    },
+    {
+      imgSrc: "./tech.webp",
+      title: "Technical Projects",
+      form: "https://forms.gle/LkerVu1MnGDQdh329",
+      rulebook: "./test.pdf",
+      rule: "Must be in the technical school.",
+    },
   ];
 
   return (
@@ -256,23 +259,28 @@ function UEA7() {
                     className="w-full lg:mb-0 mb-12 text-center relative text-white hover:bg-white/40 transition cursor-pointer rounded-lg border border-white/30"
                   >
                     <div className="p-5 overflow-hidden relative">
-                      <div className="h-40 flex py-9 items-center">
+                      <a
+                        href={competition.form}
+                        className="h-40 flex py-9 items-center"
+                      >
                         <img
                           className="h-36 mx-auto"
                           src={competition.imgSrc}
                           alt="card 1"
                         />
-                      </div>
+                      </a>
                       <div className="px-4 py-2">
-                        <h2 className="text-2xl  mb-3 truncate font-bold">
+                        <a
+                          href={competition.form}
+                          className="text-2xl  mb-3 truncate font-bold"
+                        >
                           {competition.title}
-                        </h2>
-                        <div className="text-lg font-semibold"></div>
+                        </a>
                         <div className="text-center mt-2">
                           <a
                             href="https://docs.google.com/forms/d/e/1FAIpQLSe3Z430bgY1KsES8VyP-jH2RWOfXBUPN46r0AlslFkloZCTww/viewform"
                             target="_blank"
-                            className="py-2 text-base tracking-wide text-social-4 font-bold hover:underline"
+                            className="py-2 text-base tracking-wide text-white font-bold hover:underline"
                           >
                             Register now
                           </a>
@@ -290,7 +298,7 @@ function UEA7() {
                         )}
                         {competition.rule && (
                           <div className="text-center mt-2">
-                            <p className="py-2 text-sm text- font-bold absolute w-full text-center bg-back left-0 bottom-0">
+                            <p className="py-2 text-sm text- font-bold absolute w-full text-center bg-back left-0 bottom-0 text-white/70">
                               {competition.rule}
                             </p>
                           </div>

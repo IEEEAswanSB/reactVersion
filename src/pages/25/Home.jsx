@@ -204,7 +204,7 @@ function Home() {
               </div>
               <div className="flex flex-wrap justify-center items-center gap-5">
                 <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-                  <div className="">
+                  <div>
                     <img
                       height="120"
                       width="120"
