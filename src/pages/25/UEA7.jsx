@@ -6,71 +6,17 @@ function UEA7() {
     { src: "./aswuni.png", class: "text-xl" },
     { src: "./download.webp", class: "text-xl" },
     { src: "./logo-w.png", class: "text-2xl" },
+    { src: "./NVL-logo-white.svg", class: "text-xl" },
   ];
 
   const sponsors = [
     { src: "./EG-CERT.png", class: "text-xl" },
     { src: "./cyber-security-women.jpg", class: "text-xl" },
-    { src: "./NVL-logo-white.svg", class: "text-xl" },
   ];
 
   const strategic_partners = [{ src: "./aswuni.png", class: "text-xl" }];
 
   const competitions = [
-    // {
-    //   imgSrc: "./hackathon.png",
-    //   title: "Problem Solving",
-    //   status: "Coming Soon..",
-    // },
-    // {
-    //   imgSrc: "./capture-the-flag.png",
-    //   title: "CTF",
-    //   status: "Coming Soon..",
-    // },
-
-    {
-      imgSrc: "./grad.webp",
-      title: "Graduation Projects",
-      rule: "Must be 2025 graduate",
-      rulebook: "./test.pdf",
-      // prizes: [
-      //   { imgSrc: './gold.png', amount: '10,000EGP' },
-      //   { imgSrc: './silver.png', amount: '6,000EGP' },
-      //   { imgSrc: './bronze.png', amount: '3,000EGP' },
-      // ],
-      form: "https://forms.gle/EvHxzkUweMQ7sPJY8",
-    },
-    {
-      imgSrc: "./pre.webp",
-      title: "Pre-Graduation Projects",
-      rule: "Must be 2026+ graduate",
-      form: "https://forms.gle/1uSiWxcuMQatVmtt6",
-      rulebook: "./test.pdf",
-    },
-    {
-      imgSrc: "./school.webp",
-      title: "School Projects",
-      form: "https://forms.gle/cRDAT1ZiHxKAtwRP9",
-      rule: "Must be in the school stage.",
-      rulebook: "./test.pdf",
-    },
-    // {
-    //   imgSrc: './startups.webp',
-    //   title: 'Startups Contest',
-    //   status: 'Coming Soon..',
-    // },
-    // {
-    //   imgSrc: './green.webp',
-    //   title: 'Green Energy Hackathon',
-    //   status: 'Coming Soon..',
-    // },
-    // {
-    //   imgSrc: './forum.png',
-    //   title: 'Job Fair',
-    //   prizes: [],
-    //   status: 'Coming Soon..',
-    // },
-
     {
       imgSrc: "./arc.webp",
       title: "Robotics Competition",
@@ -89,6 +35,28 @@ function UEA7() {
       form: "https://forms.gle/LkerVu1MnGDQdh329",
       rulebook: "./test.pdf",
       rule: "Must be in the technical school.",
+    },
+
+    {
+      imgSrc: "./grad.webp",
+      title: "Graduation Projects",
+      rule: "Must be 2025 graduate",
+      rulebook: "./test.pdf",
+      form: "https://forms.gle/EvHxzkUweMQ7sPJY8",
+    },
+    {
+      imgSrc: "./pre.webp",
+      title: "Pre-Graduation Projects",
+      rule: "Must be 2026+ graduate",
+      form: "https://forms.gle/1uSiWxcuMQatVmtt6",
+      rulebook: "./test.pdf",
+    },
+    {
+      imgSrc: "./school.webp",
+      title: "School Projects",
+      form: "https://forms.gle/cRDAT1ZiHxKAtwRP9",
+      rule: "Must be in the school stage.",
+      rulebook: "./test.pdf",
     },
   ];
 
@@ -123,9 +91,7 @@ function UEA7() {
                 </h3>
                 <h3 className="text-xl mb-2 font-semibold leading-normal flex justify-center items-center gap-2">
                   <i className="fas fa-map-marker-alt"></i>
-                  {/* <a href="https://goo.gl/maps/EdTeAhhrzhBwPJZw9" target="_blank"> */}
                   Aswan
-                  {/* </a> */}
                 </h3>
                 <p className="text-lg w-full md:w-6/12 text-center font-light leading-relaxed my-4 mx-auto">
                   UEA is a conference that consists of a gallery for projects
@@ -209,38 +175,6 @@ function UEA7() {
                 </div>
               ))}
             </section>
-
-            {/* 
-            <div className="container mx-auto px-4 pt-18 pb-10">
-              <div className="flex flex-wrap text-center justify-center">
-                <div className="w-full lg:w-6/12 px-4">
-                  <h2 className="text-5xl text-center font-bold text-social-4 mx-auto mb-7">
-                    Submission Dates
-                  </h2>
-                  <div className="flex flex-col justify-center items-center gap-4 mb-7">
-                    <p className="text-lg leading-relaxed text-white">
-                      Submission opening: 1st February
-                    </p>
-                    <CountdownTimer
-                      target={"2025-02-01T00:00:00"}
-                      message={"Until Submition Opening"}
-                      circle={"3rem"}
-                    />
-                  </div>
-                  <div className="flex flex-col justify-center items-center gap-4">
-                    <p className="text-lg leading-relaxed text-white">
-                      Submission closing: 20th February
-                    </p>
-                    <CountdownTimer
-                      target={"2025-02-20T00:00:00"}
-                      message={"Until Submition Closing"}
-                      circle={"3rem"}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div> */}
-
             <div className="container mx-auto px-4 pt-18 pb-10">
               <div className="flex flex-wrap text-center justify-center">
                 <div className="w-full lg:w-6/12 px-4">
