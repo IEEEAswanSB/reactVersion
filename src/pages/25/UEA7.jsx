@@ -6,12 +6,12 @@ function UEA7() {
     { src: "./aswuni.png", class: "text-xl" },
     { src: "./download.webp", class: "text-xl" },
     { src: "./logo-w.png", class: "text-2xl" },
-    { src: "./NVL-logo-white.svg", class: "text-xl" },
   ];
 
   const sponsors = [
     { src: "./EG-CERT.png", class: "text-xl" },
     { src: "./cyber-security-women.jpg", class: "text-xl" },
+    // { src: "./NVL-logo-white.svg", class: "text-xl" },
   ];
 
   const strategic_partners = [{ src: "./aswuni.png", class: "text-xl" }];
