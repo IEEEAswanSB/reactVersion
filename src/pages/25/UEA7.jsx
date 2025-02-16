@@ -34,25 +34,25 @@ function UEA7() {
     {
       imgSrc: "./tech.webp",
       title: "Technical Projects",
-      form: "https://forms.gle/5YSkH4KrXAhhFfEr5",
+      form: "https://forms.gle/JAA51tNhbVAeSw4F6",
       rule: "Must be in the technical school.",
     },
     {
       imgSrc: "./grad.webp",
       title: "Graduation Projects",
       rule: "Must be 2025 graduate",
-      form: "https://forms.gle/qdEJWVqcJqKCoRSS9",
+      form: "https://forms.gle/8PqY3fTxYdxWuQpeA",
     },
     {
       imgSrc: "./pre.webp",
       title: "Pre-Graduation Projects",
       rule: "Must be 2026+ graduate",
-      form: "https://forms.gle/LpUyHNtbAxk6biJr8",
+      form: "https://forms.gle/i1QLyBn1A3TSnqGJ9",
     },
     {
       imgSrc: "./school.webp",
       title: "School Projects",
-      form: "https://forms.gle/56UqM4uEThEMYany5",
+      form: "https://forms.gle/szwsxvAQ6TEaPwFfA",
       rule: "Must be in the school stage.",
     },
   ];
