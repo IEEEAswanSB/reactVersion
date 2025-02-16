@@ -22,14 +22,14 @@ function UEA7() {
       title: "Robotics Competition",
       //form: "https://forms.gle/PVxNHYwaDm5pFjsJ6",
       status : "Coming soon!",
-      rulebook: "./arc.pdf",
+      // rulebook: "./arc.pdf",
     },
     {
       imgSrc: "./bridge.webp",
       title: "Spaghetti Bridge",
       //form: "https://forms.gle/7PX8QZnYNSCpQ2Cn8",
       status : "Coming soon!",
-      rulebook: "./spaghetti.pdf",
+      // rulebook: "./spaghetti.pdf",
     },
     {
       imgSrc: "./tech.webp",
