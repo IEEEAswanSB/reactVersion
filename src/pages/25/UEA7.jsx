@@ -9,7 +9,7 @@ function UEA7() {
   ];
 
   const sponsors = [
-    { src: "./EG-CERT.png", class: "text-xl" },
+    // { src: "./EG-CERT.png", class: "text-xl" },
     { src: "./cyber-security-women.jpg", class: "text-xl" },
     // { src: "./NVL-logo-white.svg", class: "text-xl" },
   ];
@@ -18,30 +18,16 @@ function UEA7() {
 
   const competitions = [
     {
-      imgSrc: "./arc.webp",
-      title: "Robotics Competition",
-      //form: "https://forms.gle/PVxNHYwaDm5pFjsJ6",
-      status : "Coming soon!",
-      // rulebook: "./arc.pdf",
-    },
-    {
-      imgSrc: "./bridge.webp",
-      title: "Spaghetti Bridge",
-      //form: "https://forms.gle/7PX8QZnYNSCpQ2Cn8",
-      status : "Coming soon!",
-      // rulebook: "./spaghetti.pdf",
+      imgSrc: "./grad.webp",
+      title: "Graduation Projects",
+      rule: "Must be 2025 graduate",
+      form: "https://forms.gle/8PqY3fTxYdxWuQpeA",
     },
     {
       imgSrc: "./tech.webp",
       title: "Technical Projects",
       form: "https://forms.gle/JAA51tNhbVAeSw4F6",
       rule: "Must be in the technical school.",
-    },
-    {
-      imgSrc: "./grad.webp",
-      title: "Graduation Projects",
-      rule: "Must be 2025 graduate",
-      form: "https://forms.gle/8PqY3fTxYdxWuQpeA",
     },
     {
       imgSrc: "./pre.webp",
@@ -54,6 +40,20 @@ function UEA7() {
       title: "School Projects",
       form: "https://forms.gle/szwsxvAQ6TEaPwFfA",
       rule: "Must be in the school stage.",
+    },
+    {
+      imgSrc: "./arc.webp",
+      title: "Robotics Competition",
+      //form: "https://forms.gle/PVxNHYwaDm5pFjsJ6",
+      status: "Coming soon!",
+      // rulebook: "./arc.pdf",
+    },
+    {
+      imgSrc: "./bridge.webp",
+      title: "Spaghetti Bridge",
+      //form: "https://forms.gle/7PX8QZnYNSCpQ2Cn8",
+      status: "Coming soon!",
+      // rulebook: "./spaghetti.pdf",
     },
   ];
 
@@ -151,6 +151,25 @@ function UEA7() {
             </section>
 
             <h3 className="text-5xl mt-10 mb-5 font-semibold leading-normal text-center text-white">
+              Entrepreneurship partner
+            </h3>
+            <section className="flex flex-wrap justify-center lg:items-end items-center pb-12">
+              <div className="w-full container sm:w-6/12 md:w-4/12 lg:w-3/12 p-4 lg:mb-0 mb-12 px-4 text-center hover:bg-white/40 transition cursor-pointer rounded-lg">
+                <div className="px-6 pb-">
+                  <div className="flex justify-center items-center">
+                    <img
+                      alt="..."
+                      src={"./NVL-logo-white.svg"}
+                      className="p-2"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mt-2 text-center"></div>
+                </div>
+              </div>
+            </section>
+
+            <h3 className="text-5xl mt-10 mb-5 font-semibold leading-normal text-center text-white">
               Sponsors
             </h3>
             <section className="flex flex-wrap justify-center lg:items-end items-center pb-12">
@@ -189,8 +208,6 @@ function UEA7() {
                     key={index}
                     className="w-full lg:mb-0 mb-12 text-center relative text-white hover:bg-white/40 transition cursor-pointer rounded-lg border border-white/30"
                   >
-
-                    
                     <div className="p-5 overflow-hidden relative">
                       <a
                         href={competition.form}
